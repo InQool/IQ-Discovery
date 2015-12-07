@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1">
+	<annotation>
+		<documentation>Redirect to GML 3.2.1 on the Web</documentation>
+	</annotation>
+	<include schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+</schema>

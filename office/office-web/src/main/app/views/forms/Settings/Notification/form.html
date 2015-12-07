@@ -1,0 +1,67 @@
+<form name="form" ng-submit="submit()" class="form-horizontal" novalidate>
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Úprava notifikace</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<label for="notification-name" class="control-label col-xs-3">Název</label>
+
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="notification-name" ng-model="notification.subject">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="notification-text" class="control-label col-xs-3">Text</label>
+
+				<div class="col-xs-9">
+					<textarea id="notification-text" ng-model="notification.text" class="form-control" rows="10" autofocus required></textarea>
+				</div>
+			</div>
+			<ul class="list-unstyled">
+				<li>
+					<p>Proměnná
+						<strong>#jméno_uživatele</strong> bude nahrazena jménem uživatele modulu Office nebo modulu Discovery.
+					</p>
+				</li>
+				<li>
+					<p>Proměnná <strong>#jméno_dávky</strong> bude nahrazena jménem dávky, které se zpráva týká.</p>
+				</li>
+				<li>
+					<p>Proměnná <strong>#dokumentu</strong> bude nahrazena jménem dokumentu, které se zpráva týká.</p>
+				</li>
+				<li>
+					<p>Proměnná
+						<strong>#jméno</strong> bude nahrazena křestním jménem uživatele modulu Office nebo modulu Discovery, pokud je známé.
+					</p>
+				</li>
+				<li>
+					<p>Proměnná
+						<strong>#příjmení</strong> bude nahrazena příjmením uživatele modulu Office nebo modulu Discovery, pokud je známé.
+					</p>
+				</li>
+				<li>
+					<p>
+						Proměnná <strong>#odkaz</strong> bude nahrazena URL adresou na reset hesla uživatele pro přístup do modulu Discovery.
+					</p>
+				</li>
+				<li>
+					<p>Proměnná
+						<strong>#adresa</strong> bude nahrazena korespondenční adresou ověřeného uživatele modulu Discovery.
+					</p>
+				</li>
+				<li>
+					<p>Proměnná
+						<strong>#účel</strong> bude nahrazena účelem použití dokumentů, zadaným ověřeným uživatelem v rámci rezervace dokumentů v modulu Discovery.
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Uložit</button>
+			</div>
+		</div>
+	</div>
+</form>

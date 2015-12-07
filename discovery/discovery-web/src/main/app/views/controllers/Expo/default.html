@@ -1,0 +1,131 @@
+<div header-search></div>
+<div id="search-results" class="expo">
+    <div class="page-title">
+        <div class="container">
+            <h2 ng-bind="::vm.expo.title"></h2>
+        </div>
+    </div>
+    <div class="content">
+        <p class="expo-perex">
+            <b ng-bind="::vm.expo.perex"></b>
+        </p>
+
+        <p class="expo-content" ng-bind-html="::vm.expo.content"></p>
+
+        <div class="loading" ng-show="vm.loading">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+        <div class="navigation">
+            <div class="count">
+                <strong>{{ ::'Výsledky hledání'|translate }}: {{ ::((vm.page - 1) * vm.maxCount) + 1 }}-{{ vm.page * vm.results.length }}</strong> / {{ ::vm.resultsCount }}
+            </div>
+            <div class="sort">
+                <div class="btn-group" data-toggle="buttons">
+                    <button class="btn btn-default" ng-click="vm.setLayout('list')" ng-class="{active: vm.layout === 'list'}" tooltip="{{ ::'seznam'|translate }}">
+                        <i class="fa fa-list"></i>
+                    </button>
+                    <button class="btn btn-default" ng-click="vm.setLayout(null)" ng-class="{active: vm.layout === 'grid'}" tooltip="{{ ::'mřížka'|translate }}">
+                        <i class="fa fa-th-large"></i>
+                    </button>
+                </div>
+
+                <div selectpicker on-change="vm.setOrderBy(value)" items=":: vm.options.orderBy" label="{{:: 'Řadit dle'|translate }}" ng-model="vm.orderBy"></div>
+                <div selectpicker on-change="vm.setOrderDir(value)" items=":: vm.options.orderDir" label="{{:: 'Směr'|translate }}" ng-model="vm.orderDir"></div>
+                <div selectpicker on-change="vm.setMaxCount(value)" items=":: vm.options.maxCount" label="{{:: 'Výsledků na stránku'|translate }}" ng-model="vm.maxCount"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sidebar">
+                <h3>{{ ::'Filtr'|translate }}</h3>
+
+                <div class="filter">
+                    <div class="section" ng-class="{'closed': closed}" data-filter-section ng-repeat="f in ::vm.facets">
+                        <div class="toggle" ng-click="toggle()">
+                            {{ ::vm.getFacetName(f.name)|translate }}
+                            <i class="fa fa-chevron-circle-up"></i>
+                        </div>
+                        <ul ng-if="f.name !== 'yearStart'" class="options" ng-hide="closed">
+                            <li ng-repeat="(value, count) in ::vm.getFacetValues(f)">
+                                <a href="#" ng-click="vm.select(f.name, value)" ng-class="{active: vm.isSelected(f.name, value)}">
+                                    {{ ::vm.getFacetValue(f.name, value)|translate }}
+                                    <span>({{ ::count}})</span>
+									<span class="unselect" tooltip="{{ ::'odebrat filtr'|translate }}">
+										<i class="fa fa-close"></i>
+									</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <form ng-if="::f.name === 'yearStart'" ng-submit="vm.submitYears()" novalidate>
+                            <div class="options options-inputs" ng-hide="closed">
+                                <div class="row">
+                                    <div class="column">
+                                        <span>{{ ::'Od'|translate }}</span>
+                                        <input type="text" class="form-control" ng-model="vm.yearStart">
+                                    </div>
+                                    <div class="column">
+                                        <span>{{ ::'Do'|translate }}</span>
+                                        <input type="text" class="form-control" ng-model="vm.yearEnd">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">
+                                    <i class="fa fa-search"></i> {{ ::'hledat'|translate }}
+                                </button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="list" ng-class="{'grid': vm.isGridLayout()}">
+                <div class="row">
+                    <div class="entry" ng-repeat-start="r in ::vm.results track by $index">
+                        <div class="thumbnail">
+                            <a ui-sref="secured.document(vm.getStateData(r))">
+                                <img ng-src="/dcap/discovery/data/file/{{:: r.imgThumb }}">
+                            </a>
+                        </div>
+                        <h4>
+                            <a ui-sref="secured.document(vm.getStateData(r))" ng-bind=":: r.title[0]"></a>
+                        </h4>
+
+                        <div class="meta" ng-show="vm.layout === 'list'">
+                            <p ng-if="::r.hasOwnProperty('creator')">
+                                {{ ::'Autor'|translate }}:
+                                <span ng-bind=":: vm.getValue(r, 'creator')"></span>
+                            </p>
+
+                            <div ng-if=":: r.zdoType === 'cho'">
+                                <p ng-if="::r.hasOwnProperty('temporal')">
+                                    {{ ::'Období'|translate }}: <span ng-bind=":: vm.getValue(r, 'temporal')"></span>
+                                </p>
+
+                                <p ng-if="::r.hasOwnProperty('spatial')">
+                                    {{ ::'Místo'|translate }}: <span ng-bind=":: vm.getValue(r, 'spatial')"></span>
+                                </p>
+                            </div>
+
+                            <div ng-if=":: r.zdoType !== 'cho'">
+                                <p ng-if="::r.hasOwnProperty('publisher')">
+                                    {{ ::'Vydavatel'|translate }}:
+                                    <span ng-bind=":: vm.getValue(r, 'publisher')"></span>
+                                </p>
+
+                                <p ng-if="::r.hasOwnProperty('created')">
+                                    {{ ::'Rok vydání'|translate }}:
+                                    <span ng-bind=":: vm.getValue(r, 'created')"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix visible-lg visible-md" ng-if=":: vm.isGridLayout() && ($index % 4 === 3)"></div>
+                    <div class="clearfix visible-sm" ng-if=":: vm.isGridLayout() && ($index % 3 === 2)"></div>
+                    <div class="clearfix visible-xs" ng-if=":: vm.isGridLayout() && ($index % 2 === 1)" ng-repeat-end></div>
+                </div>
+
+                <div class="text-center" ng-if="vm.resultsCount > vm.maxCount">
+                    <pagination ng-model="vm.page" ng-change="vm.setPage(vm.page)" total-items="vm.resultsCount" items-per-page="vm.maxCount" previous-text="{{ ::'Předchozí'|translate }}" next-text="{{ ::'Další'|translate }}"></pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

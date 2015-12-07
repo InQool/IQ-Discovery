@@ -1,0 +1,63 @@
+<div class="container">
+	<button type="button" ng-click="vm.toggle()">
+		<i class="fa fa-bars"></i> {{ ::'hlavní menu'|translate }}
+	</button>
+	<div collapse="vm.isCollapsed">
+		<ul class="nav">
+			<li>
+				<a ui-sref="secured.homepage">{{ ::'Hlavní stránka'|translate }}</a>
+			</li>
+			<li>
+				<a ui-sref="secured.searchAdvanced">{{ ::'Pokročilé vyhledávání'|translate }}</a>
+			</li>
+			<li>
+				<a ui-sref="secured.catalog">{{ ::'Procházet katalog'|translate }}</a>
+			</li>
+			<li ng-if="vm.isLoggedIn()">
+				<a ui-sref="secured.account.clipboard">{{ ::'Schránka'|translate }}</a>
+			</li>
+			<li>
+				<a ui-sref="secured.history">{{ ::'Historie vyhledávání'|translate }}</a>
+			</li>
+			<li ng-if="vm.isDisabledState('secured.about') === false">
+				<a ui-sref="secured.about">{{ ::'O projektu'|translate }}</a>
+			</li>
+		</ul>
+		<ul class="nav right">
+			<li dropdown>
+				<a href="#" dropdown-toggle>
+					{{ :: vm.getCurrentLanguage() }}
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li ng-repeat="(code, name) in ::vm.languages" ng-if=":: vm.isCurrentLanguage(code) === false">
+						<a href="#" ng-click="vm.changeLanguage(code)" ng-bind=":: name"></a>
+					</li>
+				</ul>
+			</li>
+			<li ng-if="vm.isLoggedIn() === false">
+				<a ui-sref="secured.login">{{ ::'Přihlásit se'|translate }}</a>
+			</li>
+			<li ng-if="vm.isLoggedIn() === false">
+				<a ng-href="/dcap/discovery/consumer?frontendUrl={{ ::vm.frontendUrl }}" class="openid" target="_self">
+					<img ng-src="images/login/moje_id_{{ ::vm.language }}.png">
+				</a>
+			</li>
+			<li ng-if="vm.isLoggedIn()" class="dropdown" dropdown>
+				<a href="#" dropdown-toggle>
+					{{ vm.getName() }}
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li>
+						<a ui-sref="secured.account.settings">{{ ::'Můj účet'|translate }}</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#" ng-click="vm.logout()">{{ ::'Odhlásit se'|translate }}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

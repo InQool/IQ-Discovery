@@ -1,0 +1,40 @@
+<div class="actions">
+	<div class="cover">
+		<img ng-src="/dcap/discovery/data/file/{{ vm.issue.imgThumb }}" ng-click="vm.openViewer()" ng-class="{'has-tiles': vm.issue.hasOwnProperty('imageIds')}">
+
+		<button type="button" ng-if="vm.issue.hasOwnProperty('imageIds')" ng-click="vm.openViewer()" class="btn btn-block btn-primary">
+			<i class="fa fa-search"></i> {{ ::'prohlížet'|translate }} ({{ ::vm.issue.imageIds.length }})
+		</button>
+
+		<a ng-href="/dcap/discovery/data/pdf/{{ vm.issue.pdfId }}" ng-if="vm.issue.hasOwnProperty('pdfId')" target="_blank" class="btn btn-primary btn-block">
+			<i class="fa fa-download"></i> {{ ::'stáhnout PDF'|translate }}
+		</a>
+
+		<a ng-href="/dcap/discovery/data/epub/{{ vm.issue.epubId }}" ng-if="vm.issue.hasOwnProperty('epubId')" target="_blank" class="btn btn-primary btn-block">
+			<i class="fa fa-download"></i> {{ ::'stáhnout EPUB'|translate }}
+		</a>
+	</div>
+	<div class="links">
+		<a href="#" ng-click="vm.clipboard(vm.issue.inventoryId)">
+			<i class="fa fa-clipboard"></i>{{ ::'Přidat do schránky'|translate }}
+		</a>
+	</div>
+</div>
+<div class="informations">
+	<h4 ng-bind=":: vm.issue.title"></h4>
+
+	<div class="row" ng-repeat="attr in ::vm.getAttributes()">
+		<div class="term">{{ ::attr.name|translate }}:</div>
+		<div class="definition">
+			<span ng-repeat="value in ::vm.getValues(attr.key)">{{ ::value }}</span>
+		</div>
+	</div>
+	<div class="row" ng-repeat="(key, values) in ::vm.issue.customAttributes">
+		<div class="term">{{ ::key }}:</div>
+		<div class="definition">
+			<span ng-repeat="value in ::values">{{ ::value }}</span>
+		</div>
+	</div>
+
+	<p class="copyright" ng-if="::vm.issue.allowContentPublicly === false">{{ ::'Tento dokument je chráněn autorským zákonem.'|translate }}</p>
+</div>

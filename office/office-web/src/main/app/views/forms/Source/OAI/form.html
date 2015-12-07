@@ -1,0 +1,51 @@
+<form name="form" class="form-horizontal" novalidate ng-submit="submit()">
+    <div class="panel mbn">
+        <div class="panel-heading">
+            <div class="panel-title">{{:: source.id ? 'Úprava OAI zdroje' : 'Nový OAI zdroj' }}</div>
+        </div>
+        <div class="panel-body pbn">
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="name">Název</label>
+
+                <div class="col-xs-8">
+                    <input type="text" name="name" ng-model="source.name" class="form-control" id="name" required autofocus>
+
+                    <p class="help-block error" ng-if="form.$submitted && form.name.$error.required">Zadejte název zdroje.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="shortcut">Zkratka</label>
+
+                <div class="col-xs-8">
+                    <input type="text" name="shortcut" ng-model="source.shortcut" class="form-control" id="shortcut" required>
+
+                    <p class="help-block error" ng-if="form.$submitted && form.shortcut.$error.required">Zadejte zkratku zdroje.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-4" for="set">Set</label>
+
+                <div class="col-xs-8">
+                    <input type="text" name="set" ng-model="source.set" class="form-control" id="set">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="url" class="control-label col-xs-4">URL</label>
+
+                <div class="col-xs-8">
+                    <input type="url" name="url" ng-model="source.url" class="form-control" id="url" required>
+
+                    <p class="help-block error" ng-if="form.$submitted && form.url.$error.required">Zadejte URL zdroje.</p>
+
+                    <p class="help-block error" ng-if="form.$submitted && form.url.$error.url">URL není ve správném tvaru.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="loading">Uložit</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,31 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <deployment>
+        <dependencies>
+            <module name="javax.jcr" export="true" />
+            <module name="org.slf4j" export="true" />
+            <module name="org.slf4j.jcl-over-slf4j" export="true" />
+
+            <module name="org.jboss.resteasy.resteasy-html" services="export" export="true" />
+
+            <!--jackson-->
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+            <module name="com.fasterxml.jackson.core.jackson-databind" />
+            <module name="com.fasterxml.jackson.core.jackson-annotations" />
+            <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" />
+            <module name="org.jboss.resteasy.resteasy-jackson2-provider" services="import" />
+
+
+            <module name="com.google.webutilities" export="true" />
+            <module name="com.google.guava" slot="18" export="true" />
+
+            <!-- jboss system modules -->
+            <module name="javax.api" services="import" meta-inf="import"/>
+            <module name="javaee.api" />
+            <!--<module name="org.bouncycastle" />-->
+
+            <module name="org.bouncycastle" export="true" />
+            <module name="org.apache.commons.codec" export="true" />
+            <module name="org.apache.commons.io" export="true" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

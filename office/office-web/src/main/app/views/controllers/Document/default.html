@@ -1,0 +1,22 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Dokumenty</h4>
+	</div>
+	<div class="tray">
+		<div class="panel">
+			<div class="panel-heading">
+				<ul class="nav panel-tabs panel-tabs-left">
+					<li ui-sref-active-eq="active">
+						<a ui-sref=".({state: ''})">Rozpracované</a>
+					</li>
+					<li ui-sref-active-eq="active">
+						<a ui-sref=".({state: 'published'})">Publikované</a>
+					</li>
+				</ul>
+			</div>
+			<div class="panel-body pn">
+				<table-view instance="table" options="options" columns="columns"></table-view>
+			</div>
+		</div>
+	</div>
+</div>

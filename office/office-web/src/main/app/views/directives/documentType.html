@@ -1,0 +1,26 @@
+<div>
+	<div class="form-group">
+		<label class="control-label col-xs-4">Typ</label>
+
+		<div class="col-xs-8">
+			<ui-select ng-if="vm.isPrint === false" ng-model="vm.document.documentType" on-select="vm.fetchSubtypes($item, 'click')" required ng-disabled=":: vm.isPublished">
+				<ui-select-match placeholder="Vyberte typ dokumentu..">{{ $select.selected.name }}</ui-select-match>
+				<ui-select-choices repeat="t.id as t in ::vm.types">{{:: t.name }}</ui-select-choices>
+			</ui-select>
+
+			<div ng-if="vm.isPrint" class="form-control-static" ng-bind=":: vm.getType().name"></div>
+		</div>
+	</div>
+	<div class="form-group" ng-if="vm.document.documentType">
+		<label class="control-label col-xs-4">Podtyp</label>
+
+		<div class="col-xs-8">
+			<ui-select ng-if="vm.isPrint === false" ng-model="vm.document.documentSubType" ng-disabled=":: vm.isPublished" required>
+				<ui-select-match placeholder="Vyberte podtyp dokumentu..">{{ $select.selected.name }}</ui-select-match>
+				<ui-select-choices repeat="t.id as t in vm.subtypes">{{:: t.name }}</ui-select-choices>
+			</ui-select>
+
+			<div ng-if="vm.isPrint" class="form-control-static" ng-bind=":: vm.getSubType().name"></div>
+		</div>
+	</div>
+</div>

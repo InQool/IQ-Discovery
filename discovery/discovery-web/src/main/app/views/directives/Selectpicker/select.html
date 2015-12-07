@@ -1,0 +1,11 @@
+<div class="dropdown" dropdown>
+	<label ng-if="label" ng-bind="label"></label>
+	<button type="button" class="btn btn-default" dropdown-toggle>
+		{{ getValue()|translate }} <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<li ng-repeat="(key, value) in ::items">
+			<a href="#" ng-click="setValue(key)">{{ ::value|translate}}</a>
+		</li>
+	</ul>
+</div>

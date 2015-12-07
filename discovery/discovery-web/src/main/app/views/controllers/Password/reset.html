@@ -1,0 +1,31 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Resetování hesla'|translate }}</h2>
+	</div>
+</div>
+<div id="login">
+	<div class="container">
+		<form name="vm.form" ng-submit="vm.submit()" class="form-horizontal" novalidate>
+			<div class="form-group" ng-class="{'has-error': vm.form.$submitted && vm.form.password.$error.required}">
+				<label for="reset-password" class="control-label col-sm-4">{{ ::'Nové heslo'|translate }}</label>
+
+				<div class="col-sm-8">
+					<input type="password" class="form-control" ng-model="vm.password" id="reset-password" name="password" required>
+				</div>
+			</div>
+			<div class="form-group" ng-class="{'has-error': vm.form.$submitted && vm.form.passwordAgain.$error.required}">
+				<label for="reset-password-again" class="control-label col-sm-4">{{ ::'Nové heslo (znovu)'|translate }}</label>
+
+				<div class="col-sm-8">
+					<input type="password" class="form-control" ng-model="vm.passwordAgain" id="reset-password-again" name="passwordAgain" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-8 col-sm-push-4">
+					<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">{{ ::'Nastavit heslo'|translate }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

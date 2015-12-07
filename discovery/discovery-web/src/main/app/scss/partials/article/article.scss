@@ -1,0 +1,30 @@
+@import "../../mixins";
+
+#article {
+  padding: 2em 0;
+
+  p {
+    margin-bottom: 0;
+    text-align: justify;
+  }
+
+  .thumbnail {
+    @include img-responsive();
+    @include border-radius();
+    margin-bottom: 1em;
+  }
+
+  .author {
+    @extend .text-muted;
+    margin-bottom: 1em;
+  }
+
+  .perex {
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+  
+  .content {
+    white-space: pre-wrap;
+  }
+}

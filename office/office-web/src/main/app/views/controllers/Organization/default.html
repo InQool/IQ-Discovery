@@ -1,0 +1,17 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Organizace</h4>
+
+		<button type="button" class="btn btn-primary" ng-click="resync()" ng-disabled="loading">{{ loading ? 'Prosím čekejte..' : 'Synchronizovat' }}</button>
+	</div>
+	<div class="tray">
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="panel-title">Přehled organizací</div>
+			</div>
+			<div class="panel-body pn">
+				<table-view options="options" columns="columns"></table-view>
+			</div>
+		</div>
+	</div>
+</div>

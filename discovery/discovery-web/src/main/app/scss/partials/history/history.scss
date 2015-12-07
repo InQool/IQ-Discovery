@@ -1,0 +1,11 @@
+@import "../../mixins";
+
+#history {
+  table {
+	margin: 2em auto 0;
+
+	+ button {
+	  margin-bottom: 1em;
+	}
+  }
+}

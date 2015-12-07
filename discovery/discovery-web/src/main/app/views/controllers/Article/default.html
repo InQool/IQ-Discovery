@@ -1,0 +1,22 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Články'|translate }}</h2>
+	</div>
+</div>
+<div id="article">
+	<div class="container">
+		<div class="row" ng-repeat="a in ::vm.articles">
+			<div class="col-md-3">
+				<img ng-src="/dcap/discovery/data/file/{{:: a.imageId }}" class="thumbnail">
+			</div>
+			<div class="col-md-9">
+				<h4>
+					<a ui-sref=".view({id: a.id})" ng-bind=":: a.title"></a>
+				</h4>
+
+				<p class="perex" ng-bind=":: a.perex"></p>
+			</div>
+		</div>
+	</div>
+</div>

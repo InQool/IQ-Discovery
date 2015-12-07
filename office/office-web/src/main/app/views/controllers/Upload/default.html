@@ -1,0 +1,24 @@
+<div id="content">
+    <div class="sidebar">
+        <h4>Nahrát XLS/AccessDB</h4>
+    </div>
+    <div class="tray">
+        <form class="form-horizontal" name="vm.form" ng-submit="vm.submit()" novalidate>
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Nahrát soubor</div>
+                </div>
+                <div class="panel-body pbn">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input file-model="vm.file" id="upload-file" name="file" required type="file">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" ng-disabled="vm.loading" type="submit">Nahrát soubor</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

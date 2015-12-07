@@ -1,0 +1,382 @@
+<form name="vm.form" ng-submit="vm.submit()" class="form-horizontal" novalidate>
+    <div id="content" class="document-detail">
+        <div class="sidebar">
+            <h4>Detail dokumentu</h4>
+            <a ui-sref="secured.batch.edit({id: vm.document.batchId[0]})" class="btn btn-default">
+                <i class="fa fa-chevron-left"></i> zpět na detail dávky
+            </a>
+
+            <div class="toolbar">
+                <button ng-if="::vm.isPublished === false" type="submit" ng-disabled="vm.loading"
+                        class="btn btn-primary">Uložit změny
+                </button>
+                <button ng-if="::vm.isPublished === false" type="button" ng-disabled="vm.loading"
+                        ng-click="vm.revert()" class="btn btn-danger mr15">Zahodit změny
+                </button>
+                <button type="button" class="btn btn-default" document-preview document="vm.document">Náhled</button>
+                <a ui-sref=".({print: true})" target="_blank" class="btn btn-default">Tisk detailu</a>
+            </div>
+        </div>
+        <div class="table-layout">
+            <div class="tray treeview" ng-style="vm.getTreeStyle()">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <span ng-click="vm.toggleTree()"
+                              class="toggle-treeview glyphicons glyphicons-show_lines"></span>
+
+                        <div class="panel-title" ng-hide="vm.treeIsCollapsed">Struktura dávky</div>
+                    </div>
+                    <div class="panel-body p5" ng-hide="vm.treeIsCollapsed">
+                        <tree-view batch-id="{{ ::vm.batch.id }}" document-id="{{ ::vm.id }}"></tree-view>
+                    </div>
+                </div>
+            </div>
+            <div class="tray">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="panel-title">Základní informace</div>
+                    </div>
+                    <div class="panel-body pbn">
+                        <div class="form-group">
+                            <label for="document-ic" class="control-label col-xs-4">{{ ::vm.document.zdoType === 'cho' ? 'Inv. číslo' : 'Signatura' }}</label>
+
+                            <div class="col-xs-8">
+                                <input type="text" id="document-ic" class="form-control" ng-value="::vm.document.inventoryId[0]" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-4" for="document-name">Název</label>
+
+                            <div class="col-xs-8">
+                                <div ng-if="vm.isPrint" class="form-control-static" ng-bind="::vm.document.title"></div>
+                                <input ng-if="vm.isPrint === false" type="text" class="form-control" id="document-name" required ng-model="vm.document.title" ng-readonly="::vm.isPublished">
+                            </div>
+                        </div>
+                        <document-type ng-if="::vm.document.hasOwnProperty('isPartOf') === false && vm.configuration.allowDocumentTypeChange" document="vm.document" is-published="vm.isPublished" is-print="vm.isPrint"></document-type>
+                        <div class="form-group" ng-repeat="field in ::vm.getAttributes(vm.isPublished)" ng-if="vm.isPrint === false || (vm.isPrint && vm.document[field.key].length > 0)">
+                            <label class="control-label col-xs-4" ng-bind="::field.name"></label>
+
+                            <div class="col-xs-8">
+                                <div ng-if="::vm.isEditable() === false && vm.document[field.key].length > 0">
+                                    <div ng-if="::vm.isPrint" class="form-control-static" ng-repeat="value in vm.document[field.key] track by $index" ng-bind="::value"></div>
+                                    <input ng-if="::vm.isPrint === false" type="text" ng-value="::value" ng-repeat="value in vm.document[field.key] track by $index" class="form-control" readonly>
+
+                                    <div ng-if="::vm.isPrint === false" class="switch switch-primary switch-sm switch-inline">
+                                        <input type="checkbox" ng-checked="::vm.document[field.key + '_visibility']" readonly>
+                                        <label></label>
+                                        <span>Zobrazit v Discovery modulu</span>
+                                    </div>
+
+                                    <div ng-if="::vm.isPrint" class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-checked="::vm.document[field.key + '_visibility']" readonly> Zobrazit v Discovery modulu
+                                        </label>
+                                    </div>
+                                </div>
+                                <div ng-if="::vm.isEditable()">
+                                    <div ng-if="vm.hasMultiselect(field.key) === false">
+                                        <div class="input-group" ng-repeat="value in vm.document[field.key] track by $index">
+                                            <input ng-if="::!field.element" type="text" class="form-control" ng-model="vm.document[field.key][$index]">
+                                            <textarea ng-if="::field.element === 'textarea'" class="form-control" ng-model="vm.document[field.key][$index]"></textarea>
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default" ng-click="vm.removeValue(field, $index)" ng-disabled="$first">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+											</span>
+                                        </div>
+                                        <button type="button" class="btn btn-default btn-sm" ng-click="vm.addValue(field)">
+                                            <i class="fa fa-fw fa-plus"></i> přidat pole
+                                        </button>
+                                    </div>
+
+                                    <ui-select ng-if="vm.hasMultiselect(field.key) && field.key !== 'language'" tagging tagging-label="- nová položka" ng-model="vm.document[field.key]" close-on-select="false" class="token-block" multiple>
+                                        <ui-select-match placeholder="Začněte psát..">{{ ::$item }}</ui-select-match>
+                                        <ui-select-choices repeat="o in vm.fetchedOptions[field.key]" refresh="vm.fetchOptions(field.key, $select.search)">{{ ::o }}</ui-select-choices>
+                                    </ui-select>
+
+                                    <ui-select ng-if="vm.hasMultiselect(field.key) && field.key === 'language'" ng-model="vm.document[field.key]" close-on-select="false" class="token-block" multiple>
+                                        <ui-select-match placeholder="Začněte psát..">{{ ::$item.value }}</ui-select-match>
+                                        <ui-select-choices repeat="o.key as o in vm.languages | filter:$select.search">{{ ::o.value }}</ui-select-choices>
+                                    </ui-select>
+
+                                    <div class="switch switch-primary switch-sm switch-inline">
+                                        <input type="checkbox" ng-model="vm.document[field.key + '_visibility']" id="field-{{ ::field.key }}-visibility">
+                                        <label for="field-{{ ::field.key }}-visibility"></label>
+                                        <span>Zobrazit v Discovery modulu</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" ng-hide="::vm.isEditable() === false && vm.document.customFields.length === 0">
+                    <div class="panel-heading">
+                        <div class="panel-title">Doplňující informace</div>
+                    </div>
+                    <div class="panel-body pbn">
+                        <div class="form-group"
+                             ng-repeat="field in vm.document.customFields | filter:{deleted: false} | orderBy:'order'">
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control" ng-model="field.name" required ng-readonly="::vm.isEditable() === false">
+                            </div>
+
+                            <div class="col-xs-8">
+                                <div ng-if="::vm.isEditable() === false">
+                                    <input type="text" ng-value="::value" class="form-control"
+                                           ng-repeat="value in ::field.values track by $index" readonly>
+                                </div>
+                                <div ng-if="::vm.isEditable()">
+                                    <div class="input-group" ng-repeat="value in field.values track by $index">
+                                        <input type="text" class="form-control" ng-model="field.values[$index]" ng-required="$index === 0 || ($index > 0 && $last === false)">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" ng-click="vm.removeCustomValue(field, $index)">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+										</span>
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-sm" ng-click="vm.addCustomValue(field)">
+                                        <i class="fa fa-fw fa-plus"></i> přidat pole
+                                    </button>
+                                    <div class="switch switch-primary switch-sm switch-inline">
+                                        <input type="checkbox" ng-model="field.visibility"
+                                               id="field-extra-{{ ::$index }}-visibility">
+                                        <label for="field-extra-{{ ::$index }}-visibility"></label>
+                                        <span>Zobrazit v Discovery modulu</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="::vm.isEditable()" class="form-group">
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-default" ng-click="vm.addCustomField()">
+                                    <i class="fa fa-fw fa-plus"></i> přidat nový údaj
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" ng-if="vm.document.zdoType !== 'periodical' && vm.document.zdoType !== 'volume'">
+                    <div class="panel-heading">
+                        <div class="panel-title">Nastavení dokumentu</div>
+                    </div>
+                    <div class="panel-body pbn">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-xs-6" for="allow-content-publicly">Zobrazit pouze
+                                    metadata</label>
+
+                                <div class="col-xs-6">
+                                    <div ng-if="::vm.isPrint === false" class="switch switch-primary switch-sm">
+                                        <input type="checkbox" id="allow-content-publicly"
+                                               ng-model="vm.document.allowContentPublicly"
+                                               ng-disabled="::vm.isPublished">
+                                        <label for="allow-content-publicly"></label>
+                                    </div>
+
+                                    <input ng-if="::vm.isPrint" type="checkbox"
+                                           ng-model="vm.document.allowContentPublicly" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-hide="vm.document.allowContentPublicly">
+                                <label class="control-label col-xs-6" for="allow-export-pdf">Povolit export do
+                                    PDF</label>
+
+                                <div class="col-xs-6">
+                                    <div ng-if="::!vm.isPrint" class="switch switch-primary switch-sm">
+                                        <input type="checkbox" id="allow-export-pdf"
+                                               ng-model="vm.document.allowPdfExport" ng-disabled="::vm.isPublished">
+                                        <label for="allow-export-pdf"></label>
+                                    </div>
+
+                                    <input ng-if="::vm.isPrint" type="checkbox" ng-model="vm.document.allowPdfExport"
+                                           disabled>
+                                </div>
+                            </div>
+                            <div ng-hide="vm.document.allowContentPublicly || vm.document.zdoType === 'cho'"
+                                 class="form-group">
+                                <label class="control-label col-xs-6" for="allow-export-epub">Povolit export do
+                                    EPUB</label>
+
+                                <div class="col-xs-6">
+                                    <div ng-if="::vm.isPrint === false" class="switch switch-primary switch-sm">
+                                        <input ng-model="vm.document.allowEpubExport" ng-disabled="::vm.isPublished"
+                                               type="checkbox" id="allow-export-epub">
+                                        <label for="allow-export-epub"></label>
+                                    </div>
+                                    <input ng-if="::vm.isPrint" type="checkbox" ng-model="vm.document.allowEpubExport"
+                                           disabled>
+                                </div>
+                            </div>
+                            <div ng-hide="vm.document.allowContentPublicly" class="form-group">
+                                <label class="control-label col-xs-6" for="use-watermark">Vodotisk přes obrazová
+                                    data</label>
+
+                                <div class="col-xs-6">
+                                    <div ng-if="::vm.isPrint === false" class="switch switch-primary switch-sm">
+                                        <input type="checkbox" id="use-watermark" ng-model="vm.document.watermark"
+                                               ng-disabled="::vm.isPublished">
+                                        <label for="use-watermark"></label>
+                                    </div>
+                                    <input ng-if="::vm.isPrint" type="checkbox" ng-model="vm.document.watermark"
+                                           disabled>
+                                </div>
+                            </div>
+                            <div class="form-group"
+                                 ng-show="vm.document.watermark && !vm.document.allowContentPublicly">
+                                <label class="control-label col-xs-6">Umístění vodotisku</label>
+
+                                <div class="col-xs-6">
+                                    <ui-select ng-if="::vm.isPrint === false" ng-model="vm.document.watermarkPosition" ng-disabled="::vm.isEditable() === false" ng-required="vm.document.watermark">
+                                        <ui-select-match placeholder="Vyberte umístění..">{{ $select.selected.name }}</ui-select-match>
+                                        <ui-select-choices repeat="p.key as p in ::vm.watermarkPositions">{{ ::p.name }}</ui-select-choices>
+                                    </ui-select>
+                                    <div ng-if="::vm.isPrint" class="form-control-static" ng-bind="::vm.getWatermarkPosition()"></div>
+                                </div>
+                            </div>
+                            <div ng-hide="vm.document.allowContentPublicly" class="form-group">
+                                <label class="control-label col-xs-3">Zpřístupnění</label>
+
+                                <div class="col-xs-9">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <input ng-readonly="::vm.isEditable() === false" ng-model="vm.document.publishFrom" datetime-picker type="text" class="form-control">
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <input ng-readonly="::vm.isEditable() === false" ng-model="vm.document.publishTo" datetime-picker type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tray">
+                <div class="panel panel-with-tabs">
+                    <div class="panel-heading">
+                        <ul class="nav panel-tabs panel-tabs-left">
+                            <li ng-class="{'active': vm.tab === 'kdr'}">
+                                <a href="#" ng-click="vm.setTab('kdr')">KDR</a>
+                            </li>
+                            <!--<li ng-class="{'active': vm.tab === 'sru'}">
+                                <a href="#" ng-click="vm.setTab('sru')">SRU</a>
+                            </li>
+                            <li ng-class="{'active': vm.tab === 'z3950'}">
+                                <a href="#" ng-click="vm.setTab('z3950')">Z39.50</a>
+                            </li>-->
+                            <!--<li ng-class="{'active': vm.tab === 'oai'}">
+                                <a href="#" ng-click="vm.setTab('oai')">OAI-PMH</a>
+                            </li>-->
+                            <li ng-class="{'active': vm.tab === 'bach'}" ng-if="::vm.documents.bach !== null">
+                                <a href="#" ng-click="vm.setTab('bach')">Bach</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body pbn">
+                        <div class="tab-content">
+                            <div class="tab-pane" ng-class="{active: vm.tab === 'kdr'}">
+                                <div class="title">KDR</div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Název</label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly ng-repeat="t in ::vm.original.title" ng-value="::t" tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-repeat="c in ::vm.choices" ng-if="::vm.original.hasOwnProperty(c.key) && vm.original[c.key].length > 0 && vm.original[c.key][0] !== ''">
+                                    <label class="control-label col-xs-4" ng-bind="::c.name"></label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly ng-repeat="t in ::vm.original[c.key]" ng-value="::t" tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                                <div ng-repeat="(key, values) in ::vm.getAdditionalMetadata()" class="form-group">
+                                    <label class="control-label col-xs-4" ng-bind="::key"></label>
+
+                                    <div class="col-xs-8">
+                                        <input ng-repeat="v in ::values" ng-value="::v" type="text" class="form-control" readonly tooltip="{{ ::v }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" ng-class="{active: vm.tab === 'bach'}"
+                                 ng-if="::vm.documents.bach !== null">
+                                <div class="title">Bach</div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Název</label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly ng-repeat="t in ::vm.documents.bach.title" ng-value="::t" tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-repeat="c in ::vm.choices" ng-if="::vm.documents.bach.hasOwnProperty(c.key) && vm.documents.bach[c.key].length > 0">
+                                    <label class="control-label col-xs-4" ng-bind="::c.name"></label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly
+                                               ng-repeat="t in ::vm.documents.bach[c.key]" ng-value="::t"
+                                               tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="tab-pane" ng-class="{active: vm.tab === 'sru'}">
+                                <div class="title">SRU</div>
+                            </div>
+                            <div class="tab-pane" ng-class="{active: vm.tab === 'z3950'}">
+                                <div class="title">Z39.50</div>
+                            </div>-->
+                            <!--<div class="tab-pane" ng-class="{active: vm.tab === 'oai'}">
+                                <div class="title">OAI-PMH</div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Vybraný zdroj</label>
+
+                                    <div class="col-sm-8">
+                                        <ui-select ng-model="vm.source.oai">
+                                            <ui-select-match placeholder="Vyberte zdroj..">{{ $select.selected }}</ui-select-match>
+                                            <ui-select-choices repeat="shortcut in ::vm.getOaiShortcuts()">{{ ::shortcut }}</ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="vm.source.oai">
+                                    <label class="control-label col-sm-4">Název</label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" readonly ng-repeat="t in ::vm.documents.oai[vm.source.oai].title" ng-value="::t" tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-repeat="c in ::vm.choices" ng-if="vm.source.oai && vm.documents.oai[vm.source.oai].hasOwnProperty(c.key)">
+                                    <label class="control-label col-sm-4" ng-bind="::c.name"></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" readonly ng-repeat="v in ::vm.documents.oai[source.oai][c.key]" ng-value="::vm.getValue(c.key, v)" tooltip="{{ ::v }}">
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="tab-pane" ng-class="{active: tab == 'bach'}">
+                                <div class="title">Bach</div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Název</label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly
+                                               ng-repeat="t in ::vm.documents.bach.title" ng-value="::t"
+                                               tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-repeat="c in ::vm.choices"
+                                     ng-if="vm.documents.bach.hasOwnProperty(c.key)">
+                                    <label class="control-label col-xs-4" ng-bind="::c.name"></label>
+
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" readonly
+                                               ng-repeat="t in ::vm.documents.bach[c.key]" ng-value="::t"
+                                               tooltip="{{ ::t }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

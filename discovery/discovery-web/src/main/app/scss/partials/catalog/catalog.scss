@@ -1,0 +1,15 @@
+@import "../../mixins";
+
+#catalog {
+  padding: 1em 0;
+
+  .column {
+	@include make-sm-column(4);
+  }
+
+  @media (max-width: $screen-xs-max) {
+	.column + .column {
+	  margin-top: 1em;
+	}
+  }
+}

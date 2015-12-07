@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ ::language }}" ng-app="zdo.discovery" ng-strict-di>
+	<head>
+		<base href="/">
+
+		<meta charset="UTF-8">
+		<meta name="fragment" content="!">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta property="fb:app_id" content="1633408920244543">
+		<meta property="og:site_name" content="{{ ::getTitle() }}">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{ getUrl() }}">
+		<meta ng-repeat="t in tags" property="{{ ::t.property }}" content="{{ ::t.content }}">
+        <!--(if target dist)>
+        <meta http-equiv="X-XRDS-Location" content="{{domain}}/xrds.xml">
+        <!(endif)-->
+		<title ng-bind="::getTitle()"></title>
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<flashes></flashes>
+		<ui-view></ui-view>
+		<script src="bundle/bundle.js"></script>
+
+        <!-- Google Analytics -->
+        <!--(if target dist)>
+		<script>
+			ga = function () {
+                ga.q.push(arguments)
+            };
+            ga.q = [];
+            ga.l = +new Date;
+            ga('create', '{{googleAnalyticsId}}', 'auto');
+            ga('send', 'pageview');
+		</script>
+		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+		<script src="https://connect.facebook.net/en_US/sdk.js" async defer></script>
+		<!(endif)-->
+	</body>
+</html>

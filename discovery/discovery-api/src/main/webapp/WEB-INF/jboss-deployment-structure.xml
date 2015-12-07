@@ -1,0 +1,45 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <deployment>
+        <dependencies>
+            <module name="org.hibernate" export="true" />
+            <module name="org.infinispan" services="export" export="true"/>
+
+            <module name="javax.jcr" export="true" />
+            <module name="org.slf4j" export="true" />
+            <module name="org.slf4j.jcl-over-slf4j" export="true" />
+
+            <module name="org.jboss.resteasy.resteasy-html" services="export" export="true" />
+
+            <!--jackson-->
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+            <module name="com.fasterxml.jackson.core.jackson-databind" />
+            <module name="com.fasterxml.jackson.core.jackson-annotations" />
+            <module name="com.fasterxml.jackson.datatype.jsr310" />
+            <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" />
+            <module name="org.jboss.resteasy.resteasy-jackson2-provider" services="import" />
+
+            <module name="com.google.webutilities" export="true" />
+            <module name="com.google.guava" slot="18" export="true" />
+
+            <module name="com.mysema.querydsl.jpa" export="true"/>
+            <!--<module name="org.liquibase" services="import" meta-inf="import" /> doesnt work because of xerces version conflict-->
+            <!--xalan in wildfly has a bug for z3950 marc xslt <module name="org.apache.xalan" export="true"/>&lt;!&ndash;this may or may not be required by jzkit&ndash;&gt;-->
+
+            <!-- jboss system modules -->
+            <module name="javax.api" services="import" meta-inf="import"/>
+            <module name="javaee.api" />
+            <!--<module name="org.bouncycastle" />-->
+
+            <module name="org.bouncycastle" export="true" />
+            <module name="org.apache.commons.codec" export="true" />
+            <module name="org.apache.commons.io" export="true" />
+
+            <module name="org.picketlink.core" meta-inf="import" annotations="true"/>
+            <module name="org.picketlink.core.api" meta-inf="import"/>
+            <module name="org.picketlink.idm" meta-inf="import"/>
+            <module name="org.picketlink.idm.api" meta-inf="import"/>
+            <module name="org.picketlink.json" services="import" meta-inf="import" />
+            <module name="org.picketlink.common" meta-inf="import" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

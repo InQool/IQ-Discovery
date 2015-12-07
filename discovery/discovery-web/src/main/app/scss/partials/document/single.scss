@@ -1,0 +1,375 @@
+@import "variables";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/navs";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/buttons";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/tables";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/alerts";
+
+#single-record {
+  .copyright {
+    color: $brand-danger;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .navigation {
+    @include clearfix;
+    @extend .hidden-print;
+
+    padding: 2em 0;
+    background: lighten($gray-light, 40%);
+
+    .back {
+      float: left;
+
+      i {
+        margin-right: 0.5em;
+      }
+    }
+
+    .pagination {
+      float: right;
+      margin: 0;
+
+      span {
+        display: inline-block;
+        margin: 0 1em;
+      }
+    }
+  }
+
+  > .container {
+    margin-top: 5em;
+  }
+
+  .cover {
+    margin-bottom: 1em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid $color-blue;
+
+    img {
+      @include img-responsive();
+
+      &.has-tiles {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .actions {
+    @include make-md-column(2.5);
+    @include clearfix;
+
+    .links {
+      margin-bottom: 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid $color-blue;
+
+      a:not(.btn) {
+        display: block;
+        padding: 0.25em 0;
+
+        i {
+          @extend .fa-fw;
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+
+  .content {
+    @include make-md-column(6.5);
+
+    h2 {
+      margin: 0 auto 0.5em;
+      padding: 0;
+      font-size: 1.75em;
+
+      + h4 {
+        margin-top: -0.25em;
+      }
+    }
+
+    h4 {
+      margin: 0 auto 0.5em;
+      padding: 0;
+    }
+
+    .informations {
+      margin-bottom: 2em;
+      font-size: 0.9em;
+
+      .row {
+        margin-bottom: 0.5em;
+      }
+
+      .term {
+        @include make-xs-column(4);
+        font-weight: bold;
+      }
+
+      .definition {
+        @include make-xs-column(8);
+
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .issue-list {
+      display: none;
+    }
+
+    .issue {
+      @include make-row();
+      margin-top: 1em;
+      margin-bottom: 1em;
+
+      h4 {
+        margin: 0 auto 1em;
+      }
+
+      .actions {
+        @include make-sm-column(4);
+
+        img {
+          @include img-responsive();
+          margin-bottom: 1em;
+        }
+      }
+
+      .informations {
+        @include make-sm-column(8);
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  .box {
+    overflow: hidden;
+    @include border-top-radius($border-radius-large);
+    @include border-bottom-radius($border-radius-large);
+
+    .box-header {
+      padding: 0.5em 1em;
+      font-size: 1.2em;
+      color: $color-white;
+      background: $brand-primary;
+    }
+
+    .box-content {
+      padding: 1em;
+      background: $gray-lighter;
+    }
+  }
+
+  .related {
+    @include make-md-column(3);
+
+    .box {
+      .entry {
+        margin-bottom: 1em;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .tabs {
+    @extend .hidden-print;
+    margin: 1em auto;
+
+    .nav.nav-tabs {
+      li {
+        a {
+          &:hover {
+            color: $color-white;
+          }
+        }
+
+        &.active {
+          a {
+            color: $color-blue;
+          }
+        }
+      }
+    }
+
+    .view {
+      margin-top: -1px;
+      padding: 1em 0;
+      border-top: 1px solid $color-blue;
+
+      &:empty {
+        padding: 0;
+      }
+    }
+
+    .staff-view {
+      table {
+        @extend .table;
+        @extend .table-condensed;
+        margin-bottom: 0;
+        font-size: 0.9em;
+        border-collapse: collapse;
+
+        tbody > tr > th {
+          padding-right: 1em;
+          text-align: right;
+        }
+
+        .title {
+          text-align: left;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .login-text {
+      @include clearfix;
+      text-align: right;
+      margin-bottom: 1em;
+    }
+
+    .holdings {
+      .header {
+        padding: 0.5em;
+        background: $color-blue;
+
+        button {
+          @extend .btn-sm;
+        }
+      }
+
+      table {
+        width: 100%;
+        max-width: 100%;
+        margin-top: -1px;
+        font-size: 0.9em;
+        border: 1px solid silver;
+        border-top: 0;
+        border-collapse: collapse;
+
+        th, td {
+          padding: 0.5em 1em;
+          border-bottom: 1px solid silver;
+        }
+
+        .clickable {
+          cursor: pointer;
+        }
+
+        .available {
+          color: $color-green;
+        }
+      }
+    }
+
+    .alert {
+      @extend .alert;
+      @extend .alert-warning;
+    }
+  }
+
+  @media print {
+    .content {
+      @include make-xs-column(9);
+      margin-bottom: 1em;
+    }
+
+    .actions {
+      @include make-xs-column(3);
+
+      .cover {
+        border-bottom: 0;
+      }
+
+      .links {
+        display: none;
+      }
+    }
+
+    .box {
+      .box-header, .box-content {
+        padding: 0;
+      }
+    }
+
+    .ui-select-container {
+      display: none;
+    }
+
+    .issue-list {
+      display: block !important;
+    }
+
+    .issue {
+      a, button {
+        display: none;
+      }
+
+      .cover {
+        @include make-xs-column(3);
+      }
+
+      .informations {
+        @include make-xs-column(9);
+      }
+    }
+
+    .related {
+      display: none;
+    }
+  }
+
+  @media (max-width: $screen-sm-max) {
+    > .container {
+      margin-top: 1em;
+    }
+
+    .actions {
+      .cover, .links {
+        float: left;
+        width: 50%;
+      }
+
+      .cover {
+        border-bottom: 0;
+      }
+    }
+
+    .content {
+      .issue-wrapper {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .actions {
+      .cover {
+        margin-bottom: 0;
+      }
+
+      .links {
+        padding-left: 1em;
+        border-bottom: 0;
+      }
+    }
+
+    .navigation {
+      .pagination span {
+        margin: 0.25em;
+      }
+    }
+
+    .content {
+      .informations {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}

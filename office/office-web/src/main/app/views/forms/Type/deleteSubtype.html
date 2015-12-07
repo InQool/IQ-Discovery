@@ -1,0 +1,16 @@
+<form name="form" class="form-horizontal" novalidate ng-submit="submit()">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Odstranění podtypu</div>
+		</div>
+		<div class="panel-body pbn">
+			<p>Opravdu chcete odstranit podtyp <strong>{{:: subtype.name }}</strong>?</p>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-danger" ng-disabled="loading">Odstranit</button>
+			</div>
+		</div>
+	</div>
+</form>

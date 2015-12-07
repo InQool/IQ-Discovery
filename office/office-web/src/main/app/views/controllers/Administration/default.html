@@ -1,0 +1,57 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Administrace instituce</h4>
+	</div>
+	<div class="tray">
+		<form name="vm.form" ng-submit="vm.submit()" class="form-horizontal" novalidate>
+			<div class="panel">
+				<div class="panel-heading">
+					<div class="panel-title"></div>
+				</div>
+				<div class="panel-body pbn">
+					<div class="form-group">
+						<label class="control-label col-xs-3">Seznam povolených adres (IP adresa/maska sítě)</label>
+
+						<div class="col-xs-9">
+							<div class="form-group" ng-repeat="entry in vm.settings.ipMaskPairs">
+								<div class="col-xs-1">
+									<button type="button" class="btn btn-danger" ng-click="vm.removeIp(entry)">
+										<i class="fa fa-trash"></i>
+									</button>
+								</div>
+								<div class="col-xs-5">
+									<input type="text" ng-model="entry.ip" class="form-control">
+								</div>
+								<div class="col-xs-5">
+									<input type="text" ng-model="entry.mask" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-1">
+									<button type="button" class="btn btn-default" ng-click="vm.addIp()">
+										<i class="fa fa-plus"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<custom-css css="vm.settings.css"></custom-css>
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-primary pull-right" ng-disabled="vm.loading">Uložit</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col-md-4">
+				<image-upload title="Obrázek v hlavičce" image="{{ ::vm.settings.headerId }}" on-save="vm.save('header', file)" on-remove="vm.remove('header')"></image-upload>
+			</div>
+			<div class="col-md-4">
+				<image-upload title="Logo" image="{{ ::vm.settings.logoId }}" on-save="vm.save('logo', file)" on-remove="vm.remove('logo')"></image-upload>
+			</div>
+			<div class="col-md-4">
+				<image-upload title="Vodoznak" image="{{ ::vm.settings.watermarkId }}" on-save="vm.save('watermark', file)" on-remove="vm.remove('watermark')"></image-upload>
+			</div>
+		</div>
+	</div>
+</div>

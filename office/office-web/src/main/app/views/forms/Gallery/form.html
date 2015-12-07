@@ -1,0 +1,87 @@
+<form class="form-horizontal" name="vm.form" ng-submit="vm.submit()" novalidate>
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="panel-title">{{:: vm.gallery.id ? 'Úprava virtuální výstavy' : 'Nová virtuální výstava' }}</div>
+        </div>
+        <div class="panel-body pbn">
+            <div class="form-group">
+                <label for="gallery-title" class="control-label col-xs-3">Název</label>
+
+                <div class="col-xs-9">
+                    <input type="text" id="gallery-title" class="form-control" ng-model="vm.gallery.title" required maxlength="255" autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gallery-perex" class="control-label col-xs-3">Perex</label>
+
+                <div class="col-xs-9">
+                    <textarea id="gallery-perex" class="form-control" ng-model="vm.gallery.perex" required maxlength="255" rows="6"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gallery-content" class="control-label col-xs-3">Popis</label>
+
+                <div class="col-xs-9">
+                    <textarea id="gallery-content" class="form-control" ng-model="vm.gallery.content" required rows="4"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">Dokumenty</label>
+
+                <div class="col-xs-9">
+                    <div class="token-block ui-select-container ui-select-multiple ui-select-bootstrap form-control">
+						<span class="ui-select-match">
+							<span class="ui-select-match-item btn btn-default btn-xs" ng-repeat="d in vm.gallery.documents">
+								{{ ::d.title }}
+								<span class="close ui-select-match-close" ng-click="vm.removeDocument(d)">×</span>
+							</span>
+						</span>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-primary" ng-click="vm.openAddDocumentsModal()">
+                        <i class="fa fa-fw fa-plus"></i> přidat dokumenty
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gallery-active" class="control-label col-xs-3">Aktivní</label>
+
+                <div class="col-xs-9">
+                    <div class="switch switch-primary switch-sm">
+                        <input type="checkbox" ng-model="vm.gallery.active" id="gallery-active">
+                        <label for="gallery-active"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gallery-published-from" class="control-label col-xs-3">Publikováno od</label>
+
+                <div class="col-xs-9">
+                    <input type="text" id="gallery-published-from" class="form-control" ng-model="vm.gallery.publishedFrom" required datetime-picker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gallery-published-to" class="control-label col-xs-3">Publikováno do</label>
+
+                <div class="col-xs-9">
+                    <input type="text" id="gallery-published-to" class="form-control" ng-model="vm.gallery.publishedTo" required datetime-picker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="article-image" class="control-label col-xs-3">Obrázek</label>
+
+                <div class="col-xs-9">
+                    <input type="file" name="image" class="form-control-static" id="article-image" file-model="vm.image" ng-model="vm.image">
+
+                    <image-preview image="vm.image"></image-preview>
+                    <img ng-if="vm.gallery.imageId && !vm.image" ng-src="/dcap/office/data/file/{{:: vm.gallery.imageId }}?authctoken={{:: vm.token }}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" ng-disabled="vm.loading" ng-click="$dismiss()">Zrušit</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="vm.loading">Uložit výstavu</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,4 @@
+node_modules
+src/main/app/bundle
+src/main/app/css
+src/main/app/bower_components

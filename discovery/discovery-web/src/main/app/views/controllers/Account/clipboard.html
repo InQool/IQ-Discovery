@@ -1,0 +1,44 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Schránka'|translate }}</h2>
+	</div>
+</div>
+<div id="clipboard">
+	<div class="container">
+		<p class="text-center mt5" ng-if="vm.documents.length === 0">{{ ::'Ve schránce zatím nemáte žádné dokumenty..'|translate }}</p>
+
+		<div ng-if="vm.documents.length !== 0">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width: 1px;">
+							<input type="checkbox" ng-click="vm.selectAll()">
+						</th>
+						<th>{{ ::'Inventární číslo'|translate }}</th>
+						<th>{{ ::'Název'|translate }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="d in vm.documents">
+						<td>
+							<input type="checkbox" ng-model="d.selected">
+						</td>
+						<td ng-bind=":: d.invId"></td>
+						<td>
+							<a ui-sref="secured.document({id: d.invId})" ng-bind=":: d.title"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<button type="button" class="btn btn-default" ng-click="vm.reserve()" ng-disabled="vm.hasSelectedDocuments() === false">
+				<i class="fa fa-fw fa-gift"></i> {{ ::'rezervovat'|translate }}
+			</button>
+
+			<button type="button" class="btn btn-danger pull-right" ng-disabled="vm.hasSelectedDocuments() === false" ng-click="vm.remove()">
+				<i class="fa fa-fw fa-trash"></i> {{ ::'odstranit vybrané'|translate }}
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<div id="search" ng-style="vm.getBackground()">
+	<div class="header">
+		<div class="container">
+			<img ng-if="::vm.logo" ng-src="/dcap/discovery/data/file/{{ ::vm.logo }}" class="logo">
+
+			<h1 ng-bind=":: vm.getTitle()"></h1>
+
+			<p>{{ ::vm.subtitle|translate }}</p>
+		</div>
+	</div>
+	<form name="vm.search" novalidate ng-submit="vm.submit()">
+		<div class="input-group dropdown" dropdown>
+			<input type="text" placeholder="{{ ::'Najdi...'|translate }}" class="form-control" ng-model="vm.query" ng-change="vm.onChange()" dropdown-toggle>
+
+			<ul class="dropdown-menu suggest" ng-show="vm.suggest.length > 0">
+				<li ng-repeat="s in vm.suggest">
+					<a href="#" ng-bind-html="::s" ng-click="vm.searchQuery(s)"></a>
+				</li>
+			</ul>
+
+			<div class="input-group-btn" dropdown>
+				<button type="button" class="btn btn-default" dropdown-toggle>
+					{{ vm.type.name|translate }}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li ng-repeat="t in ::vm.types">
+						<a href="#" ng-click="vm.selectType(t)">{{ ::t.name|translate }}</a>
+					</li>
+				</ul>
+
+				<button type="submit" class="btn btn-primary">
+					<i class="fa fa-search"></i> {{ ::'Hledat'|translate }}
+				</button>
+			</div>
+		</div>
+		<a ui-sref="secured.searchAdvanced" class="advanced">{{ ::'Pokročilé vyhledávání'|translate }}</a>
+	</form>
+	<style ng-bind="::vm.settings.css"></style>
+</div>

@@ -1,0 +1,97 @@
+<div class="panel mbn">
+    <div class="panel-heading">
+        <div class="panel-title">Náhled dokumentu</div>
+    </div>
+    <div class="panel-body">
+        <div class="row" ng-if="document.zdoType === 'issue'">
+            <div class="col-xs-3">
+                <img ng-src="/dcap/office/data/file/{{:: periodical.imgThumb[0] }}?authctoken={{:: token }}"
+                     class="img-responsive">
+            </div>
+            <div class="col-xs-9">
+                <h3>{{ ::periodical.title[0] }}</h3>
+
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Inventární číslo</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::periodical.inventoryId[0] }}</div>
+                </div>
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Typ dokumentu</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::getType(periodical.documentType) }}</div>
+                </div>
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Podtyp dokumentu</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::getSubType(periodical.documentSubType) }}</div>
+                </div>
+                <div class="entry" ng-repeat="c in ::getChoices(periodical)" ng-if="(periodical.hasOwnProperty(c.key + '_visibility') ? periodical[c.key + '_visibility'] : true)">
+                    <div class="col-xs-3">
+                        <strong>{{ ::c.name }}</strong>
+                    </div>
+                    <div class="col-xs-9">
+                        <div ng-repeat="v in getValue(periodical, c.key)">{{ ::v }}</div>
+                    </div>
+                </div>
+                <div class="entry" ng-repeat="f in ::periodical.customFields|filter:{visibility: true}">
+                    <div class="col-xs-3">
+                        <strong>{{ ::f.name }}</strong>
+                    </div>
+                    <div class="col-xs-9">
+                        <div ng-repeat="v in ::f.values">{{ ::v }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="::document.zdoType !== 'issue'">
+            <div class="col-xs-3">
+                <img ng-src="/dcap/office/data/file/{{ ::document.imgThumb[0] }}?authctoken={{ ::token }}" class="img-responsive">
+            </div>
+            <div class="col-xs-9">
+                <h3>{{ ::document.title[0] }}</h3>
+
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Inventární číslo</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::document.inventoryId[0] }}</div>
+                </div>
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Typ dokumentu</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::getType(document.documentType) }}</div>
+                </div>
+                <div class="entry">
+                    <div class="col-xs-3">
+                        <strong>Podtyp dokumentu</strong>
+                    </div>
+                    <div class="col-xs-9">{{ ::getSubType(document.documentSubType) }}</div>
+                </div>
+                <div class="entry" ng-repeat="c in ::getChoices(document)" ng-if="(document.hasOwnProperty(c.key + '_visibility') ? document[c.key + '_visibility'] : true)">
+                    <div class="col-xs-3">
+                        <strong>{{ ::c.name }}</strong>
+                    </div>
+                    <div class="col-xs-9">
+                        <div ng-repeat="v in getValue(document, c.key)">{{ ::v }}</div>
+                    </div>
+                </div>
+                <div class="entry" ng-repeat="f in ::document.customFields|filter:{visibility: true}">
+                    <div class="col-xs-3">
+                        <strong>{{ ::f.name }}</strong>
+                    </div>
+                    <div class="col-xs-9">
+                        <div ng-repeat="v in ::f.values">{{ ::v }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-default pull-right" ng-click="$dismiss()">Zavřít</button>
+    </div>
+</div>

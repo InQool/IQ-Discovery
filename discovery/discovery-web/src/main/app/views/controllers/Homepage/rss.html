@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ ::'Rezervace dokumentů'|translate }}</h4>
+</div>
+<div class="modal-body">
+    <div class="text-justify">
+        Na stránce, která se objeví po kliknutí na tlačítko Pokračovat, klikněte na tlačítko Odebírat (prohlížeč Mozilla Firefox), nebo na příkaz Přihlásit k odběru tohoto kanálu (prohlížeč Internet Explorer).
+        Pokud používáte prohlížeč Opera, postupujte prosím podle tohoto videonávodu.
+        Pro prohlížeč Google Chrome je k dispozici doplněk.
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="pull-right">
+        <button type="button" class="btn btn-default" ng-click="$dismiss()">{{ ::'Zrušit'|translate }}</button>
+        <a href="/dcap/discovery/feed/rss" ng-click="$close()" target="_blank" class="btn btn-primary">{{ ::'Pokračovat'|translate }}</a>
+    </div>
+</div>

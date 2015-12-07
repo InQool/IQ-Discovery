@@ -1,0 +1,28 @@
+@import "../../mixins";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/button-groups";
+
+#clipboard {
+  padding: 1em 0;
+
+  table {
+	input {
+	  position: relative;
+	  top: -1px;
+	  margin-top: 0;
+	}
+
+	label {
+	  margin-bottom: 0;
+	  font-weight: normal;
+	  cursor: pointer;
+	}
+  }
+
+  @media (max-width: $screen-xs-max) {
+	.btn {
+	  display: block;
+	  width: 100%;
+	  margin-bottom: 0.5em;
+	}
+  }
+}

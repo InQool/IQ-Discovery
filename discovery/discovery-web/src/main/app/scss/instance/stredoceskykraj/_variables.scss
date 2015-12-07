@@ -1,0 +1,50 @@
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+
+$color-white: #fff;
+$color-black: #000;
+$color-pink: #ebd4f0;
+$color-green: #00B270;
+$color-blue: #143B8A;
+$color-red: #e74c3c;
+
+$brand-primary: $color-red;
+
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: darken($brand-primary, 0.05);
+
+$list-group-active-bg: $btn-primary-bg;
+$list-group-active-border: $btn-primary-border;
+
+$grid-gutter-width: 2em;
+
+$link-color: $brand-primary;
+$link-hover-color: darken($link-color, 10%);
+
+$homepage-color-background: lighten(#3498db, 35%);
+
+$filter-section-background: #f5f5f5;
+
+$results-footer-color: $color-white;
+$results-footer-bg: #3498db;
+
+// tab links
+$nav-link-hover-bg: $color-blue;
+$nav-tabs-border-color: $color-blue;
+
+$nav-tabs-link-hover-border-color: $color-blue;
+
+// active tab links
+$nav-tabs-active-link-hover-bg: $color-white;
+$nav-tabs-active-link-hover-color: $color-blue;
+$nav-tabs-active-link-hover-border-color: $color-blue;
+
+$alert-border-radius: 0;
+
+// page title bar
+$page-title-color: $color-white;
+$page-title-background: $color-red;
+
+$fa-font-path: '../bower_components/font-awesome/fonts';
+
+$font-family-base: "Open Sans", sans-serif;
+$font-size-base: 13px;

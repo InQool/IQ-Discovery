@@ -1,0 +1,16 @@
+<form ng-submit="submit()" class="form-horizontal" novalidate>
+	<div class="panel">
+		<div class="panel-heading">
+			<div class="panel-title">Opravdu chcete provést tuto akci?</div>
+		</div>
+		<div class="panel-body pbn">
+			<p>Opravdu chcete odstranit vybrané články?</p>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" ng-disabled="loading" class="btn btn-default" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" ng-disabled="loading" class="btn btn-danger">Odstranit</button>
+			</div>
+		</div>
+	</div>
+</form>

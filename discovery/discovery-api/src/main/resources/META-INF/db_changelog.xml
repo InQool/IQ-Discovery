@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="dcap:discovery:1" author="LL">
+        <createTable tableName="dcap_discovery_attributed">
+            <column name="id" type="varchar(255)"><constraints nullable="false" primaryKey="true"/></column>
+        </createTable>
+
+        <createTable tableName="dcap_discovery_partition">
+            <column name="id" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_partition_id" referencedTableName="dcap_discovery_attributed" referencedColumnNames="id"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="type_name" type="varchar(255)"/>
+            <column name="configuration_name" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="dcap_discovery_identity">
+            <column name="id" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_identity_id" referencedTableName="dcap_discovery_attributed" referencedColumnNames="id"/>
+            </column>
+            <column name="type_name" type="varchar(255)"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="expiration_date" type="timestamp"/>
+            <column name="enabled" type="boolean"/>
+
+            <column name="partition" type="varchar(255)">
+                <constraints foreignKeyName="fk_dcap_discovery_identity_partition" referencedTableName="dcap_discovery_partition" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="dcap_discovery_account">
+            <column name="id" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_account_id" referencedTableName="dcap_discovery_identity" referencedColumnNames="id"/>
+            </column>
+            <column name="login_name" type="varchar(255)"/>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="street" type="varchar(255)"/>
+            <column name="street_number" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="zip" type="varchar(255)"/>
+            <column name="favourite_organization" type="varchar(255)"/>
+            <column name="op_number" type="varchar(255)"/>
+            <column name="verified" type="boolean" defaultValueBoolean="false" />
+            <column name="verified_date" type="timestamp"/>
+            <!--<column name="verification_token" type="varchar(255)"/>-->
+            <column name="openid_id" type="varchar(255)"/>
+        </createTable>
+
+        <createTable tableName="dcap_discovery_attribute">
+            <column name="id" type="bigint"><constraints nullable="false" primaryKey="true"/></column>
+            <column name="name" type="varchar(255)"/>
+            <column name="type_name" type="varchar(255)"/>
+            <column name="value" type="varchar(1024)"/>
+            <column name="owner" type="varchar(255)">
+                <constraints foreignKeyName="fk_dcap_discovery_attribute_owner" referencedTableName="dcap_discovery_attributed" referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="dcap_discovery_credential_password">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="owner" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_dcap_discovery_credential_password_owner" referencedTableName="dcap_discovery_attributed" referencedColumnNames="id"/>
+            </column>
+
+            <column name="type_name" type="varchar(255)"/>
+            <column name="effective_date" type="timestamp"/>
+            <column name="expiry_date" type="timestamp"/>
+
+            <column name="password_encoded_hash" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_salt" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!--<createTable tableName="dcap_discovery_relationship">
+                    <column name="id" type="varchar(255)">
+                        <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_relationship_id" referencedTableName="dcap_discovery_attributed" referencedColumnNames="id"/>
+                    </column>
+                    <column name="type_name" type="varchar(255)"/>
+                </createTable>
+
+                <createTable tableName="dcap_discovery_identity_relationship">
+                    <column name="identifier" type="bigint"><constraints nullable="false" primaryKey="true"/></column>
+                    <column name="descriptor" type="varchar(255)"/>
+
+                    <column name="identity_type" type="varchar(255)">
+                        <constraints foreignKeyName="fk_dcap_discovery_identity_relationship_identity_type" referencedTableName="dcap_discovery_identity" referencedColumnNames="id"/>
+                    </column>
+
+                    <column name="owner" type="varchar(255)">
+                        <constraints foreignKeyName="fk_dcap_discovery_identity_relationship_owner" referencedTableName="dcap_discovery_relationship" referencedColumnNames="id"/>
+                    </column>
+                </createTable>
+
+                <createTable tableName="dcap_discovery_role">
+                    <column name="id" type="varchar(255)">
+                        <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_role_id" referencedTableName="dcap_discovery_identity" referencedColumnNames="id"/>
+                    </column>
+                    <column name="name" type="varchar(255)"/>
+                </createTable>
+
+                <createTable tableName="dcap_discovery_group">
+                    <column name="id" type="varchar(255)">
+                        <constraints nullable="false" primaryKey="true" foreignKeyName="fk_dcap_discovery_group_id" referencedTableName="dcap_discovery_identity" referencedColumnNames="id"/>
+                    </column>
+                    <column name="name" type="varchar(255)"/>
+                    <column name="path" type="varchar(1024)"/>
+                    <column name="parent" type="varchar(255)">
+                        <constraints foreignKeyName="fk_dcap_discovery_group_parent" referencedTableName="dcap_discovery_group" referencedColumnNames="id"/>
+                    </column>
+                    <column name="display_name" type="varchar(1024)"><constraints nullable="true"/></column>
+                    <column name="active" type="boolean" defaultValueBoolean="true"><constraints nullable="true"/></column>
+                </createTable>-->
+
+<!--        <createTable tableName="dcap_permission">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="owner" type="varchar(255)">
+                <constraints nullable="false" foreignKeyName="fk_dcap_permission_owner" referencedTableName="dcap_attributed" referencedColumnNames="id"/>
+            </column>
+
+            <column name="resource_class" type="varchar(255)"/>
+            <column name="resource_identifier" type="varchar(255)"/>
+            <column name="operation" type="varchar(255)"/>
+        </createTable>-->
+    </changeSet>
+    <changeSet id="dcap:discovery:2" author="LL">
+        <createTable tableName="favorite_document">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="user_id" type="varchar(255)" />
+            <column name="doc_inv_id" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="clipboard_document">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="user_id" type="varchar(255)" />
+            <column name="doc_inv_id" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="document_reservation">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="user_id" type="varchar(255)" />
+            <column name="doc_inv_id" type="varchar(255)" />
+            <column name="date" type="timestamp" />
+            <column name="reason" type="text" />
+        </createTable>
+        <createTable tableName="favorite_query">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="user_id" type="varchar(255)" />
+            <column name="solr_query" type="varchar(255)" />
+            <column name="query" type="varchar(255)" />
+            <column name="restrictions" type="varchar(255)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:discovery:3" author="LL">
+        <addColumn tableName="dcap_discovery_account">
+            <column name="pwd_reset_key" type="varchar(64)" />
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
+

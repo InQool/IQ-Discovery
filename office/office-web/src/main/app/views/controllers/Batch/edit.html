@@ -1,0 +1,32 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Dávka {{:: vm.batch.name }}</h4>
+		<a ui-sref="^" class="btn btn-default">
+			<i class="fa fa-chevron-left"></i> zpět na přehled dávek
+		</a>
+
+		<div class="toolbar" ng-if="vm.isUnfinished()">
+			<button type="button" class="btn btn-primary" ng-click="vm.addDocuments()" ng-if="vm.isUnfinished()">Přidat dokumenty</button>
+			<button type="button" class="btn btn-success" ng-click="vm.publishBatch()" ng-if="vm.isUnfinished()">Zpřístupnit dávku</button>
+		</div>
+
+		<div class="toolbar display-block" ng-if="vm.isUnfinished()">
+			<h5>Hromadná akce:</h5>
+			<button type="button" class="btn btn-default" ng-click="vm.moveToBatch()">Přesunout do jiné dávky</button>
+			<button ng-if="::vm.allowDocumentTypeChange" type="button" class="btn btn-default" ng-click="vm.changeType()">Změnit typ dokumentu</button>
+			<button type="button" class="btn btn-default" ng-click="vm.changeImageProperties()">Změnit obrazová nastavení</button>
+			<button type="button" class="btn btn-default" ng-click="vm.changePublishDate()">Změnit datum zveřejnění</button>
+			<button type="button" class="btn btn-danger" ng-click="vm.removeFromBatch()">Odebrat z dávky</button>
+		</div>
+	</div>
+	<div class="tray">
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="panel-title">Přehled dokumentů</div>
+			</div>
+			<div class="panel-body pn">
+				<table-view options="vm.options" columns="vm.columns"></table-view>
+			</div>
+		</div>
+	</div>
+</div>

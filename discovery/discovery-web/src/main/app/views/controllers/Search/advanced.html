@@ -1,0 +1,103 @@
+<div header-search></div>
+<div id="search-advanced">
+	<div class="page-title">
+		<div class="container">
+			<h2>{{ ::'Pokročilé vyhledávání'|translate }}</h2>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="container">
+			<form novalidate="novalidate" ng-submit="vm.submit()">
+				<h3>{{ ::'Hledané dotazy'|translate }}</h3>
+
+				<div class="well">
+					<div class="group-match" ng-if="vm.groups.length > 1">
+						<div class="pull-right">
+							<label for="select-match">{{ ::'Vyhledat'|translate }}</label>
+							<select id="select-match" ng-model="vm.values.match" class="form-control">
+								<option ng-repeat="(key, value) in ::vm.matchOptions" value="{{:: key }}" ng-bind=":: value"></option>
+							</select>
+						</div>
+					</div>
+
+					<div class="search-group" ng-repeat="i in vm.groups track by $index">
+						<div class="wrapper">
+							<div class="field-group">
+								<div class="field-labels">
+									<div class="column">
+										<label>{{ ::'Hledat'|translate }}:</label>
+									</div>
+									<div class="column">
+										<label>{{ ::'v poli'|translate }}:</label>
+									</div>
+								</div>
+								<div class="field" ng-repeat="j in vm.groups[$index].fields track by $index" ng-class="{first: $first, last: $last}">
+									<div class="column">
+										<input type="text" class="form-control" ng-model="j.value">
+									</div>
+
+									<div class="column">
+										<select ng-model="j.key" class="form-control">
+											<option ng-repeat="(key, value) in ::vm.searchOptions" value="{{ ::key }}">{{ ::value|translate }}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="field-group-match">
+								<label for="group-{{:: $index }}-match">{{ ::'Vyhledat'|translate }}:</label>
+								<select id="group-{{:: $index }}-match" ng-model="i.match" class="form-control">
+									<option ng-repeat="(key, value) in ::vm.termOptions" value="{{ ::key }}">{{ ::value|translate }}</option>
+								</select>
+							</div>
+						</div>
+						<button type="button" class="pull-left btn btn-link" ng-click="vm.addField($index)">
+							<i class="fa fa-plus-circle"></i>{{ ::'Přidat vyhledávací pole'|translate }}
+						</button>
+						<button type="button" class="pull-right btn btn-link" ng-click="vm.removeGroup($index)" ng-if="vm.groups.length > 1">
+							<i class="fa fa-times-circle"></i>{{ ::'Odebrat skupinu'|translate }}
+						</button>
+					</div>
+					<button type="button" class="btn btn-link" ng-click="vm.addGroup()">
+						<i class="fa fa-plus-circle"></i>{{ ::'Přidat vyhledávací skupinu'|translate }}
+					</button>
+				</div>
+
+				<h3>{{ ::'Ostatní kritéria hledání'|translate }}</h3>
+
+				<div class="well other-criteria">
+					<div class="row">
+						<div class="column">
+							<label>{{ ::'Jazyk'|translate }}:</label>
+							<ui-select ng-model="vm.language">
+								<ui-select-match>{{ vm.getLanguage($select.selected.name) }}</ui-select-match>
+								<ui-select-choices repeat="value.name as value in vm.languages">{{:: vm.getLanguage(value.name) }}</ui-select-choices>
+							</ui-select>
+						</div>
+						<div class="column">
+							<label>{{ ::'Typ obsahu'|translate }}:</label>
+							<ui-select ng-model="vm.documentType">
+								<ui-select-match>{{ $select.selected.name }}</ui-select-match>
+								<ui-select-choices repeat="value.name as value in vm.documentTypes">{{:: value.name }}</ui-select-choices>
+							</ui-select>
+						</div>
+						<div class="column-long">
+							<label>{{ ::'Rok vydání'|translate }}</label>
+
+							<div class="dates">
+								<input type="text" ng-model="vm.yearStart" class="form-control"> -
+								<input type="text" ng-model="vm.yearEnd" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="info">
+						<i class="fa fa-info-circle"></i> {{ ::'Můžete si vybrat více jazyků a typů obsahu.'|translate }}
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary pull-right">
+					<i class="fa fa-search"></i> {{ ::'Hledat'|translate }}
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

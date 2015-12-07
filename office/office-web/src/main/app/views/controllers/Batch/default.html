@@ -1,0 +1,30 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Dávky</h4>
+		<button type="button" ng-click="create()" class="btn btn-primary">Vytvořit dávku</button>
+
+		<h5 ng-if="isUnfinished()">Hromadné akce:</h5>
+		<button type="button" class="btn btn-default" ng-click="changeBatchesOwner()" ng-if="isUnfinished()">Změnit vlastníka</button>
+		<button type="button" class="btn btn-danger" ng-click="removeBatches()" ng-if="isUnfinished()">Odstranit dávky</button>
+	</div>
+	<div class="tray">
+		<div class="panel">
+			<div class="panel-heading">
+				<ul class="nav panel-tabs panel-tabs-left">
+					<li ui-sref-active-eq="active">
+						<a ui-sref=".({state: ''})">Rozpracované</a>
+					</li>
+					<li ui-sref-active-eq="active">
+						<a ui-sref=".({state: 'published'})">Publikované</a>
+					</li>
+					<li ui-sref-active-eq="active">
+						<a ui-sref=".({state: 'discarded'})">Odstraněné</a>
+					</li>
+				</ul>
+			</div>
+			<div class="panel-body pn">
+				<table-view options="options" columns="columns"></table-view>
+			</div>
+		</div>
+	</div>
+</div>

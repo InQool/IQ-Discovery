@@ -1,0 +1,22 @@
+<form name="form" class="form-horizontal" novalidate="novalidate" ng-submit="submit()">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Přidat dávku</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<label class="control-label col-xs-4" for="name">Název dávky</label>
+
+				<div class="col-xs-8">
+					<input type="text" name="name" ng-model="name" class="form-control" id="name" ng-required="true" autofocus>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Přidat dávku</button>
+			</div>
+		</div>
+	</div>
+</form>

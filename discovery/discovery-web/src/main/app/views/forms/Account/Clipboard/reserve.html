@@ -1,0 +1,13 @@
+<form ng-submit="vm.submit()" name="vm.form" novalidate>
+	<div class="modal-header">
+		<h4 class="modal-title">{{ ::'Rezervace dokumentů'|translate }}</h4>
+	</div>
+	<div class="modal-body">
+		<label for="reservation-reason" class="control-label">{{ ::'Účel použití dokumentu'|translate }}</label>
+		<textarea id="reservation-reason" class="form-control" ng-model="vm.reason" rows="5" required></textarea>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-disabled="vm.loading" ng-click="$dismiss()">{{ ::'Zrušit'|translate }}</button>
+		<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">{{ ::'Rezervovat dokumenty'|translate }}</button>
+	</div>
+</form>

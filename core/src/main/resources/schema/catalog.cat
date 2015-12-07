@@ -1,0 +1,5 @@
+--
+It works! Yay! Start with basedir in maven! URLencode the space!
+--
+SYSTEM "http://www.dublincore.org/schemas/xmls/qdc/dc.xsd" "dc.xsd.xml"
+SYSTEM "http://www.w3.org/2001/03/xml.xsd" "w3_2001_03_xml.xsd"

@@ -1,0 +1,45 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Registrace'|translate }}</h2>
+	</div>
+</div>
+<div id="login">
+	<div class="container">
+		<form name="form" novalidate class="form-horizontal" ng-submit="submit()">
+			<div class="form-group" ng-class="hasError('userName')">
+				<label for="register-username" class="control-label col-md-4">{{ ::'Emailová adresa'|translate }}</label>
+
+				<div class="col-md-8">
+					<input type="email" id="register-username" name="userName" ng-model="user.userName" required class="form-control">
+				</div>
+			</div>
+			<div class="form-group" ng-class="hasError('password')">
+				<label for="register-password" class="control-label col-md-4">{{ ::'Heslo'|translate }}</label>
+
+				<div class="col-md-8">
+					<input type="password" id="register-password" name="password" ng-model="user.password" required class="form-control">
+				</div>
+			</div>
+			<div class="form-group" ng-class="hasError('firstName')">
+				<label for="register-name" class="control-label col-md-4">{{ ::'Jméno'|translate }}</label>
+
+				<div class="col-md-8">
+					<input type="text" id="register-name" name="firstName" ng-model="user.firstName" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group" ng-class="hasError('lastName')">
+				<label for="register-surname" class="control-label col-md-4">{{ ::'Příjmení'|translate }}</label>
+
+				<div class="col-md-8">
+					<input type="text" id="register-surname" name="lastName" ng-model="user.lastName" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-8 col-md-push-4">
+					<button type="submit" class="btn btn-primary" ng-disabled="loading">{{ ::'Registrovat'|translate }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

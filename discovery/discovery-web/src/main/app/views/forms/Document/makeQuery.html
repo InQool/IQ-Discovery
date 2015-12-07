@@ -1,0 +1,12 @@
+<form name="vm.form" ng-submit="vm.submit()" novalidate>
+	<div class="modal-header">Dotaz na dokument</div>
+	<div class="modal-body">
+		<textarea ng-model="vm.query" class="form-control" rows="5" required></textarea>
+	</div>
+	<div class="modal-footer">
+		<div class="pull-right">
+			<button type="button" class="btn btn-default" ng-click="$dismiss()">Zrušit</button>
+			<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">Odeslat dotaz</button>
+		</div>
+	</div>
+</form>

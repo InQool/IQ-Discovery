@@ -1,0 +1,77 @@
+<form name="form" class="form-horizontal" ng-submit="submit()" novalidate>
+	<div class="panel">
+		<div class="panel-heading">
+			<div class="panel-title">{{:: article.id ? 'Úprava článku' : 'Nový článek nebo externí zdroj' }}</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<label for="article-name" class="control-label col-xs-3">Název</label>
+
+				<div class="col-xs-9">
+					<input type="text" id="article-name" ng-model="article.title" class="form-control" maxlength="255" required autofocus>
+				</div>
+			</div>
+			<!--<div class="form-group">
+				<label for="article-url" class="control-label col-xs-3">URL</label>
+
+				<div class="col-xs-9">
+					<input type="url" id="article-url" ng-model="article.url" class="form-control" maxlength="255" ng-required="!article.content">
+				</div>
+			</div>-->
+			<div class="form-group">
+				<label for="article-perex" class="control-label col-xs-3">Perex</label>
+
+				<div class="col-xs-9">
+					<textarea id="article-perex" rows="4" class="form-control" ng-model="article.perex" maxlength="255" required></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="article-text" class="control-label col-xs-3">Text</label>
+
+				<div class="col-xs-9">
+					<textarea id="article-text" rows="10" class="form-control" ng-model="article.content" required></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="article-active" class="control-label col-xs-3">Aktivní</label>
+
+				<div class="col-xs-9">
+					<div class="switch switch-primary switch-sm">
+						<input type="checkbox" ng-model="article.active" id="article-active">
+						<label for="article-active"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="article-publish-from" class="control-label col-xs-3">Zveřejnění od</label>
+
+				<div class="col-xs-9">
+					<input type="text" id="article-publish-from" ng-model="article.publishedFrom" datetime-picker required class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="article-publish-to" class="control-label col-xs-3">Zveřejnění do</label>
+
+				<div class="col-xs-9">
+					<input type="text" id="article-publish-to" ng-model="article.publishedTo" datetime-picker required class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="article-image" class="control-label col-xs-3">Obrázek</label>
+
+				<div class="col-xs-9">
+					<input type="file" name="image" class="form-control-static" id="article-image" file-model="image" ng-model="image" ng-required="!article.imageId">
+
+					<image-preview image="image"></image-preview>
+					<img ng-if="article.imageId && !image" ng-src="/dcap/office/data/file/{{:: article.imageId }}?authctoken={{:: token }}" class="img-responsive">
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Uložit článek</button>
+			</div>
+		</div>
+	</div>
+</form>

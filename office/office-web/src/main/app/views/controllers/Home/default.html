@@ -1,0 +1,217 @@
+<div class="p15">
+    <div class="panel">
+        <div class="panel-body pn text-center">
+            <img src="images/home/footer.jpg" style="max-width: 50%;">
+            <img ng-src="images/home/logos/{{ ::vm.logo }}" style="max-width: 20%;">
+            <br>
+
+            <p class="text-muted">PROJEKT JE SPOLUFINANCOVÁN Z PROSTŘEDKŮ EVROPSKÉ UNIE, EVROPSKÉHO FONDU PRO REGIONÁLNÍ ROZVOJ</p>
+        </div>
+    </div>
+    <div class="panel" ng-if=":: vm.token">
+        <div class="panel-heading">
+            <div class="panel-title">Návštěvnost modulu Discovery</div>
+        </div>
+        <div class="panel-body">
+            <ng-analytics-auth service-auth-token="{{ ::vm.token }}" hide-on-auth="true" auth-container="embed-api-auth-container"></ng-analytics-auth>
+            <ng-analytics-chart chart="vm.chart" auth-container="embed-api-auth-container"></ng-analytics-chart>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <ui-select ng-model="vm.organization.graph" class="mb10" on-select="vm.reloadStatistics('graph', 'organization')">
+                        <ui-select-match placeholder="Výběr organizace">{{ $select.selected.name }}</ui-select-match>
+                        <ui-select-choices repeat="o.id as o in ::vm.organizations">{{ ::o.name }}</ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default" ng-click="vm.clear('graph', 'organization')" ng-disabled="!vm.organization.graph">Zrušit</button>
+                </div>
+                <div class="col-md-5">
+                    <ui-select ng-model="vm.curator.graph" class="mb10" on-select="vm.reloadStatistics('graph', 'curator')">
+                        <ui-select-match placeholder="Výběr uživatele">{{ $select.selected.lastName }}, {{ $select.selected.firstName }}</ui-select-match>
+                        <ui-select-choices repeat="c.userId as c in ::vm.curators">{{ ::c.lastName }}, {{ ::c.firstName }}</ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default" ng-click="vm.clear('graph', 'curator')" ng-disabled="!vm.curator.graph">Zrušit</button>
+                </div>
+            </div>
+
+            <div class="row" ng-if=":: vm.weeklyDocStats">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Počet rozpracovaných dokumentů po týdnech</div>
+                        </div>
+                        <div class="panel-body pbn">
+                            <flot dataset="vm.weeklyDocStats[0]" options="vm.options" height="250"></flot>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Počet zpřístupněných dokumentů po týdnech</div>
+                        </div>
+                        <div class="panel-body pbn">
+                            <flot dataset="vm.weeklyDocStats[1]" options="vm.options" height="250"></flot>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Počet rezervací dokumentů po týdnech</div>
+                        </div>
+                        <div class="panel-body pbn">
+                            <flot dataset="vm.weeklyDocStats[2]" options="vm.options" height="250"></flot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <ui-select ng-model="vm.organization.types" class="mb10" on-select="vm.reloadStatistics('types')">
+                        <ui-select-match placeholder="Výběr organizace">{{ $select.selected.name }}</ui-select-match>
+                        <ui-select-choices repeat="o.id as o in ::vm.organizations">{{ ::o.name }}</ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default" ng-click="vm.clear('types', 'organization')" ng-disabled="!vm.organization.types">Zrušit</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Žebříček typů dokumentů</div>
+                        </div>
+                        <div class="panel-body pn">
+                            <table class="table mbn tc-med-1 tc-bold-last">
+                                <tbody>
+                                    <tr ng-repeat="(name, amount) in vm.topDocTypes track by name">
+                                        <td>{{ name }}</td>
+                                        <td>{{ amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Žebříček podtypů dokumentů</div>
+                        </div>
+                        <div class="panel-body pn">
+                            <table class="table mbn tc-med-1 tc-bold-last">
+                                <tbody>
+                                    <tr ng-repeat="(name, amount) in vm.topDocSubTypes track by name">
+                                        <td>{{ name }}</td>
+                                        <td>{{ amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">Žebříček druhů dokumentů</div>
+                        </div>
+                        <div class="panel-body pn">
+                            <table class="table mbn tc-med-1 tc-bold-last">
+                                <tbody>
+                                    <tr ng-repeat="(name, amount) in vm.topZdoTypes track by name">
+                                        <td>{{ ::vm.getZdoType(name) }}</td>
+                                        <td>{{ amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Žebříček nejprohlíženějších dokumentů modulu Discovery</div>
+                </div>
+                <div class="panel-body pn">
+                    <table class="table mbn tc-med-1 tc-bold-last">
+                        <tbody>
+                            <tr ng-repeat="d in ::vm.topViewedDocs">
+                                <td>{{ ::d.title }} ({{ ::d.docInvId }})</td>
+                                <td>{{ ::d.views }}x</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Žebříček nejoblíbenějších dokumentů modulu Discovery</div>
+                </div>
+                <div class="panel-body pn">
+                    <table class="table mbn tc-med-1 tc-bold-last">
+                        <tbody>
+                            <tr ng-repeat="d in ::vm.topFavoritedDocs">
+                                <td>{{ ::d.title }} ({{ ::d.docInvId }})</td>
+                                <td>{{:: d.favorites }}x</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Žebříček kurátorů s nejvíce zpřístupněnými dokumenty</div>
+                </div>
+                <div class="panel-body pn">
+                    <table class="table mbn tc-med-1 tc-bold-last">
+                        <tbody>
+                            <tr ng-repeat="c in ::vm.topCurators">
+                                <td>{{:: c.firstName ? (c.firstName + ' ' + c.lastName) : c.userId }}</td>
+                                <td>{{:: c.docsPublished }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="panel-title">Žebříček organizací s nejvíce zpřístupněnými dokumenty</div>
+                </div>
+                <div class="panel-body pn">
+                    <table class="table mbn tc-med-1 tc-bold-last">
+                        <tbody>
+                            <tr ng-repeat="o in ::vm.topOrganizations">
+                                <td>{{:: o.organization }}</td>
+                                <td>{{:: o.docsPublished }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

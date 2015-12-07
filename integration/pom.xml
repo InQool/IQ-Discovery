@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dcap-parent</artifactId>
+        <groupId>com.inqool.dcap</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>integration</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>integration-ip</module>
+        <module>integration-idm</module>
+        <module>integration-desa2</module>
+        <module>integration-oai</module>
+        <module>integration-sru</module>
+        <module>integration-z3950-client</module>
+        <module>integration-z3950-server</module>
+    </modules>
+
+
+</project>

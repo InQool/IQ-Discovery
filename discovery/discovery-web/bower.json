@@ -1,0 +1,16 @@
+{
+  "name": "com-inqool-dcap-discovery-web",
+  "version": "1.0.0",
+  "authors": [
+    "Lukas Kudlik <kudlik@inqool.cz>",
+    "Matus Zamborsky <zamborsky@inqool.cz>"
+  ],
+  "license": "GPLv3",
+  "private": true,
+  "dependencies": {
+    "angular-ui-select": "~0.11.2",
+    "bootstrap-sass-official": "~3.3.4",
+    "font-awesome": "~4.3.0",
+    "openseadragon": "~1.2.1"
+  }
+}

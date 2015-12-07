@@ -1,0 +1,16 @@
+@import "../../mixins";
+
+#login {
+  form {
+	max-width: 400px;
+	margin: 2em auto;
+  }
+
+  h4 {
+	margin-bottom: 2em;
+  }
+
+  .column {
+	@include make-sm-column(6);
+  }
+}

@@ -1,0 +1,24 @@
+<h3 translate>Uložená hledání</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>{{ ::'Dotaz'|translate }}</th>
+			<th>{{ ::'Omezení'|translate }}</th>
+			<th style="width: 1px;"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="r in vm.results">
+			<td>
+				<a ui-sref="secured.search({query: r.solrQuery, 'fq[]': r.restrictions.split(';')})" ng-bind="::vm.getReadableQuery(r)"></a>
+			</td>
+			<td ng-bind="::vm.getReadableFacets(r)"></td>
+			<td>
+				<button type="button" class="btn btn-danger btn-sm" ng-click="vm.remove(r)" tooltip="{{ 'odstranit'|translate }}">
+					<i class="fa fa-trash"></i>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

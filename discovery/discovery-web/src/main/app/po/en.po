@@ -1,0 +1,959 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: kudlajz <kudlajzzz@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/main/app/views/directives/Footer/footer.html:16
+msgid "Administrátor portálu"
+msgstr "Portal administration"
+
+#: src/main/app/views/controllers/Error/404.html:8
+msgid "Adresa, kterou hledáte, bohužel, neexistuje."
+msgstr "The address you are looking for does not exist."
+
+#: src/main/app/scripts/Services/DocumentService.js:505
+msgid "Alternativní název"
+msgstr "Alternative title"
+
+#: src/main/app/scripts/Services/DocumentService.js:493
+#: src/main/app/scripts/Services/DocumentService.js:525
+#: src/main/app/scripts/Services/SearchService.js:11
+#: src/main/app/views/controllers/Expo/default.html:92
+#: src/main/app/views/controllers/Search/default.html:142
+#: src/main/app/views/controllers/Search/default.html:160
+#: src/main/app/views/controllers/Search/default.html:89
+msgid "Autor"
+msgstr "Author"
+
+#: src/main/app/scripts/Controllers/Login/LoginController.js:22
+#: src/main/app/scripts/Controllers/Login/LoginOpenIDController.js:18
+msgid "Byl jste přihlášen."
+msgstr "You were logged in."
+
+#: src/main/app/views/controllers/Homepage/default.html:108
+msgid "Časová osa"
+msgstr "Timeline"
+
+#: src/main/app/views/controllers/Search/default.html:132
+msgid "Čeká se na výsledky z externích zdrojů.."
+msgstr "Waiting for the results from external sources.."
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:29
+msgid "Číslo OP"
+msgstr "ID Number"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:53
+msgid "Číslo popisné"
+msgstr "Street Number"
+
+#: src/main/app/views/controllers/Homepage/default.html:58
+msgid "Číst více na"
+msgstr "Read more at"
+
+#: src/main/app/views/controllers/Homepage/default.html:57
+msgid "Číst více.."
+msgstr "Read more.."
+
+#: src/main/app/views/controllers/Article/default.html:4
+#: src/main/app/views/controllers/Homepage/default.html:43
+msgid "Články"
+msgstr "Articles"
+
+#: src/main/app/views/controllers/Expo/default.html:109
+#: src/main/app/views/controllers/Search/default.html:122
+msgid "Další"
+msgstr "Next"
+
+#: src/main/app/views/controllers/History/default.html:14
+msgid "Datum"
+msgstr "Date"
+
+#: src/main/app/views/controllers/Expo/default.html:66
+#: src/main/app/views/controllers/Search/default.html:62
+msgid "Do"
+msgstr "To"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsFavoritedController.js:18
+msgid "Dokument byl odebrán."
+msgstr "Document was removed."
+
+#: src/main/app/scripts/Controllers/Document/DocumentController.js:219
+msgid "Dokument byl přidán do oblíbených."
+msgstr "Document was added to favourites."
+
+#: src/main/app/scripts/Controllers/Document/DocumentController.js:225
+#: src/main/app/scripts/Controllers/Document/DocumentIssueController.js:58
+msgid "Dokument byl přidán do schránky."
+msgstr "Document was added to clipboard"
+
+#: src/main/app/views/controllers/Document/default.html:133
+msgid ""
+"Dokument není aktuálně dostupný. Pravdepodobně vypršelo období jeho "
+"zpřístupnění nebo se na něm právě vykonávají úpravy."
+msgstr ""
+"The document is currently unavailable due to the end of its publication date "
+"or correction of its data is in progress."
+
+#: src/main/app/scripts/Controllers/Account/AccountClipboardController.js:53
+msgid "Dokumenty byly odebrány ze schránky."
+msgstr "Documents were removed from clipboard."
+
+#: src/main/app/views/controllers/Account/Settings/searches.html:6
+#: src/main/app/views/controllers/History/default.html:11
+msgid "Dotaz"
+msgstr "Query"
+
+#: src/main/app/scripts/Controllers/Document/DocumentController.js:251
+msgid "Dotaz byl odeslán."
+msgstr "The request has been sent."
+
+#: src/main/app/views/controllers/Login/default.html:15
+#: src/main/app/views/controllers/Password/forgotten.html:13
+#: src/main/app/views/controllers/Register/default.html:11
+msgid "Emailová adresa"
+msgstr "Email Address"
+
+#: src/main/app/views/controllers/Expo/default.html:39
+#: src/main/app/views/controllers/Search/default.html:35
+msgid "Filtr"
+msgstr "Filter"
+
+#: src/main/app/scripts/Services/DocumentService.js:496
+#: src/main/app/scripts/Services/DocumentService.js:537
+msgid "Formát"
+msgstr "Format"
+
+#: src/main/app/scripts/Controllers/Password/PasswordResetController.js:20
+msgid "Hesla se neshodují."
+msgstr "Passwords don't equal."
+
+#: src/main/app/views/controllers/Login/default.html:22
+#: src/main/app/views/controllers/Register/default.html:18
+msgid "Heslo"
+msgstr "Password"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsChangePasswordController.js:36
+msgid "Heslo bylo změněno."
+msgstr "The password has been changed."
+
+#: src/main/app/views/controllers/History/default.html:4
+#: src/main/app/views/directives/Header/header.html:20
+msgid "Historie vyhledávání"
+msgstr "Search History"
+
+#: src/main/app/views/directives/Header/header.html:8
+msgid "Hlavní stránka"
+msgstr "Homepage"
+
+#: src/main/app/views/controllers/Search/advanced.html:11
+msgid "Hledané dotazy"
+msgstr "Search Requests"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsSearchController.js:34
+msgid "Hledání bylo odstraněno."
+msgstr "Query was removed."
+
+#: src/main/app/scripts/Controllers/History/HistoryController.js:32
+#: src/main/app/scripts/Controllers/Search/SearchController.js:248
+msgid "Hledání bylo uloženo."
+msgstr "Query was saved."
+
+#: src/main/app/views/controllers/Homepage/default.html:29
+msgid "Hledáním můžete najít..."
+msgstr "By search you can find..."
+
+#: src/main/app/views/controllers/Search/advanced.html:28
+#: src/main/app/views/controllers/Search/advanced.html:98
+#: src/main/app/views/directives/Header/search.html:33
+#: src/main/app/views/directives/Homepage/timeline.html:7
+msgid "Hledat"
+msgstr "Search"
+
+#: src/main/app/views/directives/Footer/footer.html:39
+msgid "Informace o projektu"
+msgstr "About Project"
+
+#: src/main/app/scripts/Services/DocumentService.js:490
+#: src/main/app/views/controllers/Account/Settings/favorited.html:6
+#: src/main/app/views/controllers/Account/clipboard.html:18
+#: src/main/app/views/controllers/Document/default.html:74
+msgid "Inventární číslo"
+msgstr "Inventory ID"
+
+#: src/main/app/scripts/Services/DocumentService.js:499
+#: src/main/app/scripts/Services/DocumentService.js:521
+#: src/main/app/scripts/Services/SearchService.js:12
+#: src/main/app/views/controllers/Search/advanced.html:70
+msgid "Jazyk"
+msgstr "Language"
+
+#: src/main/app/views/controllers/Login/default.html:34
+msgid "Ještě nemáte účet?"
+msgstr "No account yet?"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:5
+#: src/main/app/views/controllers/Register/default.html:25
+msgid "Jméno"
+msgstr "Name"
+
+#: src/main/app/views/controllers/Catalog/default.html:4
+msgid "Katalog"
+msgstr "Catalogue"
+
+#: src/main/app/views/controllers/Document/default.html:147
+msgid "Komentáře"
+msgstr "Comments"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:65
+msgid "Město"
+msgstr "City"
+
+#: src/main/app/scripts/Services/DocumentService.js:494
+#: src/main/app/scripts/Services/DocumentService.js:549
+#: src/main/app/scripts/Services/SearchService.js:15
+#: src/main/app/views/controllers/Search/default.html:99
+msgid "Místo"
+msgstr "Place"
+
+#: src/main/app/views/controllers/Account/settings.html:5
+#: src/main/app/views/directives/Header/header.html:53
+msgid "Můj účet"
+msgstr "My Account"
+
+#: src/main/app/scripts/Services/Notifications.js:45
+#: src/main/app/scripts/app.js:107
+msgid "Musíte být přihlášen."
+msgstr "You must be logged in."
+
+#: src/main/app/views/controllers/Search/advanced.html:93
+msgid "Můžete si vybrat více jazyků a typů obsahu."
+msgstr "It is possible to choose more languages and content types."
+
+#: src/main/app/scripts/Configurations/config.zlinskykraj.js:2
+msgid ""
+"Najděte poklady v digitalizovaných fondech paměťových institucí Zlínského "
+"kraje."
+msgstr ""
+"Find treasures in the digitized funds of cultural institutions of the Zlín "
+"region. "
+
+#: src/main/app/scripts/Configurations/config.stredoceskykraj.js:2
+msgid "Najděte poklady ve fondech paměťových institucí Středočeského kraje."
+msgstr ""
+"Find treasures in the digitized funds of cultural institutions of the Zlín "
+"region. "
+
+#: src/main/app/views/directives/Header/search.html:13
+msgid "Najdi..."
+msgstr "Search..."
+
+#: src/main/app/scripts/Services/SearchService.js:80
+msgid "Naposledy přidáno"
+msgstr "Last added"
+
+#: src/main/app/views/controllers/Account/settings.html:13
+msgid "Nastavení profilu"
+msgstr "Profile Settings"
+
+#: src/main/app/views/controllers/Account/Settings/general.html:1
+msgid "Nastavení účtu"
+msgstr "Account Settings"
+
+#: src/main/app/views/controllers/Password/reset.html:26
+msgid "Nastavit heslo"
+msgstr "Password setting"
+
+#: src/main/app/scripts/Services/DocumentService.js:491
+#: src/main/app/views/controllers/Account/Settings/favorited.html:7
+#: src/main/app/views/controllers/Account/clipboard.html:19
+msgid "Název"
+msgstr "Title"
+
+#: src/main/app/scripts/Controllers/Password/PasswordForgottenController.js:27
+msgid "Nelze obnovit heslo uživateli přihlášenému přes MojeID."
+msgstr "MojeID users are unable to reset password."
+
+#: src/main/app/scripts/Controllers/Password/PasswordResetController.js:33
+msgid "Neplatný kód pro obnovu hesla."
+msgstr "Invalid password reset code."
+
+#: src/main/app/scripts/Services/SearchService.js:31
+msgid "Neznámo"
+msgstr "Unknown"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsChangePasswordController.js:28
+msgid "Nové hesla se neshodují."
+msgstr "New passwords don't equal"
+
+#: src/main/app/views/controllers/Account/Settings/changePassword.html:12
+#: src/main/app/views/controllers/Password/reset.html:11
+msgid "Nové heslo"
+msgstr "New password"
+
+#: src/main/app/views/controllers/Account/Settings/changePassword.html:19
+#: src/main/app/views/controllers/Password/reset.html:18
+msgid "Nové heslo (znovu)"
+msgstr "New password (repeat)"
+
+#: src/main/app/scripts/Services/SearchService.js:14
+msgid "Novinky"
+msgstr "News"
+
+#: src/main/app/views/directives/Footer/footer.html:5
+msgid "O nás"
+msgstr "About us"
+
+#: src/main/app/views/controllers/About/default.html:4
+#: src/main/app/views/directives/Header/header.html:23
+msgid "O projektu"
+msgstr "About Project"
+
+#: src/main/app/scripts/Services/DocumentService.js:497
+#: src/main/app/scripts/Services/DocumentService.js:541
+#: src/main/app/scripts/Services/SearchService.js:17
+#: src/main/app/views/controllers/Expo/default.html:97
+#: src/main/app/views/controllers/Search/default.html:95
+msgid "Období"
+msgstr "Era"
+
+#: src/main/app/views/controllers/Account/Settings/favorited.html:1
+#: src/main/app/views/controllers/Account/settings.html:15
+msgid "Oblíbené dokumenty"
+msgstr "Favourite Documents"
+
+#: src/main/app/views/controllers/Expo/default.html:62
+#: src/main/app/views/controllers/Search/default.html:58
+msgid "Od"
+msgstr "From"
+
+#: src/main/app/views/controllers/Search/advanced.html:57
+msgid "Odebrat skupinu"
+msgstr "Remove group"
+
+#: src/main/app/views/controllers/Document/default.html:53
+msgid "Odeslat dotaz"
+msgstr "Send an enquiry"
+
+#: src/main/app/views/controllers/Document/default.html:56
+#: src/main/app/views/controllers/Expo/default.html:117
+#: src/main/app/views/controllers/Search/default.html:179
+msgid "Odeslat emailem"
+msgstr "Send by email"
+
+#: src/main/app/views/directives/Header/header.html:57
+msgid "Odhlásit se"
+msgstr "Logout"
+
+#: src/main/app/views/controllers/Account/Settings/searches.html:7
+#: src/main/app/views/controllers/History/default.html:12
+msgid "Omezení"
+msgstr "Restrictions"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsFavoritedController.js:15
+msgid "Opravdu chcete odebrat dokument z oblíbených?"
+msgstr "Do you really want to remove a document from favourites?"
+
+#: src/main/app/scripts/Controllers/Account/AccountClipboardController.js:46
+msgid "Opravdu chcete odstranit vybrané dokumenty ze schránky?"
+msgstr "Do you really want to remove selected documents from clipboard?"
+
+#: src/main/app/scripts/Services/SearchService.js:13
+#: src/main/app/views/controllers/Document/default.html:78
+msgid "Organizace"
+msgstr "Organisation"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:1
+#: src/main/app/views/controllers/Account/settings.html:17
+msgid "Osobní údaje"
+msgstr "Personal Information"
+
+#: src/main/app/views/controllers/Search/advanced.html:65
+msgid "Ostatní kritéria hledání"
+msgstr "Other search criteria"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:77
+msgid "PSČ"
+msgstr "ZIP"
+
+#: src/main/app/views/controllers/History/default.html:13
+msgid "Počet výsledků"
+msgstr "Number of results"
+
+#: src/main/app/views/controllers/Document/default.html:114
+msgid "Podobné dokumenty"
+msgstr "Related Documents"
+
+#: src/main/app/scripts/Services/DocumentService.js:513
+#: src/main/app/scripts/Services/SearchService.js:10
+msgid "Podtyp dokumentu"
+msgstr "Document Subtype"
+
+#: src/main/app/views/controllers/Error/404.html:11
+msgid "Pokračovat na hlavní stránku"
+msgstr "Continue to the homepage"
+
+#: src/main/app/views/controllers/Search/advanced.html:5
+#: src/main/app/views/directives/Header/header.html:11
+#: src/main/app/views/directives/Header/search.html:37
+msgid "Pokročilé vyhledávání"
+msgstr "Advanced Search"
+
+#: src/main/app/scripts/Services/DocumentService.js:492
+#: src/main/app/scripts/Services/DocumentService.js:517
+msgid "Popis"
+msgstr "Description"
+
+#: src/main/app/scripts/Configurations/config.stredoceskykraj.js:5
+#: src/main/app/scripts/Configurations/config.zlinskykraj.js:5
+msgid "Portál pro zpřístupnění digitálního obsahu"
+msgstr "Digital content publishing portal"
+
+#: src/main/app/scripts/Services/SearchService.js:25
+msgid "Poslední měsíc"
+msgstr "Last month"
+
+#: src/main/app/scripts/Services/SearchService.js:27
+msgid "Poslední rok"
+msgstr "Last year"
+
+#: src/main/app/scripts/Services/SearchService.js:26
+msgid "Posledních 6 měsíců"
+msgstr "Last 6 months"
+
+#: src/main/app/scripts/Services/SearchService.js:24
+msgid "Posledních 7 dní"
+msgstr "Last 7 days"
+
+#: src/main/app/views/controllers/Expo/default.html:109
+#: src/main/app/views/controllers/Search/default.html:122
+msgid "Předchozí"
+msgstr "Previous"
+
+#: src/main/app/views/controllers/Login/failure.html:11
+msgid "Přejít zpět na přihlašovací formulář"
+msgstr "Get back to the login form"
+
+#: src/main/app/views/controllers/Document/default.html:47
+msgid "Přidat do oblíbených"
+msgstr "Add to favourites"
+
+#: src/main/app/views/controllers/Document/default.html:50
+#: src/main/app/views/controllers/Document/issue.html:19
+msgid "Přidat do schránky"
+msgstr "Add to clipboard"
+
+#: src/main/app/views/controllers/Search/advanced.html:54
+msgid "Přidat vyhledávací pole"
+msgstr "Add search term"
+
+#: src/main/app/views/controllers/Search/advanced.html:61
+msgid "Přidat vyhledávací skupinu"
+msgstr "Add search group"
+
+#: src/main/app/views/controllers/Login/default.html:4
+msgid "Přihlášení"
+msgstr "Log in"
+
+#: src/main/app/views/controllers/Login/default.html:12
+msgid "Přihlášení pomocí emailové adresy"
+msgstr "Log in using email"
+
+#: src/main/app/views/controllers/Login/default.html:42
+msgid "Přihlášení přes MojeID"
+msgstr "Log in with MojeID"
+
+#: src/main/app/views/controllers/Login/failure.html:8
+msgid "Přihlášení přes MojeID se nepodařilo."
+msgstr "MojeID login was unsuccessful"
+
+#: src/main/app/views/controllers/Login/failure.html:4
+msgid "Přihlášení se nezdařilo"
+msgstr "Login failed"
+
+#: src/main/app/views/controllers/Login/default.html:30
+#: src/main/app/views/directives/Header/header.html:39
+msgid "Přihlásit se"
+msgstr "Log in"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:17
+#: src/main/app/views/controllers/Register/default.html:32
+msgid "Příjmení"
+msgstr "Surname"
+
+#: src/main/app/views/directives/Header/header.html:14
+msgid "Procházet katalog"
+msgstr "Browse Catalogue"
+
+#: src/main/app/scripts/Directives/headerSearch.js:27
+msgid "Prohledat vše"
+msgstr "Search all"
+
+#: src/main/app/views/controllers/Search/default.html:148
+msgid "Publikováno"
+msgstr "Published"
+
+#: src/main/app/views/controllers/Expo/default.html:32
+#: src/main/app/views/controllers/Search/default.html:28
+msgid "Řadit dle"
+msgstr "Sort by"
+
+#: src/main/app/views/controllers/Register/default.html:4
+msgid "Registrace"
+msgstr "Sign up"
+
+#: src/main/app/views/controllers/Register/default.html:40
+msgid "Registrovat"
+msgstr "Sign up"
+
+#: src/main/app/scripts/Services/SearchService.js:79
+msgid "Relevance"
+msgstr "Relevance"
+
+#: src/main/app/views/controllers/Password/reset.html:4
+msgid "Resetování hesla"
+msgstr "Password reset"
+
+#: src/main/app/views/controllers/Password/forgotten.html:21
+msgid "Resetovat heslo"
+msgstr "Reset the password"
+
+#: src/main/app/scripts/Controllers/Account/AccountClipboardController.js:77
+msgid "Rezervace bohužel není možná."
+msgstr "Reservation si not possible at the moment."
+
+#: src/main/app/scripts/Controllers/Account/AccountClipboardController.js:73
+msgid "Rezervace byla provedena."
+msgstr "Reservation request sent."
+
+#: src/main/app/views/forms/Account/Clipboard/reserve.html:3
+msgid "Rezervace dokumentů"
+msgstr "Document reservation"
+
+#: src/main/app/views/forms/Account/Clipboard/reserve.html:11
+msgid "Rezervovat dokumenty"
+msgstr "Reserve documents"
+
+#: src/main/app/scripts/Controllers/Document/DocumentController.js:96
+msgid "Ročník"
+msgstr "Volume"
+
+#: src/main/app/scripts/Services/DocumentService.js:533
+#: src/main/app/views/controllers/Expo/default.html:100
+#: src/main/app/views/controllers/Search/advanced.html:84
+#: src/main/app/views/controllers/Search/default.html:110
+#: src/main/app/views/controllers/Search/default.html:164
+msgid "Rok vydání"
+msgstr "Year of manufacture"
+
+#: src/main/app/scripts/Services/SearchService.js:19
+msgid "Rok vzniku"
+msgstr "Year of manufacture"
+
+#: src/main/app/views/controllers/Account/clipboard.html:4
+#: src/main/app/views/directives/Header/header.html:17
+msgid "Schránka"
+msgstr "Clipboard"
+
+#: src/main/app/views/controllers/Document/default.html:62
+msgid "Sdílet na Facebooku"
+msgstr "Share on Facebook"
+
+#: src/main/app/views/controllers/Document/default.html:105
+msgid "Seznam čísel"
+msgstr "List of Issues"
+
+#: src/main/app/views/controllers/Expo/default.html:33
+#: src/main/app/views/controllers/Search/default.html:29
+msgid "Směr"
+msgstr "Direction"
+
+#: src/main/app/views/controllers/Account/Settings/changePassword.html:5
+msgid "Současné heslo"
+msgstr "Current password"
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsChangePasswordController.js:42
+msgid "Současné heslo není správné."
+msgstr "Invalid current password"
+
+#: src/main/app/scripts/Services/User.js:113
+msgid "Špatné heslo."
+msgstr "Incorrect password."
+
+#: src/main/app/views/directives/Footer/footer.html:22
+msgid "Spolupracující organizace"
+msgstr "Member Organisations"
+
+#: src/main/app/views/controllers/Error/404.html:4
+msgid "Stránka nenalezena"
+msgstr "Page not found"
+
+#: src/main/app/scripts/Services/DocumentService.js:498
+#: src/main/app/scripts/Services/DocumentService.js:545
+#: src/main/app/scripts/Services/SearchService.js:16
+msgid "Téma"
+msgstr "Topic"
+
+#: src/main/app/views/controllers/Document/default.html:93
+#: src/main/app/views/controllers/Document/issue.html:39
+msgid "Tento dokument je chráněn autorským zákonem."
+msgstr "The document is protected by the copyright law."
+
+#: src/main/app/views/controllers/Document/default.html:59
+msgid "Tisknout záznam"
+msgstr "Print document"
+
+#: src/main/app/scripts/Services/DocumentService.js:500
+#: src/main/app/scripts/Services/DocumentService.js:509
+#: src/main/app/scripts/Services/SearchService.js:9
+msgid "Typ dokumentu"
+msgstr "Document Type"
+
+#: src/main/app/views/controllers/Search/advanced.html:77
+msgid "Typ obsahu"
+msgstr "Content Type"
+
+#: src/main/app/views/forms/Account/Clipboard/reserve.html:6
+msgid "Účel použití dokumentu"
+msgstr "Document reservation purpose"
+
+#: src/main/app/scripts/Controllers/Register/RegisterController.js:17
+msgid "Účet s touto emailovou adresou již existuje."
+msgstr "An account with the provided email already exists."
+
+#: src/main/app/scripts/Controllers/Account/AccountSettingsPersonalController.js:18
+msgid "Údaje byly aktualizovány."
+msgstr "Information has been updated."
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:41
+msgid "Ulice"
+msgstr "Street"
+
+#: src/main/app/views/controllers/Account/Settings/searches.html:1
+#: src/main/app/views/controllers/Account/settings.html:16
+msgid "Uložená hledání"
+msgstr "Saved Queries"
+
+#: src/main/app/views/controllers/Account/Settings/personal.html:90
+#: src/main/app/views/controllers/History/default.html:28
+msgid "Uložit"
+msgstr "Save"
+
+#: src/main/app/views/controllers/Search/default.html:173
+msgid "Uložit vyhledávání"
+msgstr "Save a query"
+
+#: src/main/app/scripts/Controllers/Password/PasswordForgottenController.js:29
+msgid "Uživatel s touto emailovou adresou neexistuje."
+msgstr "A user with specified email address does not exist."
+
+#: src/main/app/scripts/Controllers/Password/PasswordForgottenController.js:21
+msgid "Váš požadavek na změnu hesla byl odeslán."
+msgstr "Your request for password reset has been sent."
+
+#: src/main/app/scripts/Controllers/Register/RegisterController.js:14
+msgid "Váš účet byl vytvořen. Nyní se můžete přihlásit."
+msgstr "Your account was created successfully. You may now log in."
+
+#: src/main/app/scripts/Controllers/Password/PasswordResetController.js:28
+msgid "Vaše nové heslo bylo uloženo. Nyní se můžete přihlásit."
+msgstr "Your new password has been saved. You can log in now."
+
+#: src/main/app/views/controllers/Account/clipboard.html:9
+msgid "Ve schránce zatím nemáte žádné dokumenty.."
+msgstr "You have no documents in the clipboard yet.."
+
+#: src/main/app/views/controllers/Homepage/default.html:75
+msgid "Virtuální výstavy"
+msgstr "Virtual Expositions"
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:20
+msgid "Všechna pole"
+msgstr "All fields"
+
+#: src/main/app/views/controllers/Document/default.html:98
+msgid "Vyberte číslo.."
+msgstr "Choose an issue.."
+
+#: src/main/app/views/controllers/Homepage/default.html:8
+msgid "Vybrané dokumenty"
+msgstr "Randomly selected documents"
+
+#: src/main/app/scripts/Services/DocumentService.js:495
+#: src/main/app/scripts/Services/DocumentService.js:529
+#: src/main/app/views/controllers/Expo/default.html:94
+#: src/main/app/views/controllers/Search/default.html:105
+#: src/main/app/views/controllers/Search/default.html:144
+#: src/main/app/views/controllers/Search/default.html:162
+msgid "Vydavatel"
+msgstr "Publisher"
+
+#: src/main/app/views/controllers/Search/advanced.html:16
+#: src/main/app/views/controllers/Search/advanced.html:47
+msgid "Vyhledat"
+msgstr "Search"
+
+#: src/main/app/scripts/Controllers/Account/AccountClipboardController.js:81
+msgid "Vyplňte účel použití dokumentu."
+msgstr "Fill in the reservation purpose."
+
+#: src/main/app/scripts/Services/User.js:119
+msgid "Vypněte prosím inkognito mód."
+msgstr "Turn off the incognito mode."
+
+#: src/main/app/views/controllers/Expo/default.html:34
+#: src/main/app/views/controllers/Search/default.html:30
+msgid "Výsledků na stránku"
+msgstr "Results on page"
+
+#: src/main/app/views/controllers/Expo/default.html:20
+#: src/main/app/views/controllers/Search/default.html:16
+#: src/main/app/views/controllers/Search/default.html:6
+msgid "Výsledky hledání"
+msgstr "Search results"
+
+#: src/main/app/views/controllers/Search/default.html:128
+msgid "Výsledky z externích zdrojů"
+msgstr "Search results from external sources"
+
+#: src/main/app/scripts/Controllers/Login/LoginController.js:25
+msgid "Zadaná emailová adresa nebo heslo není správné."
+msgstr "Incorrect email address or password."
+
+#: src/main/app/views/controllers/Password/forgotten.html:9
+msgid ""
+"Zadejte svoji emailovou adresu, na kterou Vám bude zaslán email s "
+"instrukcemi pro nastavení nového hesla."
+msgstr ""
+"Enter your email address for sending an email with the instructions for the "
+"password reset."
+
+#: src/main/app/scripts/Services/SearchService.js:18
+msgid "Žánr"
+msgstr "Genre"
+
+#: src/main/app/views/controllers/Password/forgotten.html:4
+msgid "Zapomenuté heslo"
+msgstr "Forgotten password"
+
+#: src/main/app/views/controllers/Login/default.html:36
+msgid "Zapomněli jste své heslo?"
+msgstr "Did you forget your password?"
+
+#: src/main/app/views/controllers/Search/default.html:146
+msgid "Zařazení"
+msgstr "Classification"
+
+#: src/main/app/views/controllers/Search/default.html:136
+#: src/main/app/views/controllers/Search/default.html:154
+msgid "Zdroj"
+msgstr "Source"
+
+#: src/main/app/views/controllers/Search/default.html:176
+msgid "Získat RSS zdroj"
+msgstr "Get an RSS feed"
+
+#: src/main/app/views/controllers/Account/Settings/changePassword.html:1
+#: src/main/app/views/controllers/Account/settings.html:14
+msgid "Změna hesla"
+msgstr "Password change"
+
+#: src/main/app/views/controllers/Account/Settings/changePassword.html:27
+msgid "Změnit heslo"
+msgstr "Change password"
+
+#: src/main/app/views/controllers/Document/default.html:8
+msgid "Zpět na výsledky vyhledávání"
+msgstr "To the search results"
+
+#: src/main/app/views/forms/Account/Clipboard/reserve.html:10
+msgid "Zrušit"
+msgstr "Cancel"
+
+#: src/main/app/views/controllers/Document/viewer.html:46
+msgid "celá obrazovka"
+msgstr "full-screen"
+
+#: src/main/app/views/controllers/Document/viewer.html:25
+msgid "celá strana"
+msgstr "whole page"
+
+#: src/main/app/views/directives/Header/header.html:3
+msgid "hlavní menu"
+msgstr "main menu"
+
+#: src/main/app/views/controllers/Expo/default.html:71
+#: src/main/app/views/controllers/Search/default.html:67
+msgid "hledat"
+msgstr "search"
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:35
+msgid "jakékoliv skupiny"
+msgstr "any group"
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:29
+msgid "jakékoliv termíny"
+msgstr "any term"
+
+#: src/main/app/views/controllers/Expo/default.html:27
+#: src/main/app/views/controllers/Search/default.html:23
+msgid "mřížka"
+msgstr "grid"
+
+#: src/main/app/views/controllers/Document/viewer.html:20
+msgid "následující"
+msgstr "next"
+
+#: src/main/app/views/controllers/Document/viewer.html:33
+#: src/main/app/views/directives/Homepage/timeline.html:15
+msgid "oddálit"
+msgstr "zoom out"
+
+#: src/main/app/views/controllers/Expo/default.html:52
+#: src/main/app/views/controllers/Search/default.html:48
+msgid "odebrat filtr"
+msgstr "remove filter"
+
+#: src/main/app/views/controllers/Account/Settings/searches.html:18
+msgid "odstranit"
+msgstr "remove"
+
+#: src/main/app/views/controllers/Account/Settings/favorited.html:18
+msgid "odstranit dokument"
+msgstr "remove document"
+
+#: src/main/app/views/controllers/Account/clipboard.html:40
+msgid "odstranit vybrané"
+msgstr "remove selected"
+
+#: src/main/app/views/directives/Homepage/timeline.html:20
+msgid "posun vlevo"
+msgstr "move left"
+
+#: src/main/app/views/directives/Homepage/timeline.html:23
+msgid "posun vpravo"
+msgstr "move right"
+
+#: src/main/app/views/controllers/Document/viewer.html:17
+msgid "předchozí"
+msgstr "previous"
+
+#: src/main/app/views/controllers/Document/viewer.html:30
+#: src/main/app/views/directives/Homepage/timeline.html:12
+msgid "přiblížit"
+msgstr "zoom in"
+
+#: src/main/app/views/controllers/Document/default.html:33
+#: src/main/app/views/controllers/Document/default.html:36
+#: src/main/app/views/controllers/Document/issue.html:6
+msgid "prohlížet"
+msgstr "view"
+
+#: src/main/app/views/controllers/Account/clipboard.html:36
+msgid "rezervovat"
+msgstr "reserve"
+
+#: src/main/app/scripts/Services/SearchService.js:84
+msgid "sestup."
+msgstr "desc."
+
+#: src/main/app/views/controllers/Expo/default.html:24
+#: src/main/app/views/controllers/Search/default.html:20
+msgid "seznam"
+msgstr "list"
+
+#: src/main/app/views/controllers/Document/issue.html:14
+msgid "stáhnout EPUB"
+msgstr "download ePUB"
+
+#: src/main/app/views/controllers/Document/default.html:39
+#: src/main/app/views/controllers/Document/issue.html:10
+msgid "stáhnout PDF"
+msgstr "download PDF"
+
+#: src/main/app/views/controllers/Document/default.html:42
+msgid "stáhnout ePUB"
+msgstr "download ePUB"
+
+#: src/main/app/views/controllers/Document/viewer.html:38
+msgid "textová vrstva"
+msgstr "text layer"
+
+#: src/main/app/views/controllers/Search/advanced.html:31
+msgid "v poli"
+msgstr "in field"
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:34
+msgid "všechny skupiny"
+msgstr "every group"
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:28
+msgid "všechny termíny"
+msgstr "every term"
+
+#: src/main/app/views/controllers/History/default.html:34
+msgid "vymazat historii"
+msgstr "clear history"
+
+#: src/main/app/scripts/Services/SearchService.js:83
+msgid "vzest."
+msgstr "asc."
+
+#: src/main/app/scripts/Controllers/Search/SearchAdvancedController.js:30
+msgid "žádné termíny"
+msgstr "no terms"
+
+#: src/main/app/views/controllers/Document/viewer.html:42
+msgid "zavřít"
+msgstr "close"
+
+#~ msgid "Angličtina"
+#~ msgstr "English"
+
+#~ msgid "Badatelna – fond kulturního dědictví Zlínského kraje"
+#~ msgstr "Badatelna – fond kulturního dědictví Zlínského kraje"
+
+#~ msgid "Čeština"
+#~ msgstr "Czech"
+
+#~ msgid ""
+#~ "Je možno vyhledávat informace krajských muzeí, krajské galerie a krajské "
+#~ "knihovny."
+#~ msgstr ""
+#~ "It is possible to search among documents from regional museums, regional "
+#~ "gallery and regional library."
+
+#~ msgid "Musíte vyplnit všechna pole."
+#~ msgstr "All fields are mandatory."
+
+#~ msgid "Najděte poklady knihoven a muzeí jedním hledáním."
+#~ msgstr "Discover treasures of libraries and museums in one search."
+
+#~ msgid ""
+#~ "Portál Badatelna nabízí služby pro vyhledání informací digitalizovaných "
+#~ "fondů muzejních sbírek a knihovních fondů paměťových institucí Zlínského "
+#~ "kraje."
+#~ msgstr ""
+#~ "Portál Badatelna nabízí služby pro vyhledání informací digitalizovaných "
+#~ "fondů muzejních sbírek a knihovních fondů paměťových institucí Zlínského "
+#~ "kraje."
+
+#~ msgid "Sdílet záznam"
+#~ msgstr "Share document"
+
+#~ msgid "tisknout"
+#~ msgstr "print"
+
+#~ msgid "zaslat emailem"
+#~ msgstr "send by email"
+
+#~ msgid "Oblast"
+#~ msgstr "Region"

@@ -1,0 +1,655 @@
+@import "vendor/plugins/datatables/dataTables.bootstrap.less";
+@import "../bower_components/angular-ui-select/dist/select.css";
+@import "../bower_components/eonasdan-bootstrap-datetimepicker/src/less/_bootstrap-datetimepicker";
+@import "../bower_components/nprogress/nprogress.css";
+@import "vendor/plugins/codemirror/codemirror";
+@import "vendor/plugins/jquery-fancytree/ui.fancytree.less";
+@import "default_skin/less/theme";
+@import "base/plugins/datatables";
+@import "admin-forms/admin-forms";
+//
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=latin,latin-ext);
+@import url(//fonts.googleapis.com/css?family=Roboto:400,500,700,300&subset=latin,latin-ext);
+
+@assets-path: ".";
+@img-path: "@{assets-path}/../images";
+@fonts-path: "@{assets-path}/../fonts";
+
+@grid-gutter-width: 10px;
+
+.inline-block {
+  display: inline-block;
+}
+
+.test-version {
+  float: left;
+  margin: 0.65em auto 0;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+body {
+  height: auto;
+  min-height: 100%;
+
+  &.external-page {
+    height: 100%;
+
+    #main {
+      background-image: none;
+
+      .admin-form {
+        max-width: 400px;
+
+        .panel-heading {
+          padding-top: 19px;
+        }
+      }
+    }
+  }
+
+  #sidebar_left {
+    &.test {
+      background: darken(#16a085, 25%);
+
+      .sidebar-menu > li > ul {
+        &, > li > ul {
+          background: darken(#16a085, 27%);
+        }
+
+        > li a:focus {
+          background: darken(#16a085, 29%);
+        }
+
+        a:hover {
+          background: inherit;
+        }
+      }
+    }
+  }
+
+  .treeview {
+    .toggle-treeview {
+      float: right;
+      cursor: pointer;
+      width: auto;
+      font-size: 1.4em;
+      padding: 0.5em;
+    }
+  }
+
+  &.print {
+    #main {
+      > header, > aside {
+        display: none;
+      }
+    }
+
+    #content_wrapper {
+      margin-left: 0;
+      padding-top: 0 !important;
+    }
+
+    #content {
+      > .sidebar {
+        display: none;
+      }
+
+      .table-layout {
+        display: block;
+        padding-left: 0;
+
+        .tray {
+          display: block;
+          margin: 0 auto 0.5em;
+          padding: 0;
+        }
+
+        .panel {
+          margin-bottom: 0.5em !important;
+
+          .panel-heading {
+            height: auto;
+            margin-bottom: 10px;
+            padding: 0;
+            line-height: normal;
+            border: 0;
+
+            .panel-title {
+              padding-left: 0;
+              font-weight: bold;
+            }
+          }
+
+          &.panel-with-tabs {
+            .panel-heading {
+              display: none;
+            }
+          }
+
+          .tab-pane {
+            display: block;
+            margin-bottom: 15px;
+
+            .title {
+              display: block !important;
+              margin-bottom: 5px;
+              font-weight: bold;
+            }
+          }
+
+          .panel-body {
+            padding: 0;
+          }
+        }
+
+        .form-group {
+          margin: 0;
+
+          > label {
+            width: 25%;
+            padding: 0;
+          }
+
+          > div {
+            width: 75%;
+          }
+
+          .row > div {
+            width: auto;
+          }
+
+          .form-control, .form-control-static {
+            height: auto;
+            padding: 0;
+            border: 0;
+            background: transparent;
+          }
+
+          .checkbox {
+            padding-top: 3px;
+          }
+        }
+      }
+    }
+
+    .treeview {
+      display: none !important;
+    }
+  }
+}
+
+.document-detail {
+  .panel-body {
+    padding: 0.5em;
+  }
+
+  .form-group {
+    margin-bottom: 0.5em;
+  }
+
+  .form-control {
+    height: 35px;
+
+    &, + .input-group-btn .btn {
+      padding: 7px 10px;
+    }
+  }
+
+  .input-group-btn {
+      vertical-align: top;
+  }
+
+  input, textarea, input.ng-touched, .ui-select-container {
+    &.ng-invalid {
+      &, &:focus, .btn-default {
+        background: #FEE9EA;
+        border-color: #DE888A;
+      }
+
+      .ui-select-placeholder {
+        color: #DE888A;
+      }
+    }
+  }
+}
+
+#main {
+  background: none;
+
+  &:before {
+    background: url(../images/logo.png) #e9e9e9 70% no-repeat;
+    .opacity(0.15);
+  }
+
+  .navbar.navbar-fixed-top {
+    .navbar-brand {
+      padding: 17px 10px;
+
+      img {
+        .img-responsive;
+        max-width: 150px;
+      }
+    }
+
+    .user-info {
+      .name {
+        float: left;
+        text-align: right;
+        margin-right: 15px;
+      }
+
+      .caret {
+        position: relative;
+        top: 7px;
+        border-top-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
+
+.panel {
+  .panel-footer {
+    .clearfix;
+  }
+
+  .button-selection {
+    margin-bottom: 1em;
+    text-align: center;
+
+    .btn {
+      width: 100%;
+
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
+
+      &.selected {
+        color: #fff;
+        background: @link-color;
+      }
+    }
+
+    .fa {
+      display: block;
+      margin-bottom: 0.5em;
+      font-size: 2em;
+    }
+  }
+
+  .tab-content {
+    .tab-pane {
+      > .title {
+        display: none;
+      }
+    }
+  }
+}
+
+ui-view, div[ui-view] {
+  height: 100%;
+}
+
+.form-control[readonly] {
+  cursor: text;
+}
+
+form {
+  &.ng-submitted input, &.ng-submitted textarea, input.ng-touched, &.ng-submitted .ui-select-container {
+    &.ng-invalid {
+      &, &:focus, .btn-default {
+        background: #FEE9EA;
+        border-color: #DE888A;
+      }
+
+      .ui-select-placeholder {
+        color: #DE888A;
+      }
+    }
+  }
+
+  select {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 50%;
+      right: 50%;
+      margin-top: -5px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #dddddd;
+    }
+  }
+
+  .help-block {
+    margin-bottom: 0;
+
+    &.error {
+      .text-danger;
+    }
+  }
+
+  &.form-horizontal {
+    .form-control {
+      & + .form-control {
+        margin-top: 0.5em;
+      }
+
+      & + button {
+        margin-top: 0.5em;
+      }
+    }
+
+    .input-group {
+      + button {
+        margin-top: 5px;
+      }
+
+      & + .input-group {
+        margin-top: 5px;
+      }
+    }
+
+    .btn {
+      vertical-align: top;
+
+      + .switch-sm {
+        margin-top: 9px;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.sidebar-menu > li > ul > li > a {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+
+.dropdown-menu {
+  z-index: 9999;
+}
+
+table.dataTable {
+  thead {
+    tr > th {
+      padding-left: 9px;
+      padding-right: 9px;
+    }
+
+    tr td {
+      input, select {
+        .input-sm;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &.active {
+        td {
+          > a.btn {
+            color: inherit;
+          }
+        }
+      }
+
+      td {
+        .btn {
+          .btn-sm;
+
+          + .btn {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table {
+  > tbody {
+    > tr.danger {
+      > td {
+        border-color: pink;
+      }
+    }
+  }
+}
+
+.DTTT.btn-group {
+  margin: 10px;
+
+  &:empty {
+    display: none;
+    margin: 0;
+  }
+}
+
+div.dataTables_filter {
+  margin-top: 10px;
+
+  &, input {
+    margin-left: 1em;
+    min-width: 300px;
+  }
+}
+
+.ui-pnotify {
+  margin-bottom: 0;
+}
+
+#content {
+  padding: 0;
+
+  > .tray {
+    padding: 0 15px;
+  }
+
+  .table-layout {
+    padding-top: 70px;
+
+    > .tray {
+      vertical-align: top;
+      padding: 0.5em;
+    }
+  }
+
+  > .sidebar {
+    width: 100%;
+    margin-bottom: 0.5em;
+    padding: 15px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #DDD;
+    z-index: 99;
+
+    h4, h5 {
+      display: inline-block;
+      margin-right: 15px;
+      line-height: 1.3;
+    }
+
+    h5 {
+      margin-left: 1em;
+    }
+
+    .toolbar {
+      display: inline-block;
+
+      + .toolbar {
+        display: block;
+        margin-top: 1em;
+
+        h5 {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .btn {
+      .fa-chevron-left {
+        position: relative;
+        top: 4px;
+        float: left;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1620px) {
+  #content {
+    .table-layout {
+      padding-top: 0;
+      padding-left: 250px;
+
+      > .tray {
+        display: table-cell;
+      }
+    }
+
+    > .tray {
+      padding: 0.5em 0.5em 0 255px;
+    }
+
+    > .sidebar {
+      position: fixed;
+      width: 250px;
+      height: 100%;
+      vertical-align: top;
+      border-right: 1px solid #DDD;
+      border-bottom: 0;
+
+      .btn {
+        display: block;
+        width: 100%;
+
+        + .btn {
+          margin-top: 0.25em;
+        }
+      }
+
+      .toolbar {
+        display: block;
+      }
+
+      h4, h5 {
+        display: block;
+        margin-right: 0;
+      }
+
+      h4 {
+        margin-bottom: 2em;
+      }
+
+      h5 {
+        margin-top: 2em;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.ui-pnotify-container {
+  margin-bottom: 0;
+}
+
+div.switch {
+  label {
+    display: inline-block;
+  }
+
+  &.switch-sm {
+    margin-top: 8px;
+  }
+
+  span {
+    margin-left: 5px;
+    font-size: 0.95em;
+    line-height: 22px;
+    vertical-align: top;
+  }
+}
+
+.modal-dialog {
+  margin-top: 100px;
+
+  .panel {
+    margin-bottom: 0;
+  }
+}
+
+.modal {
+  &.modal-documents .modal-dialog {
+    @media (min-width: 992px) {
+      width: 95%;
+    }
+
+    @media (min-width: 1600px) {
+      width: 75%;
+    }
+  }
+
+  &.modal-preview {
+    h3 {
+      margin-top: 0;
+    }
+
+    .entry {
+      .row;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.ui-select-multiple {
+  &.ui-select-bootstrap {
+    height: auto;
+    min-height: 39px;
+    padding: 7px 5px;
+
+    &.token-block {
+      padding-bottom: 0;
+
+      .ui-select-search, .ui-select-match-item {
+        display: block;
+      }
+
+      .ui-select-search {
+        width: 100% !important;
+      }
+
+      .ui-select-match-item {
+        text-align: left;
+        margin-right: 0;
+        overflow: hidden;
+      }
+    }
+
+    .ui-select-match {
+      .close {
+        line-height: 1;
+      }
+    }
+
+    .ui-select-search {
+      width: auto !important;
+    }
+
+    .ui-select-match-item {
+      line-height: 1.65;
+    }
+  }
+}
+
+.tree-view {
+  .fancytree-node.invalid {
+    .fancytree-title {
+      color: salmon;
+    }
+  }
+}

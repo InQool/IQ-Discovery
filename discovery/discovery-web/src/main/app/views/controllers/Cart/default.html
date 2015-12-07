@@ -1,0 +1,55 @@
+<div header-search></div>
+<div id="orders">
+	<div class="page-title">
+		<div class="container">
+			<h2>Nákupní košík</h2>
+		</div>
+	</div>
+	<div class="container">
+		<div class="content">
+			<div ng-if="items.length === 0">
+				Nákupní košík je prázdný.
+			</div>
+			<div ng-if="items.length > 0">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Název položky</th>
+							<th style="width: 100px;">Cena</th>
+							<th style="width: 1px;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="i in items">
+							<td>
+								<a ui-sref="document({id: i.id})">{{:: i.name }}</a>
+							</td>
+							<td class="text-right">{{ i.price|currency }}</td>
+							<td>
+								<button type="button" class="btn btn-sm btn-danger" ng-click="remove(i)" tooltip="Odebrat z košíku">
+									<i class="fa fa-remove"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>Celková cena</td>
+							<td class="text-right">
+								<strong>{{ getPrice()|currency }}</strong>
+							</td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+
+				<div class="text-center">
+					<a href="#" class="btn btn-lg btn-primary">Pokračovat v objednávce</a>
+					<br>
+					<br>
+					<img src="images/cart/credit_cards.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio - FREE Community Edition 7.0.2.746 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns="http://www.i.cz/sbirkovePredmety/1.0" elementFormDefault="qualified" targetNamespace="http://www.i.cz/sbirkovePredmety/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="specifickaMetadata" type="xs:anyType" >
+        <xs:element name="metadataPredmetu" type="typMetadataOborova">
+            <xs:element name="podrobnaMetadata" type="typMetadataPredmetu">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="technickeParametry" type="typTechnickeParametry">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="format" type="xs:string" />
+                            <xs:element minOccurs="0" name="material" type="xs:string" />
+                            <xs:element minOccurs="0" name="technika" type="xs:string" />
+                            <xs:element minOccurs="0" name="rozmery" type="xs:string" />
+                        </xs:sequence>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="puvod" type="typUdalost" >
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="misto" type="typGeografickaDimenze" />
+                            <xs:element minOccurs="0" name="cas" type="typCasovaDimenze" />
+                            <xs:element minOccurs="0" maxOccurs="unbounded" name="osoba" type="typOsoba" />
+                        </xs:sequence>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="nalez" type="typUdalost" />
+                    <xs:element minOccurs="0" name="nazevOrganizace" type="xs:string" />
+                    <xs:element minOccurs="0" name="nazevSbirky" type="xs:string" />
+                    <xs:element minOccurs="0" name="kurator" type="xs:string" />
+                    <xs:element minOccurs="0" name="alternativniCisla">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element minOccurs="0" name="inventarniCislo" type="xs:string" />
+                                <xs:element minOccurs="0" name="prirustkoveCislo" type="xs:string" />
+                                <xs:element minOccurs="0" name="pomocneCislo" type="xs:string" />
+                                <xs:element minOccurs="0" name="signatura" type="xs:string" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="predmet" type="xs:string" />
+                    <xs:element minOccurs="0" name="popis" type="xs:string" />
+                    <xs:element minOccurs="0" name="popisLaicky" type="xs:string" />
+                    <xs:element minOccurs="0" name="pocetKusu" type="xs:string" />
+                    <xs:element minOccurs="0" name="poznamka" type="xs:string" />
+                    <xs:element minOccurs="0" name="publikovat" type="xs:string" />
+                </xs:sequence>
+            </xs:element>
+        </xs:element>
+    </xs:element>
+</xs:schema>
+
+metadatapředmetu = typ metadata oborova
+podrobnametadata = typ metadata predmetu

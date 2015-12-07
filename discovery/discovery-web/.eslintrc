@@ -1,0 +1,41 @@
+{
+  "rules": {
+    "indent": 2,
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jquery": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "plugins": [
+    "angular"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "angular"
+  ],
+  "globals": {
+    "global": true,
+    "angular": true,
+    "_": true,
+    "__": true,
+    "OpenSeadragon": true,
+    "FB": true
+  }
+}

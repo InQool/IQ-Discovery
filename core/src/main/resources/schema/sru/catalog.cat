@@ -1,0 +1,8 @@
+--
+It works! Yay! Start with basedir in maven! URLencode the space! Path to xsd relative to catalog!
+--
+SYSTEM "http://docs.oasis-open.org/search-ws/%20searchRetrieve/v1.0/csd01/schemas/diagnostic.xsd" "diagnostic.xsd"
+SYSTEM "http://docs.oasis-open.org/search-ws/%20searchRetrieve/v1.0/csd01/schemas/facetedResults.xsd" "facetedResults.xsd"
+SYSTEM "http://docs.oasis-open.org/search-ws/%20searchRetrieve/v1.0/csd01/schemas/searchResultAnalysis.xsd" "searchResultAnalysis.xsd"
+SYSTEM "http://docs.oasis-open.org/search-ws/%20searchRetrieve/v1.0/csd01/schemas/xcql.xsd" "xcql.xsd"
+SYSTEM "http://docs.oasis-open.org/search-ws/%20searchRetrieve/v1.0/csd01/schemas/scan.xsd" "scan.xsd"

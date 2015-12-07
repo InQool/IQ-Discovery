@@ -1,0 +1,63 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.i.cz/sbirkovePredmety/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="specifickaMetadata">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="definice_poli">
+            <xs:complexType>
+              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="pole">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute type="xs:string" name="nazev" use="optional"/>
+                        <xs:attribute type="xs:string" name="titulek" use="optional"/>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="kapitola">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="zaznam">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="pole" maxOccurs="unbounded" minOccurs="0">
+                        <xs:complexType>
+                          <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                              <xs:attribute type="xs:string" name="nazev" use="optional"/>
+                            </xs:extension>
+                          </xs:simpleContent>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="subdata" maxOccurs="unbounded" minOccurs="0">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="obsah">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element type="xs:int" name="pozice"/>
+                                  <xs:element type="xs:byte" name="porc"/>
+                                  <xs:element type="xs:string" name="nazev_dd"/>
+                                  <xs:element type="xs:string" name="pozn"/>
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                          <xs:attribute type="xs:string" name="nazev" use="optional"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute type="xs:string" name="nazev"/>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio - FREE Community Edition 7.0.2.746 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns="http://www.i.cz/sbirkovePredmety/1.0" elementFormDefault="qualified" targetNamespace="http://www.i.cz/sbirkovePredmety/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="typMetadataZakladni">
+    <xs:sequence>
+      <xs:element name="zkratkaOrganizace" type="xs:string" />
+      <xs:element minOccurs="0" name="nazevOrganizace" type="xs:string" />
+      <xs:element name="inventarniCislo" type="xs:string" />
+      <xs:element minOccurs="0" name="alternativniCisla">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="inventarniCislo" type="xs:string" />
+            <xs:element minOccurs="0" name="prirustkoveCislo" type="xs:string" />
+            <xs:element minOccurs="0" name="pomocneCislo" type="xs:string" />
+            <xs:element minOccurs="0" name="signatura" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="aktualizovaneInventarniCislo" type="xs:string" />
+      <xs:element minOccurs="0" name="nazevPredmetu" type="xs:string" />
+      <xs:choice>
+        <xs:element name="klasifikace">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="oborCES" type="xs:string" />
+              <xs:element name="nazevPodsbirky" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="kodKlasifikace" type="xs:string" />
+      </xs:choice>
+      <xs:element minOccurs="0" name="typ" type="xs:string" />
+      <xs:element minOccurs="0" name="predmet" type="xs:string" />
+      <xs:element minOccurs="0" name="popis" type="xs:string" />
+      <xs:element minOccurs="0" name="popisLaicky" type="xs:string" />
+      <xs:element minOccurs="0" name="pocetKusu" type="xs:string" />
+      <xs:element minOccurs="0" name="publikovat" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typMetadataObrazu">
+    <xs:sequence>
+      <xs:element name="identifikatorObrazu">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="cisloCasti" type="xs:integer" />
+            <xs:element name="cisloObrazuVCasti" type="xs:integer" />
+            <xs:element minOccurs="0" name="cisloStrany" type="xs:string" />
+            <xs:element minOccurs="0" name="nazevStrany" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="nazevObrazu" type="xs:string" />
+      <xs:element minOccurs="0" name="puvod" type="typUdalost" />
+      <xs:element minOccurs="0" name="technickeParametry" type="typTechnickeParametry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typMetadataOborova">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="podrobnaMetadata" type="typMetadataPredmetu" />
+      <xs:element name="publikace" type="typMetadataPublikace" />
+      <xs:element name="oborovaMetadata">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="prirodovedna" type="typMetadataPrirodovedna" />
+            <xs:element name="numismaticka" type="typMetadataNumismaticka" />
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typMetadataPredmetu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="technickeParametry" type="typTechnickeParametry" />
+      <xs:element minOccurs="0" name="puvod" type="typUdalost" />
+      <xs:element minOccurs="0" name="nalez" type="typUdalost" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typNumismatickePopisy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="avers" type="xs:string" />
+      <xs:element minOccurs="0" name="revers" type="xs:string" />
+      <xs:element minOccurs="0" name="hrana" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typMetadataNumismaticka">
+    <xs:sequence>
+      <xs:element name="numismatickePopisy" type="typNumismatickePopisy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typTaxonomickaKategorie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="rise" type="xs:string" />
+      <xs:element minOccurs="0" name="kmen" type="xs:string" />
+      <xs:element minOccurs="0" name="oddeleni" type="xs:string" />
+      <xs:element minOccurs="0" name="trida" type="xs:string" />
+      <xs:element minOccurs="0" name="rad" type="xs:string" />
+      <xs:element minOccurs="0" name="celed" type="xs:string" />
+      <xs:element minOccurs="0" name="rod" type="xs:string" />
+      <xs:element minOccurs="0" name="druh" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typMetadataPrirodovedna">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="taxonomickaKategorie" type="typTaxonomickaKategorie" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typMetadataPublikace">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="knihovniUdaje" type="typUdajePublikace" />
+      <xs:element minOccurs="0" name="vydani" type="typVydaniPublikace" />
+      <xs:element minOccurs="0" name="autori" type="typAutoriPublikace" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typVydaniPublikace">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ISBN" type="xs:string" />
+      <xs:element minOccurs="0" name="ISSN" type="xs:string" />
+      <xs:element minOccurs="0" name="oznaceniVydani" type="xs:string" />
+      <xs:element minOccurs="0" name="mistoVydani" type="xs:string" />
+      <xs:element minOccurs="0" name="rokVydani" type="xs:gYear" />
+      <xs:element minOccurs="0" name="nakladatel" type="xs:string" />
+      <xs:element minOccurs="0" name="edice" type="xs:string" />
+      <xs:element minOccurs="0" name="vytiskl" type="xs:string" />
+      <xs:element minOccurs="0" name="rozsah" type="xs:string" />
+      <xs:element minOccurs="0" name="pocetVytisku" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typAutoriPublikace">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="autor" type="typOsoba" />
+      <xs:element name="editor" type="typOsoba" />
+      <xs:element name="prekladatel" type="typOsoba" />
+      <xs:element name="ilustrator" type="typOsoba" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typUdajePublikace">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fond" type="xs:string" />
+      <xs:element minOccurs="0" name="druhDokumentu" type="xs:string" />
+      <xs:element minOccurs="0" name="udajeOPeriodiku" type="xs:string" />
+      <xs:element minOccurs="0" name="jazykDokumentu" type="xs:string" />
+      <xs:element minOccurs="0" name="podnazev" type="xs:string" />
+      <xs:element minOccurs="0" name="signatura" type="xs:string" />
+      <xs:element minOccurs="0" name="predmetovaHesla" type="xs:string" />
+      <xs:element minOccurs="0" name="jmenneOdkazy" type="xs:string" />
+      <xs:element minOccurs="0" name="knihopisnaPoznamka" type="xs:string" />
+      <xs:element minOccurs="0" name="rozpisSvazku" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typGeografickaDimenze">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stat" type="xs:string" />
+      <xs:element minOccurs="0" name="zeme" type="xs:string" />
+      <xs:element minOccurs="0" name="katastralniUzemi" type="xs:string" />
+      <xs:element minOccurs="0" name="mapovyCtverec" type="xs:string" />
+      <xs:element minOccurs="0" name="lokalita" type="xs:string" />
+      <xs:element minOccurs="0" name="specifickaLokalita" type="typSpecifickaLokalita" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typSpecifickaLokalita">
+    <xs:choice>
+      <xs:element name="mincovna" type="xs:string" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typTechnickeParametry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="format" type="xs:string" />
+      <xs:element minOccurs="0" name="material" type="xs:string" />
+      <xs:element minOccurs="0" name="technika" type="xs:string" />
+      <xs:element minOccurs="0" name="rozmery" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typOsoba">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="celeJmeno" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typCasovyInterval">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="casUdalostiOd" type="xs:date" />
+      <xs:element minOccurs="0" name="casUdalostiDo" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="typCasovaDimenze">
+    <xs:choice>
+      <xs:element minOccurs="0" name="casUdalosti" type="xs:date" />
+      <xs:element minOccurs="0" name="obdobiUdalosti" type="xs:string" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="typUdalost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="misto" type="typGeografickaDimenze" />
+      <xs:element minOccurs="0" name="cas" type="typCasovaDimenze" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="osoba" type="typOsoba" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="predmet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="zakladniMetadata" type="typMetadataZakladni" />
+        <xs:element minOccurs="0" name="metadataPredmetu" type="typMetadataOborova" />
+        <xs:element minOccurs="0" name="specifickaMetadata" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="obraz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="zakladniMetadata" type="typMetadataZakladni" />
+        <xs:element minOccurs="0" name="metadataPredmetu" type="typMetadataOborova" />
+        <xs:element name="metadataObrazu" type="typMetadataObrazu" />
+        <xs:element minOccurs="0" name="specifickaMetadata" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

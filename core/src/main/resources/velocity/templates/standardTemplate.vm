@@ -1,0 +1,14 @@
+#**
+* Template of error notification email
+*
+ @author Marián Čamák
+ @version 1
+ *#
+<div style="padding:5px; font-family: Arial, Helvetica, sans-serif;">
+
+    <div id="summary" style="background-color: #FFF; margin:10px">
+        <span>$text</span>
+    </div>
+
+    <br/> <em>$footer</em>
+</div>

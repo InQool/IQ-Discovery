@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jaxb:bindings jaxb:version="2.0"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:METS="http://www.loc.gov/METS/"
+               xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd
+                                   http://java.sun.com/xml/ns/jaxws http://java.sun.com/xml/ns/jaxws/wsdl_customizationschema_2_0.xsd"
+               jaxb:extensionBindingPrefixes="xjc">
+    <jaxb:globalBindings generateElementProperty="false" >
+        <xjc:serializable />
+        <xjc:simple/>
+
+        <jaxb:javaType xmlns="http://java.sun.com/xml/ns/jaxb" name="java.time.LocalDate"
+                       xmlType="xsd:date"
+                       parseMethod="java.time.LocalDate.parse"
+                       printMethod="java.lang.String.valueOf"
+                />
+        <jaxb:javaType xmlns="http://java.sun.com/xml/ns/jaxb" name="java.time.LocalTime"
+                       xmlType="xsd:time"
+                       parseMethod="java.time.LocalTime.parse"
+                       printMethod="java.lang.String.valueOf"
+                />
+        <jaxb:javaType xmlns="http://java.sun.com/xml/ns/jaxb" name="java.time.OffsetDateTime"
+                       xmlType="xsd:dateTime"
+                       parseMethod="java.time.OffsetDateTime.parse"
+                       printMethod="java.lang.String.valueOf"
+                />
+
+    </jaxb:globalBindings>
+</jaxb:bindings>

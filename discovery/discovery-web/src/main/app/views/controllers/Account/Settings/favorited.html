@@ -1,0 +1,24 @@
+<h3 translate>Oblíbené dokumenty</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th translate>Inventární číslo</th>
+			<th translate>Název</th>
+			<th style="width: 1px;"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="d in documents">
+			<td ng-bind="::d.invId"></td>
+			<td>
+				<a ui-sref="secured.document({id: d.invId})" ng-bind="::d.title"></a>
+			</td>
+			<td>
+				<button type="button" ng-click="remove(d)" class="btn btn-danger btn-sm" tooltip="{{ 'odstranit dokument'|translate }}">
+					<i class="fa fa-trash"></i>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

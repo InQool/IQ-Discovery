@@ -1,0 +1,93 @@
+<h3 translate>Osobní údaje</h3>
+
+<form class="form-horizontal" ng-submit="vm.submit()" novalidate>
+	<div class="form-group">
+		<label for="user-firstName" class="control-label col-xs-4" translate>Jméno</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-firstName"
+			       name="firstName"
+			       ng-model="vm.user.firstName"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-lastName" class="control-label col-xs-4" translate>Příjmení</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-lastName"
+			       name="lastName"
+			       ng-model="vm.user.lastName"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-op" class="control-label col-xs-4" translate>Číslo OP</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-op"
+			       name="op"
+			       ng-model="vm.user.opNumber"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-street" class="control-label col-xs-4" translate>Ulice</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-street"
+			       name="street"
+			       ng-model="vm.user.street"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-streetNumber" class="control-label col-xs-4" translate>Číslo popisné</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-streetNumber"
+			       name="streetNumber"
+			       ng-model="vm.user.streetNumber"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-city" class="control-label col-xs-4" translate>Město</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-city"
+			       name="city"
+			       ng-model="vm.user.city"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="user-zip" class="control-label col-xs-4" translate>PSČ</label>
+
+		<div class="col-xs-8">
+			<input type="text"
+			       id="user-zip"
+			       name="zip"
+			       ng-model="vm.user.zip"
+			       class="form-control"
+			       ng-readonly="::vm.user.verified">
+		</div>
+	</div>
+	<div class="form-group" ng-if="vm.user.verified === false">
+		<div class="col-xs-8 col-xs-push-4">
+			<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">{{ ::'Uložit'|translate }}</button>
+		</div>
+	</div>
+</form>

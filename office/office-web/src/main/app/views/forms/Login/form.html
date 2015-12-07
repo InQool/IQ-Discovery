@@ -1,0 +1,26 @@
+<form name="form" class="admin-form login theme-info" ng-submit="submit()" novalidate>
+	<div class="panel br-n">
+		<div class="panel-heading">
+			<div class="panel-title ml5">Přihlášení</div>
+		</div>
+		<div class="panel-body bg-light p15">
+			<div class="section">
+				<label for="username" class="field-label text-muted fs18 mb10">Přihlašovací jméno</label>
+				<label for="username" class="field prepend-icon">
+					<input type="text" name="username" id="username" ng-model="user.username" required class="gui-input">
+					<label for="username" class="field-icon"><i class="fa fa-user"></i></label>
+				</label>
+			</div>
+			<div class="section">
+				<label for="username" class="field-label text-muted fs18 mb10">Heslo</label>
+				<label for="password" class="field prepend-icon">
+					<input type="password" name="password" id="password" ng-model="user.password" required class="gui-input">
+					<label for="password" class="field-icon"><i class="fa fa-lock"></i></label>
+				</label>
+			</div>
+		</div>
+		<div class="panel-footer clearfix p15">
+			<button type="submit" class="button btn-primary pull-right" ng-disabled="loading">Přihlásit</button>
+		</div>
+	</div>
+</form>

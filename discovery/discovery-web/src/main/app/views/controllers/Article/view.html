@@ -1,0 +1,23 @@
+<div header-search></div>
+<div class="page-title">
+    <div class="container">
+        <h2 ng-bind=":: vm.article.title"></h2>
+    </div>
+</div>
+<div id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <a ng-href="/dcap/discovery/data/file/{{:: vm.article.imageId }}" target="_blank">
+                    <img class="thumbnail" ng-src="/dcap/discovery/data/file/{{:: vm.article.imageId }}">
+                </a>
+            </div>
+            <div class="col-sm-10">
+                <!-- <p class="author">{{ ::vm.article.authorName }} - {{ ::vm.article.authorOrgName }}</p> -->
+                <p class="perex" ng-bind=":: vm.article.perex"></p>
+
+                <p class="content" ng-bind-html=":: vm.article.content"></p>
+            </div>
+        </div>
+    </div>
+</div>

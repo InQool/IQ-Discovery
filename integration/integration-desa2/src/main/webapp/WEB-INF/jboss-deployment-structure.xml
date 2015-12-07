@@ -1,0 +1,23 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <deployment>
+        <dependencies>
+            <module name="org.hibernate" export="true" />
+            <module name="org.infinispan" services="export" export="true"/>
+
+            <module name="javax.jcr" export="true" />
+            <module name="org.slf4j" export="true" />
+            <module name="org.slf4j.jcl-over-slf4j" export="true" />
+
+            <module name="org.jboss.resteasy.resteasy-html" services="export" export="true" />
+
+            <module name="com.google.webutilities" export="true" />
+            <module name="com.google.guava" slot="18" export="true" />
+
+            <module name="com.mysema.querydsl.jpa" export="true"/>
+
+            <module name="org.bouncycastle" export="true" />
+            <module name="org.apache.commons.codec" export="true" />
+            <module name="org.apache.commons.io" export="true" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>

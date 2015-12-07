@@ -1,0 +1,117 @@
+<div id="homepage">
+	<div header-search></div>
+	<div class="informations">
+		<div class="container">
+			<div class="row">
+				<div class="column">
+					<div class="box description">
+						<h3>{{ ::'Náhodně vybrané dokumenty'|translate }}</h3>
+
+						<div class="random">
+							<div class="column" ng-repeat="d in vm.random">
+								<a ui-sref="secured.document({id: d.inventoryId})" class="exposition" exposition>
+                                    <div class="thumbnail" ng-if="d.imgThumb === null" style="background: #fff url('/images/search/no_thumbnail.png') no-repeat center;"></div>
+									<div class="thumbnail" style="background-image: url('/dcap/discovery/data/file/{{:: d.imgThumb }}')"></div>
+									<div class="overlay">
+										<div class="title" ng-bind=":: d.title|truncate:90"></div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column right">
+					<div class="box white">
+						<div class="feeds">
+							<a href="#" ng-click="vm.openRssModal()">
+								<img src="images/homepage/rss.png">
+							</a>
+						</div>
+						<h2>{{ ::'Hledáním můžete najít...'|translate }}</h2>
+						<ul>
+							<li ng-repeat="type in ::vm.documentTypes">
+								<a ng-href="{{:: vm.generateDocumentTypeLink(type.name) }}" ng-bind=":: type.name"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="articles-expos">
+			<div class="column articles">
+				<h3>{{ ::'Články'|translate }}</h3>
+
+				<div class="carousel slide" count="{{ ::vm.articles.length }}">
+					<div class="carousel-inner">
+						<div class="item" ng-class="{active: $first}" ng-repeat="a in ::vm.articles">
+							<div class="thumbnail" data-background="/dcap/discovery/data/file/{{:: a.imageId }}"></div>
+							<div class="content">
+								<h4>
+									<article-link article="a"></article-link>
+								</h4>
+
+								<p ng-bind=":: a.perex"></p>
+
+								<p class="more">
+									<article-link ng-if="!a.url" article="a" title="{{ ::'Číst více..'|translate }}"></article-link>
+									<article-link ng-if="a.url" article="a" title="{{ ::'Číst více na'|translate }} {{ ::vm.getHostname(a.url) }}.."></article-link>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="navigation">
+						<div class="pull-left">
+							<a ui-sref="secured.article" class="btn btn-link">{{ ::'Zobrazit všechny články'|translate }}</a>
+						</div>
+						<button type="button" class="btn btn-sm btn-default" ng-click="prev()">
+							<i class="fa fa-chevron-left"></i>
+						</button>
+						<span class="btn btn-sm">{{ current }} / {{ ::total }}</span>
+						<button type="button" class="btn btn-sm btn-default" ng-click="next()">
+							<i class="fa fa-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="column expos">
+				<h3>{{ ::'Virtuální výstavy'|translate }}</h3>
+
+				<div class="carousel slide" count="{{ ::vm.getPageCount(vm.expos, vm.exposPerSlide) }}">
+					<div class="carousel-inner">
+						<div class="item" ng-repeat="page in vm.getPages(vm.expos, vm.exposPerSlide)" ng-class="{active: $first}">
+							<div class="row">
+								<div class="column" ng-repeat="e in vm.getValuesByPage(vm.expos, page, vm.exposPerSlide)">
+									<a ui-sref="secured.expo({id: e.id})" class="exposition" exposition>
+										<div class="thumbnail" ng-if="e.imageId === null" style="background: url('/images/search/no_thumbnail.png') 60% center no-repeat;"></div>
+										<div class="thumbnail" ng-if="e.imageId" style="background-image: url('/dcap/discovery/data/file/{{:: e.imageId }}')"></div>
+										<div class="overlay">
+											<div class="title" ng-bind=":: e.title|truncate:90"></div>
+											<p ng-bind=":: e.perex"></p>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="navigation">
+						<button type="button" class="btn btn-sm btn-default" ng-click="prev()">
+							<i class="fa fa-chevron-left"></i>
+						</button>
+						<span class="btn btn-sm">{{ current }} / {{ ::total }}</span>
+						<button type="button" class="btn btn-sm btn-default" ng-click="next()">
+							<i class="fa fa-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="timeline-wrapper">
+		<div class="container">
+			<h3>{{ ::'Časová osa'|translate }}</h3>
+			<timeline></timeline>
+		</div>
+	</div>
+</div>

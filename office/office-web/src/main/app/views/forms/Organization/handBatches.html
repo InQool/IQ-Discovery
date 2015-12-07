@@ -1,0 +1,49 @@
+<form name="form" ng-submit="submit()" novalidate class="form-horizontal">
+	<div class="panel">
+		<div class="panel-heading">
+			<div class="panel-title">Předání vlastnictví</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="row button-selection">
+				<div class="col-xs-6">
+					<button class="btn btn-link btn-lg" type="button" ng-class="{selected: selected === 'some'}" ng-click="selected = 'some'">
+						<i class="fa fa-cube"></i>předat vybrané dávky
+					</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-link btn-lg" type="button" ng-class="{selected: selected === 'all'}" ng-click="selected = 'all'">
+						<i class="fa fa-cubes"></i>předat všechny dávky
+					</button>
+				</div>
+			</div>
+			<div ng-if="selected === 'some'">
+				<div class="form-group">
+					<label class="control-label col-xs-3">Vybrané dávky</label>
+
+					<div class="col-xs-9">
+						<ui-select ng-model="value.batches" multiple>
+							<ui-select-match placeholder="Vyberte dávky...">{{ $item.name }}</ui-select-match>
+							<ui-select-choices repeat="b.id as b in ::batches">{{:: b.name }}</ui-select-choices>
+						</ui-select>
+					</div>
+				</div>
+			</div>
+			<div ng-if="selected" class="form-group">
+				<label class="control-label col-xs-3">Kurátor</label>
+
+				<div class="col-xs-9">
+					<ui-select ng-model="value.curator" required>
+						<ui-select-match placeholder="Vyberte kurátora...">{{ $select.selected.firstName }} {{ $select.selected.lastName }}</ui-select-match>
+						<ui-select-choices repeat="c.idmId as c in ::curators">{{:: c.firstName }} {{:: c.lastName }}</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Předat vlastnictví</button>
+			</div>
+		</div>
+	</div>
+</form>

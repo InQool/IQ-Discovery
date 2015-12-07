@@ -1,0 +1,57 @@
+<div id="viewer">
+	<div class="sidebar" lazy-load-images>
+		<div class="row">
+			<div class="entry" ng-repeat-start="t in ::vm.thumbnails track by $index">
+				<a href="#" ng-click="vm.setPage($index)" ng-class="{active: vm.isCurrent($index)}">
+					<img data-original="/dcap/discovery/data/file/{{:: vm.thumbnails[$index] }}">
+				</a>
+			</div>
+			<div class="clearfix" ng-repeat-end ng-if="$index % 3 === 2"></div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="controls">
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" id="viewer-btn-previous">
+						<i class="fa fa-chevron-left"></i> {{ ::'předchozí'|translate }}
+					</button>
+					<button type="button" class="btn btn-default" id="viewer-btn-next">
+						{{ ::'následující'|translate }} <i class="fa fa-chevron-right"></i>
+					</button>
+				</div>
+
+				<button type="button" class="btn btn-default" id="viewer-btn-home">
+					<i class="fa fa-search"></i> {{ ::'celá strana'|translate }}
+				</button>
+
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" id="viewer-btn-zoomin">
+						<i class="fa fa-search-plus"></i> {{ ::'přiblížit'|translate }}
+					</button>
+					<button type="button" class="btn btn-default" id="viewer-btn-zoomout">
+						<i class="fa fa-search-minus"></i> {{ ::'oddálit'|translate }}
+					</button>
+				</div>
+
+				<button type="button" class="btn btn-default" ng-click="vm.toggleTextLayer()" ng-class="{active: vm.mode === 'text'}">
+					<i class="fa fa-font"></i> {{ ::'textová vrstva'|translate }}
+				</button>
+
+				<button type="button" class="btn btn-primary pull-right" ng-click="$close()">
+					<i class="fa fa-close"></i> {{ ::'zavřít'|translate }}
+				</button>
+
+				<button type="button" class="btn btn-default pull-right" id="viewer-btn-fullscreen" ng-disabled=":: vm.watermarkId">
+					<i class="fa fa-expand"></i> {{ ::'celá obrazovka'|translate }}
+				</button>
+			</div>
+		</div>
+		<div class="wrapper">
+			<img ng-if=":: vm.watermarkId" ng-show="vm.mode === 'image'" watermark="{{:: vm.watermarkId }}">
+
+			<div ng-show="vm.mode === 'image'" seadragon tiles="vm.tiles" model="vm.osd"></div>
+			<div ng-show="vm.mode === 'text'" ng-bind="vm.text" class="text-layer"></div>
+		</div>
+	</div>
+</div>

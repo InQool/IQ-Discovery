@@ -1,0 +1,27 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Katalog'|translate }}</h2>
+	</div>
+</div>
+<div id="catalog">
+	<div class="container">
+		<div class="row">
+			<div class="column">
+				<div class="list-group">
+					<a href="#" class="list-group-item" ng-repeat="(name, values) in ::vm.facets" ng-class="{active: vm.facet === name}" ng-click="vm.selectFacet(name)" ng-bind=":: vm.getFacetName(name)"></a>
+				</div>
+			</div>
+			<div class="column">
+				<div class="list-group" ng-if="vm.facet">
+					<a href="#" class="list-group-item" ng-class="{active: vm.letter === l}" ng-click="vm.selectLetter(l)" ng-repeat="l in vm.getAlphabet()" ng-bind=":: l"></a>
+				</div>
+			</div>
+			<div class="column">
+				<div class="list-group" ng-if="vm.letter">
+					<a href="#" ng-click="vm.search(value.name)" class="list-group-item" ng-repeat="value in vm.getValuesForLetter()" ng-bind=":: value.translated || value.name"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Přihlášení'|translate }}</h2>
+	</div>
+</div>
+<div id="login">
+	<div class="container">
+		<div class="row">
+			<div class="column">
+				<form name="vm.form" novalidate class="form-horizontal" ng-submit="vm.submit()">
+					<h4>{{ ::'Přihlášení pomocí emailové adresy'|translate }}</h4>
+
+					<div class="form-group" ng-class="{'has-error': vm.form.$submitted && (vm.form.username.$error.required || vm.form.username.$error.email)}">
+						<label for="login-username" class="control-label col-md-4">{{ ::'Emailová adresa'|translate }}</label>
+
+						<div class="col-md-8">
+							<input type="email" id="login-username" name="username" ng-model="vm.user.userName" required class="form-control">
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'has-error': vm.form.$submitted && vm.form.password.$error.required}">
+						<label for="login-password" class="control-label col-md-4">{{ ::'Heslo'|translate }}</label>
+
+						<div class="col-md-8">
+							<input type="password" id="login-password" name="password" ng-model="vm.user.password" required class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-8 col-md-push-4">
+							<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">{{ ::'Přihlásit se'|translate }}</button>
+						</div>
+					</div>
+					<p class="text-center">
+						<a ui-sref="secured.register">{{ ::'Ještě nemáte účet?'|translate }}</a>
+						|
+						<a ui-sref="secured.password.forgotten">{{ ::'Zapomněli jste své heslo?'|translate }}</a>
+					</p>
+				</form>
+			</div>
+			<div class="column">
+				<form>
+					<h4>{{ ::'Přihlášení přes MojeID'|translate }}</h4>
+
+					<a ng-href="/dcap/discovery/consumer?frontendUrl={{ ::vm.frontendUrl }}" target="_self">
+						<img ng-src="images/login/moje_id_{{ ::vm.language }}.png">
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

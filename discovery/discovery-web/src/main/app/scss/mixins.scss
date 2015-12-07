@@ -1,0 +1,8 @@
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+@import "variables";
+
+@mixin border-radius($radius: $border-radius-large) {
+  @include border-left-radius($radius);
+  @include border-right-radius($radius);
+}

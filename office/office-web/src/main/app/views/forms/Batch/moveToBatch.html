@@ -1,0 +1,42 @@
+<form name="form" class="form-horizontal" novalidate="novalidate" ng-submit="submit()">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Přesunutí do jiné dávky</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<div class="col-xs-4">
+					<div class="radio-custom square mt10">
+						<input id="mode-existing" ng-model="mode" type="radio" name="mode" value="existing" class="form-control">
+						<label for="mode-existing">Existující dávka</label>
+					</div>
+				</div>
+
+				<div class="col-xs-8">
+					<ui-select ng-model="batch.id" ng-disabled="mode !== 'existing'" ng-required="mode === 'existing'">
+						<ui-select-match placeholder="Cílová dávka..">{{ $select.selected.name }}</ui-select-match>
+						<ui-select-choices repeat="batch.id as batch in ::batches">{{ ::batch.name }}</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-4">
+					<div class="radio-custom square mt10">
+						<input id="mode-new" ng-model="mode" type="radio" name="mode" value="new" class="form-control">
+						<label for="mode-new">Nová dávka</label>
+					</div>
+				</div>
+
+				<div class="col-xs-8">
+					<input type="text" class="form-control" ng-model="batch.name" ng-disabled="mode !== 'new'" ng-required="mode === 'new'">
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Přesunout dokumenty</button>
+			</div>
+		</div>
+	</div>
+</form>

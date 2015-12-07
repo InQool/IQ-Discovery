@@ -1,0 +1,25 @@
+<form name="form" class="form-horizontal" novalidate ng-submit="submit()">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Změnit vlastníka</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<label class="control-label col-xs-4">Uživatel</label>
+
+				<div class="col-xs-8">
+					<ui-select ng-model="values.owner" required>
+						<ui-select-match placeholder="Vyberte nového vlastníka..">{{ $select.selected.firstName + ' ' + $select.selected.lastName }}</ui-select-match>
+						<ui-select-choices repeat="user.idmId as user in ::users">{{:: user.firstName + ' ' + user.lastName }}</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer clearfix">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Změnit</button>
+			</div>
+		</div>
+	</div>
+</form>

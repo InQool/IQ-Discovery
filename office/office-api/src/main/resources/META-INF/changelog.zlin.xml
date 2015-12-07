@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd"
+                   logicalFilePath="/META-INF/changelog.xml">
+    <changeSet id="dcap:office:1" author="LL">
+        <createTable tableName="article">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="active" type="boolean" />
+            <column name="author" type="integer" />
+            <column name="content" type="text" />
+            <column name="created" type="timestamp" />
+            <column name="deleted" type="boolean" />
+            <column name="perex" type="varchar(255)" />
+            <column name="published_from" type="timestamp" />
+            <column name="published_to" type="timestamp" />
+            <column name="title" type="varchar(255)" />
+            <column name="image_id" type="varchar(255)" />
+            <column name="url" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="document_sub_type">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+            <column name="owning_type" type="integer">
+                <constraints foreignKeyName="FK_doc_sub_type_to_doc_type" referencedTableName="document_type" />
+            </column>
+        </createTable>
+        <createTable tableName="document_type">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="expo">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="active" type="boolean" />
+            <column name="author" type="integer" />
+            <column name="content" type="text" />
+            <column name="created" type="timestamp" />
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="perex" type="varchar(255)" />
+            <column name="published_from" type="timestamp" />
+            <column name="published_to" type="timestamp" />
+            <column name="solr_query" type="varchar(255)" />
+            <column name="title" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="mail_notification">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false"/>
+            <column name="name" type="varchar(255)" />
+            <column name="subject" type="varchar(255)" />
+            <column name="text" type="varchar(1023)" />
+        </createTable>
+        <createTable tableName="oai_source">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+            <column name="shortcut" type="varchar(255)" />
+            <column name="url" type="varchar(255)" />
+            <column name="last_harvested" type="timestamp" />
+        </createTable>
+        <createTable tableName="sru_source">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+            <column name="database_name" type="varchar(255)" />
+            <column name="url" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="z3950source">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+            <column name="database_name" type="varchar(255)" />
+            <column name="url" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="zdo_batch">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="created" type="timestamp" />
+            <column name="modified" type="timestamp" />
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="name" type="varchar(255)" />
+            <column name="owner" type="varchar(255)" />
+            <column name="state" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="zdo_batch_documents">
+            <column name="zdo_batch" type="integer">
+                <constraints nullable="false" foreignKeyName="FK_zdo_batch_documents_to_zdo_batch" referencedTableName="zdo_batch" />
+            </column>
+            <column name="documents" type="varchar(255)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:2" author="LL">
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Video</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Knihy</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Noviny a časopisy</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Dokumenty</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Obrazy</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Hudebniny</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Audio</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Fyzické předměty</column>
+        </insert>
+        <insert tableName="document_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">Mapy</column>
+        </insert>
+    </changeSet>
+    <changeSet id="dcap:office:3" author="LL">
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Video')" />
+            <column name="name">Video</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Knihy')" />
+            <column name="name">Knihy</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Knihy')" />
+            <column name="name">Staré tisky</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Noviny a časopisy')" />
+            <column name="name">Noviny a časopisy</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Dokumenty')" />
+            <column name="name">Dokumenty</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Obrazy</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Fotografie</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Plakáty</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Negativy skleněné</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Negativy filmové</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Kresby</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Malby</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Obrazy')" />
+            <column name="name">Grafika</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Hudebniny')" />
+            <column name="name">Hudebniny</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Audio')" />
+            <column name="name">Audio</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Fyzické předměty')" />
+            <column name="name">Fyzické předměty</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Fyzické předměty')" />
+            <column name="name">Sochy</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Mapy')" />
+            <column name="name">Mapy</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Mapy')" />
+            <column name="name">Plány</column>
+        </insert>
+        <insert tableName="document_sub_type">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="owning_type" valueComputed="(SELECT id FROM document_type WHERE name = 'Mapy')" />
+            <column name="name">Atlasy</column>
+        </insert>
+    </changeSet>
+    <changeSet id="dcap:office:4" author="LL">
+        <createTable tableName="portal_settings">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="discovery_title" type="varchar(255)" />
+        </createTable>
+        <insert tableName="portal_settings">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="discovery_title">eBadatelna Zlínského kraje</column>
+        </insert>
+    </changeSet>
+    <changeSet id="dcap:office:5" author="LL">
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">batch_owner_changed</column>
+            <column name="subject">Změna vlastníka dávky</column>
+            <column name="text">Dobrý den #jméno #příjmení,&lt;br/&gt; byla Vám předána dávka / dávky:
+                &lt;br/&gt;
+                &lt;br/&gt; #jméno_dávky
+                &lt;br/&gt;
+                &lt;br/&gt; Najdete je v seznamu dávek.</column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">doc_reservation_client</column>
+            <column name="subject">Rezervace dokumentu #dokument</column>
+            <column name="text">Dobrý den #jméno #příjmení,&lt;br/&gt; zaregistrovali jsme Vaši žádost o rezervaci dokumentu #dokument. O Vaší žádosti jsme informovali správce dokumentu, který Vás bude brzy kontaktovat.</column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">doc_reservation_owner</column>
+            <column name="subject">Rezervace dokumentu #dokument</column>
+            <column name="text">Dobrý den,&lt;br/&gt; ověřený uživatel žádá o rezervaci dokumentu #dokument za účelem:
+                &lt;br/&gt;
+                &lt;br/&gt; #účel
+                &lt;br/&gt;
+                &lt;br/&gt; Kontaktujte ho prosím s dalšími informacemi. Osobní údaje žadatele jsou:
+                &lt;br/&gt;
+                &lt;br/&gt; Jméno a příjmení: #jméno #příjmení
+                &lt;br/&gt; Adresa: #adresa
+                &lt;br/&gt; E-mail: #jméno_uživatele
+            </column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">discovery_user_registration</column>
+            <column name="subject">Registrace uživatele modulu Discovery</column>
+            <column name="text">Dobrý den, #jméno #příjmení,&lt;br/&gt; děkujeme za Vaši registraci.
+            &lt;br/&gt; Vaše uživatelské jméno je: #jméno_uživatele
+            &lt;br/&gt;
+            &lt;br/&gt; Přejeme Vám příjemné využívání služeb portálu.
+            </column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">discovery_user_deleted</column>
+            <column name="subject">Zrušení účtu uživatele modulu Discovery</column>
+            <column name="text">Dobrý den #jméno #příjmení,&lt;br/&gt; Váš účet byl úspěšně zrušen. Pokud se ovšem rozhodnete portál znovu začít používat, rádi Vás opět uvidíme.</column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">discovery_user_verified</column>
+            <column name="subject">Ověření uživatele úspěšné</column>
+            <column name="text">Dobrý den #jméno #příjmení,&lt;br/&gt; Váš účet byl úspěšně ověřen.</column>
+        </insert>
+        <insert tableName="mail_notification">
+            <column name="id" valueComputed="nextval('hibernate_sequence')" />
+            <column name="name">password_reset</column>
+            <column name="subject">Obnova hesla</column>
+            <column name="text">Dobrý den #jméno #příjmení,&lt;br/&gt; Vaše heslo bylo úspěšně resetováno. Použijte nyní toto jednorázové heslo k přihlášení do Vašeho účtu, kde si opět můžete změnit heslo na libovolné.
+                &lt;br/&gt; Přihlašovací jméno: #jméno_uživatele
+                &lt;br/&gt; Heslo: #heslo</column>
+        </insert>
+    </changeSet>
+    <changeSet id="dcap:office:6" author="LL">
+        <createTable tableName="genre_authority">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="code" type="varchar(16)" />
+        </createTable>
+        <createTable tableName="topic_authority">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="code" type="varchar(16)" />
+        </createTable>
+        <createTable tableName="chronological_authority">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="code" type="varchar(16)" />
+        </createTable>
+        <createTable tableName="geographical_authority">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="code" type="varchar(16)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:7" author="LL">
+        <dropTable tableName="expo" />
+        <createTable tableName="expo">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="active" type="boolean" />
+            <column name="owner" type="varchar(255)" />
+            <column name="content" type="text" />
+            <column name="created" type="timestamp" />
+            <column name="deleted" type="boolean" defaultValue="false" />
+            <column name="perex" type="varchar(255)" />
+            <column name="published_from" type="timestamp" />
+            <column name="published_to" type="timestamp" />
+            <column name="title" type="varchar(255)" />
+            <column name="image_id" type="varchar(255)" />
+        </createTable>
+        <createTable tableName="expo_documents">
+            <column name="expo" type="integer">
+                <constraints foreignKeyName="FK_expo_doc_to_expo" referencedTableName="expo"/>
+            </column>
+            <column name="inv_id" type="varchar(255)" />
+            <column name="title" type="varchar(255)" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:8" author="LL">
+        <createTable tableName="feed_entry">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="title" type="varchar(255)" />
+            <column name="description" type="text" />
+            <column name="link" type="varchar(255)" />
+            <column name="created" type="timestamp" />
+            <column name="deleted" type="boolean" defaultValue="false" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:9" author="LL">
+        <createTable tableName="stats_user">
+            <column name="user_id" type="varchar(32)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="docs_published" type="integer" />
+        </createTable>
+        <createTable tableName="stats_organization">
+            <column name="organization" type="varchar(32)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="docs_published" type="integer" />
+        </createTable>
+        <createTable tableName="stats_zdo_type">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="zdo_type" type="varchar(32)" />
+            <column name="organization" type="varchar(32)" />
+            <column name="num_published" type="integer" />
+        </createTable>
+        <createTable tableName="stats_doc_type">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="doc_type" type="integer" />
+            <column name="organization" type="varchar(32)" />
+            <column name="num_published" type="integer" />
+        </createTable>
+        <createTable tableName="stats_doc_sub_type">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="doc_sub_type" type="integer" />
+            <column name="organization" type="varchar(32)" />
+            <column name="num_published" type="integer" />
+        </createTable>
+        <createTable tableName="stats_docs">
+            <column name="doc_inv_id" type="varchar(64)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="views" type="bigint" />
+            <column name="favorites" type="integer" />
+        </createTable>
+        <createTable tableName="stats_weekly">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="week" type="timestamp" />
+            <column name="organization" type="varchar(32)" />
+            <column name="user_id" type="varchar(32)" />
+            <column name="docs_concepted" type="integer" />
+            <column name="docs_published" type="integer" />
+            <column name="docs_reserved" type="integer" />
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:10" author="LL">
+        <dropColumn tableName="article" columnName="author" />
+        <addColumn tableName="article">
+            <column name="owner" type="varchar(32)"/>
+            <column name="author_name" type="varchar(64)"/>
+            <column name="author_org_name" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="dcap:office:11" author="LL">
+        <addColumn tableName="portal_settings">
+            <column name="css" type="text" />
+            <column name="header_id" type="varchar(64)" />
+            <column name="logo_id" type="varchar(64)" />
+            <column name="watermark_id" type="varchar(64)" />
+        </addColumn>
+    </changeSet>
+    <changeSet id="dcap:office:12" author="LL">
+        <addColumn tableName="oai_source">
+            <column name="set" type="varchar(32)" />
+        </addColumn>
+    </changeSet>
+    <changeSet id="dcap:office:13" author="LL">
+        <createTable tableName="key_value">
+            <column name="key" type="varchar(64)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="value" type="varchar(64)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="dcap:office:14" author="LL">
+        <addColumn tableName="portal_settings">
+            <column name="discovery_sub_title" type="varchar(255)" />
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

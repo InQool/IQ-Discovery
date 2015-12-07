@@ -1,0 +1,65 @@
+<form name="vm.form" ng-submit="vm.submit()" novalidate class="form-horizontal">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Změna obrazových nastavení</div>
+		</div>
+		<div class="panel-body pbn">
+			<div class="form-group">
+				<label class="control-label col-xs-6" for="allow-content-publicly">Zobrazit pouze metadata</label>
+
+				<div class="col-xs-6">
+					<div class="switch switch-primary switch-sm">
+						<input type="checkbox" id="allow-content-publicly" ng-model="vm.values.allowContentPublicly">
+						<label for="allow-content-publicly"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="vm.values.allowContentPublicly">
+				<label class="control-label col-xs-6" for="allow-export-pdf">Povolit export do PDF</label>
+
+				<div class="col-xs-6">
+					<div class="switch switch-primary switch-sm">
+						<input type="checkbox" id="allow-export-pdf" ng-model="vm.values.allowPdfExport">
+						<label for="allow-export-pdf"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="vm.values.allowContentPublicly">
+				<label class="control-label col-xs-6" for="allow-export-epub">Povolit export do EPUB</label>
+
+				<div class="col-xs-6">
+					<div class="switch switch-primary switch-sm">
+						<input type="checkbox" id="allow-export-epub" ng-model="vm.values.allowEpubExport">
+						<label for="allow-export-epub"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-hide="vm.values.allowContentPublicly">
+				<label class="control-label col-xs-6" for="use-watermark">Vodotisk přes obrazová data</label>
+
+				<div class="col-xs-6">
+					<div class="switch switch-primary switch-sm">
+						<input type="checkbox" id="use-watermark" ng-model="vm.values.watermark">
+						<label for="use-watermark"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" ng-show="vm.values.watermark && vm.values.allowContentPublicly === false">
+				<label class="control-label col-xs-6">Umístění vodotisku</label>
+
+				<div class="col-xs-6">
+					<ui-select ng-model="vm.values.watermarkPosition" ng-required="vm.values.watermark">
+						<ui-select-match placeholder="Vyberte umístění..">{{ $select.selected.name }}</ui-select-match>
+						<ui-select-choices repeat="p.key as p in ::vm.watermarkPositions">{{:: p.name }}</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="vm.loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">Změnit nastavení</button>
+			</div>
+		</div>
+	</div>
+</form>

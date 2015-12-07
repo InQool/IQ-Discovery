@@ -1,0 +1,35 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Historie vyhledávání'|translate }}</h2>
+	</div>
+</div>
+<div class="container" id="history">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>{{ ::'Dotaz'|translate }}</th>
+				<th>{{ ::'Omezení'|translate }}</th>
+				<th style="width: 115px;">{{ ::'Počet výsledků'|translate }}</th>
+				<th style="width: 175px;">{{ ::'Datum'|translate }}</th>
+				<th ng-if=":: vm.isLoggedIn"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="h in ::vm.history">
+				<td>
+					<a ui-sref="secured.search({query: h.query, 'fq[]': h.facetQuery})">{{ ::vm.getReadableQuery(h.query) }}</a>
+				</td>
+				<td>{{ ::vm.getReadableFacets(h.facetQuery) }}</td>
+				<td>{{ ::h.count|number }}</td>
+				<td>{{:: h.timestamp|date:'medium' }}</td>
+				<td ng-if=":: vm.isLoggedIn">
+					<button type="button" class="btn btn-primary btn-sm" ng-click="vm.save(h)">
+						{{ ::'Uložit'|translate }}
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="button" class="btn btn-link pull-right" ng-click="vm.clear()">{{ ::'vymazat historii'|translate }}</button>
+</div>

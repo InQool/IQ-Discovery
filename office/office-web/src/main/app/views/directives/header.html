@@ -1,0 +1,27 @@
+<header class="navbar navbar-fixed-top bg-light">
+    <div class="navbar-branding">
+        <a class="navbar-brand" ui-sref="home">
+            <img src="images/logo.png">
+        </a>
+        <span ng-click="toggle()" id="toggle_sidemenu_l" class="glyphicons glyphicons-show_lines"></span>
+    </div>
+    <h2 ng-if="::developmentShowWarning" class="test-version">Testovací verze</h2>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" dropdown>
+            <a href="#" class="dropdown-toggle fw600 p10 user-info" dropdown-toggle>
+                <div class="name">
+                    <div>{{:: user.firstName + ' ' + user.lastName }}</div>
+                    <div class="small text-muted">{{:: user.organizationName }}</div>
+                </div>
+                <span class="caret caret-tp hidden-xs"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-persist pn w250 bg-white" role="menu">
+                <li class="br-t of-h">
+                    <a href="#" ng-click="logout()" class="fw600 p12">
+                        <span class="fa fa-power-off pr5"></span> Odhlásit
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <artifactId>jzkit</artifactId>
+        <groupId>com.inqool.dcap</groupId>
+        <version>3.0.1.INQOOL</version>
+    </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modelVersion>4.0.0</modelVersion>
+  <name>JZKit2 Z39.50 Server</name>
+  <url>http://www.k-int.com</url>
+  <artifactId>jzkit_z3950_server</artifactId>
+  <packaging>jar</packaging>
+
+  <ciManagement>
+    <system>continuum</system>
+    <url>http://developer.k-int.com:8081/continuum</url>
+    <notifiers>
+      <notifier>
+        <type>mail</type>
+        <configuration>
+          <address>ian.ibbotson@k-int.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+
+  <dependencies>
+    <dependency><groupId>com.inqool.dcap</groupId><artifactId>jzkit_core</artifactId></dependency>
+    <dependency><groupId>com.inqool.dcap</groupId><artifactId>jzkit_service</artifactId></dependency>
+    <dependency><groupId>com.inqool.dcap</groupId><artifactId>jzkit_solr_plugin</artifactId></dependency>
+    <dependency><groupId>com.inqool.dcap</groupId><artifactId>jzkit_z3950_plugin</artifactId></dependency>
+  </dependencies>
+
+</project>

@@ -1,0 +1,109 @@
+<aside id="sidebar_left" class="nano nano-primary affix">
+	<div class="nano-content">
+		<ul class="nav sidebar-menu">
+			<li class="sidebar-label pt20">Menu</li>
+			<li ui-sref-active="active">
+				<a ui-sref="secured.home">
+					<span class="fa fa-home"></span>
+					<span class="sidebar-title">Hlavní stránka</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.document')">
+				<a ui-sref="secured.document">
+					<span class="fa fa-file"></span>
+					<span class="sidebar-title">Dokumenty</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.batch')">
+				<a ui-sref="secured.batch">
+					<span class="fa fa-cubes"></span>
+					<span class="sidebar-title">Dávky</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.organization')">
+				<a ui-sref="secured.organization">
+					<span class="fa fa-institution"></span>
+					<span class="sidebar-title">Organizace</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.article')">
+				<a ui-sref="secured.article">
+					<span class="fa fa-file"></span>
+					<span class="sidebar-title">Články</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.gallery')">
+				<a ui-sref="secured.gallery">
+					<span class="fa fa-image"></span>
+					<span class="sidebar-title">Virtuální výstavy</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.discovery')">
+				<a ui-sref="secured.discovery">
+					<span class="fa fa-globe"></span>
+					<span class="sidebar-title">Modul Discovery</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.upload')">
+				<a ui-sref="secured.upload">
+					<span class="fa fa-upload"></span>
+					<span class="sidebar-title">Nahrát XLS/AccessDB</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.administration')">
+				<a ui-sref="secured.administration">
+					<span class="fa fa-cogs"></span>
+					<span class="sidebar-title">Administrace instituce</span>
+				</a>
+			</li>
+
+			<li ui-sref-active="active" ng-if=":: vm.isAllowed('secured.verify')">
+				<a ui-sref="secured.verify">
+					<span class="fa fa-user"></span>
+					<span class="sidebar-title">Ověření uživatele</span>
+				</a>
+			</li>
+
+			<li ng-if=":: vm.isAllowed('secured.settings')">
+				<a class="accordion-toggle" href="#" ng-class="{'menu-open': vm.isActive('secured.settings')}">
+					<span class="fa fa-cogs"></span>
+					<span class="sidebar-title">Nastavení</span>
+					<span class="caret"></span>
+				</a>
+				<ul class="nav sub-nav">
+					<li ui-sref-active="active" ng-if="::vm.isEnabled('secured.settings.type')">
+						<a ui-sref="secured.settings.type">Typy dokumentů</a>
+					</li>
+					<li ui-sref-active="active">
+						<a ui-sref="secured.settings.notification">Notifikace</a>
+					</li>
+					<li>
+						<a href="#" class="accordion-toggle" ng-class="{'menu-open': vm.isActive('secured.settings.source')}">
+							Zdroje
+							<span class="caret"></span>
+						</a>
+						<ul class="nav sub-nav">
+							<li ui-sref-active="active">
+								<a ui-sref="secured.settings.source.oai">OAI-PMH</a>
+							</li>
+							<li ui-sref-active="active">
+								<a ui-sref="secured.settings.source.sru">SRU</a>
+							</li>
+							<li ui-sref-active="active">
+								<a ui-sref="secured.settings.source.z3950">Z39.50</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</aside>

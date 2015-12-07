@@ -1,0 +1,24 @@
+<div header-search></div>
+<div id="account-settings">
+	<div class="page-title">
+		<div class="container">
+			<h2>{{ ::'Můj účet'|translate }}</h2>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="p15">
+					<div class="list-group">
+						<a ui-sref="secured.account.settings" class="list-group-item" ui-sref-active-eq="active">{{ ::'Nastavení profilu'|translate }}</a>
+						<a ng-if="::vm.isLoggedInViaOpenId() === false" ui-sref="secured.account.settings.changePassword" class="list-group-item" ui-sref-active-eq="active">{{ ::'Změna hesla'|translate }}</a>
+						<a ui-sref="secured.account.settings.favorited" class="list-group-item" ui-sref-active-eq="active">{{ ::'Oblíbené dokumenty'|translate }}</a>
+						<a ui-sref="secured.account.settings.searches" class="list-group-item" ui-sref-active-eq="active">{{ ::'Uložená hledání'|translate }}</a>
+						<a ui-sref="secured.account.settings.personal" class="list-group-item" ui-sref-active-eq="active">{{ ::'Osobní údaje'|translate }}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9" ui-view=""></div>
+		</div>
+	</div>
+</div>

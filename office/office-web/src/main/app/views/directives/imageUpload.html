@@ -1,0 +1,15 @@
+<form ng-submit="vm.submit()" class="form-horizontal" novalidate>
+	<div class="panel">
+		<div class="panel-heading">
+			<div class="panel-title" ng-bind="::vm.title"></div>
+		</div>
+		<div class="panel-body">
+			<img ng-if="vm.image" ng-src="/dcap/office/data/file/{{ vm.image }}?authctoken={{:: vm.token }}" class="img-responsive mb10">
+			<input type="file" file-model="vm.file">
+		</div>
+		<div class="panel-footer">
+			<button type="button" class="btn btn-danger" ng-click="vm.remove()" ng-disabled="vm.loading">odstranit</button>
+			<button type="submit" class="btn btn-primary pull-right" ng-disabled="vm.loading">Uložit</button>
+		</div>
+	</div>
+</form>

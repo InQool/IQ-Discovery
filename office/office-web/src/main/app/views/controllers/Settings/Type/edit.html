@@ -1,0 +1,38 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Typ: {{:: type.name }}</h4>
+		<a ui-sref="^" class="btn btn-default">
+			<i class="fa fa-chevron-left"></i> zpět na přehled typů
+		</a>
+		<button type="button" ng-click="create()" class="btn btn-primary">Přidat nový podtyp</button>
+	</div>
+	<div class="tray">
+		<form ng-submit="submit()" name="form" class="form-horizontal" novalidate>
+			<div class="panel">
+				<div class="panel-heading">
+					<div class="panel-title">Informace o typu</div>
+				</div>
+				<div class="panel-body pbn">
+					<div class="form-group">
+						<label for="type-name" class="control-label col-xs-3">Název</label>
+
+						<div class="col-xs-9">
+							<input type="text" ng-model="type.name" name="name" id="type-name" class="form-control" required>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-primary pull-right" ng-disabled="loading">Uložit</button>
+				</div>
+			</div>
+		</form>
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="panel-title">Přehled podtypů</div>
+			</div>
+			<div class="panel-body pn">
+				<table-view instance="table" options="options" columns="columns"></table-view>
+			</div>
+		</div>
+	</div>
+</div>

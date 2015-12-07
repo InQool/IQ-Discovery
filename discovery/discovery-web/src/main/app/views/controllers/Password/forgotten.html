@@ -1,0 +1,26 @@
+<div header-search></div>
+<div class="page-title">
+	<div class="container">
+		<h2>{{ ::'Zapomenuté heslo'|translate }}</h2>
+	</div>
+</div>
+<div id="login">
+	<div class="container">
+		<p class="mt20 text-center">{{ ::'Zadejte svoji emailovou adresu, na kterou Vám bude zaslán email s instrukcemi pro nastavení nového hesla.'|translate }}</p>
+
+		<form name="vm.form" ng-submit="vm.submit()" class="form-horizontal" novalidate>
+			<div class="form-group" ng-class="{'has-error': vm.form.$submitted && (vm.form.email.$error.required || vm.form.email.$error.email)}">
+				<label for="forgotten-email" class="control-label col-sm-4">{{ ::'Emailová adresa'|translate }}</label>
+
+				<div class="col-sm-8">
+					<input type="email" name="email" id="forgotten-email" ng-model="vm.email" class="form-control" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-8 col-sm-push-4">
+					<button type="submit" class="btn btn-primary" ng-disabled="vm.loading">{{ ::'Resetovat heslo'|translate }}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

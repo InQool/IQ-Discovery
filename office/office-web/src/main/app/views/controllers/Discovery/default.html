@@ -1,0 +1,43 @@
+<div id="content">
+	<div class="sidebar">
+		<h4>Modul Discovery</h4>
+
+		<button class="btn btn-primary" ng-click="vm.runImport('kdr')" ng-disabled="vm.loading">Spustit KDR import</button>
+		<button class="btn btn-primary" ng-click="vm.runImport('bach')" ng-disabled="vm.loading">Spustit Bach import</button>
+		<button class="btn btn-primary" ng-click="vm.runImport('demus')" ng-disabled="vm.loading">Spustit Demus import</button>
+
+		<p class="mt15 text-center">
+			Zbývá <strong ng-bind="vm.progress"></strong> souborů.
+		</p>
+	</div>
+	<div class="tray">
+		<form name="vm.form" class="form-horizontal" ng-submit="vm.submit()" novalidate>
+			<div class="panel">
+				<div class="panel-body pbn">
+					<div class="form-group">
+						<label for="form-title" class="control-label col-xs-3">Název portálu</label>
+
+						<div class="col-xs-9">
+							<input type="text" name="title" id="form-title" class="form-control" ng-model="vm.settings.discoveryTitle">
+						</div>
+					</div>
+					<custom-css css="vm.settings.css"></custom-css>
+				</div>
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-primary pull-right" ng-disabled="vm.loading">Uložit</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col-md-4">
+				<image-upload title="Obrázek v hlavičce" image="{{ vm.settings.headerId }}" on-save="vm.save('header', file)" on-remove="vm.remove('header')"></image-upload>
+			</div>
+			<div class="col-md-4">
+				<image-upload title="Logo" image="{{ vm.settings.logoId }}" on-save="vm.save('logo', file)" on-remove="vm.remove('logo')"></image-upload>
+			</div>
+			<div class="col-md-4">
+				<image-upload title="Vodoznak" image="{{ vm.settings.watermarkId }}" on-save="vm.save('watermark', file)" on-remove="vm.remove('watermark')"></image-upload>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<div>
+	<div class="container info">
+		<div class="row">
+			<div class="column">
+				<h4>{{ ::'O nás'|translate }}</h4>
+
+				<address>
+					{{ ::vm.footer.portalName }}<br>
+					{{ ::vm.footer.address.name }}<br>
+					{{ ::vm.footer.address.street }}<br>
+					{{ ::vm.footer.address.zip }} {{ ::vm.footer.address.city }}<br>
+					<a ng-href="{{ ::vm.footer.address.url }}" target="_blank">{{ ::vm.footer.address.url }}</a>
+				</address>
+
+				<p ng-if="::vm.footer.administrator">
+					{{ ::'Administrátor portálu'|translate }}:
+					<br>
+					<a ng-href="mailto:{{ ::vm.footer.administrator }}">{{ ::vm.footer.administrator }}</a>
+				</p>
+			</div>
+			<div class="column">
+				<h4>{{ ::'Spolupracující organizace'|translate }}</h4>
+
+				<ul ng-if="::vm.isArray(vm.footer.partners)">
+					<li ng-repeat="name in ::vm.footer.partners|limitTo:vm.limit">{{ ::name }}</li>
+				</ul>
+				<ul ng-if="::vm.isArray(vm.footer.partners) === false">
+					<li ng-repeat="(name, url) in ::vm.footer.partners">
+						<a ng-href="{{ ::url }}" target="_blank">{{ ::name }}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="column" ng-if="::vm.isArray(vm.footer.partners) && vm.footer.partners.length > vm.limit">
+				<ul>
+					<li ng-repeat="name in ::vm.footer.partners|limitTo:100:vm.limit">{{ ::name }}</li>
+				</ul>
+			</div>
+			<div class="column" ng-if="::vm.footer.about">
+				<h4>{{ ::'Informace o projektu'|translate }}</h4>
+
+				<p ng-bind-html="::vm.footer.about" class="text-justify"></p>
+			</div>
+		</div>
+	</div>
+	<div class="logos">
+		<div class="container">
+			<div class="clearfix vertical-align">
+				<div class="column">
+					<a ng-href="{{ ::vm.footer.eu.href }}" target="_blank">
+						<img src="images/footer/footer.jpg">
+					</a>
+				</div>
+				<div class="column smaller">
+					<img ng-src="images/footer/{{ ::vm.footer.logo }}">
+				</div>
+			</div>
+
+			<p class="smaller">{{ ::vm.footer.eu.text }}</p>
+		</div>
+	</div>
+</div>

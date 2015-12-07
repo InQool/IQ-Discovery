@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="login-text">
+		<a href="#">Login</a> for hold and recall information.
+	</div>
+	<div class="holdings">
+		<div class="header">
+			<selectpicker items="holdingOptions" ng-model="holding"></selectpicker>
+		</div>
+		<table>
+			<tbody>
+				<tr class="clickable" ng-click="toggle(1)">
+					<th colspan="2">
+						<i class="icon chevron" ng-class="{'down': rows[1], 'right': !rows[1]}"></i>
+						*Pääkirjasto. Kirjat. 3. krs. Laina-aika 28 vrk.
+					</th>
+					<th class="available">
+						<i class="icon circle"></i> 1 available
+					</th>
+					<th>P Kasv Lehtinen</th>
+				</tr>
+				<tr ng-show="rows[1]">
+					<th>Copies</th>
+					<td>Copy</td>
+					<td class="available">
+						<i class="icon circle"></i> Available
+					</td>
+					<td></td>
+				</tr>
+				<tr class="clickable" ng-click="toggle(2)">
+					<th colspan="2">
+						<i class="icon chevron" ng-class="{'down': rows[2], 'right': !rows[2]}"></i>
+						*Pääkirjasto. Kirjat. 3. krs. Laina-aika 28 vrk.
+					</th>
+					<th class="available">
+						<i class="icon circle"></i> 1 available
+					</th>
+					<th>P Kasv Lehtinen</th>
+				</tr>
+				<tr ng-show="rows[2]">
+					<th>Copies</th>
+					<td>Copy</td>
+					<td class="available">
+						<i class="icon circle"></i> Available
+					</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

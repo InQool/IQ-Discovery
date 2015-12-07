@@ -1,0 +1,16 @@
+<form name="form" ng-submit="submit()" novalidate class="form-horizontal">
+	<div class="panel mbn">
+		<div class="panel-heading">
+			<div class="panel-title">Změna typu dokumentů</div>
+		</div>
+		<div class="panel-body pbn">
+			<document-type document="document"></document-type>
+		</div>
+		<div class="panel-footer">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-disabled="loading" ng-click="$dismiss()">Zrušit</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="loading">Změnit typ</button>
+			</div>
+		</div>
+	</div>
+</form>
