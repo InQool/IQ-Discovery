@@ -3,5 +3,4 @@ iQ Discovery je webový portál, jehož prostřednictvím je zajišťována př�
 
 Řešení podporuje procesy a obsahuje funkcionality související s vyhledáváním dokumentů, kdy komplexní řešení pro vyhledávání je schopno prohledávat a nabízet dynamicky i dokumenty mimo lokální úložiště dokumentů v repositáři zákazníka. Vyhledávací systém podporuje otevřenou integraci služeb a systémů a respektuje koncept Webu 2.0 s možností napojení na sociální sítě.
 ##License
-Affero GPLv3
 Řešení je publikováno pod licencí [Affero GPLv3](http://www.gnu.org/licenses/agpl-3.0.html)
